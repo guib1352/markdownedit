@@ -43,6 +43,50 @@
 .preset-action-note{color:#94b5af;font-size:11px;line-height:1.5}.preset-action-buttons{display:flex;flex-wrap:wrap;gap:7px;justify-content:flex-end}
 .preset-footnote{padding:10px 22px 14px!important;margin:0!important;border-top:1px solid var(--border);color:#8499aa!important;flex-shrink:0}
 @media(max-width:700px){.preset-browser{grid-template-columns:1fr;grid-template-rows:minmax(140px,34%) minmax(260px,66%);height:calc(100dvh - 180px)}.preset-sidebar{border-right:0;border-bottom:1px solid var(--border)}.preset-modal .modal-top{padding:14px 16px 9px}.preset-view-content{padding:15px}.preset-view-actions{padding:10px}.preset-footnote{padding:8px 12px!important}.preset-action-note{width:100%}.preset-action-buttons{width:100%}.preset-action-buttons .btn{flex:1}.preset-pick{padding:9px 11px}}
+/* User-defined quick character buttons */
+.quick-char-buttons{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0}
+.quick-char-btn{max-width:165px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-color:#396a66;background:#193732;color:#beffec;font-weight:650}
+.quick-char-btn:hover{background:#26534c}
+.quick-char-empty{font-size:12px;color:#8195a8;margin:0 3px}
+.quick-manage{border-style:dashed;border-color:#457f73;color:#b5ecd9}
+.char-modal{width:min(660px,100%);max-height:calc(100dvh - 40px);overflow:hidden;display:flex;flex-direction:column}
+.char-modal h2{margin:0 0 6px}
+.char-modal .char-intro{margin-bottom:14px}
+.char-form{display:flex;flex-direction:column;gap:12px;padding:14px;background:#101923;border:1px solid var(--border);border-radius:11px;flex-shrink:0}
+.char-fields{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:10px}
+.char-field{min-width:0;display:flex;flex-direction:column;gap:6px}
+.char-field label{font-size:12px;color:#c5d6e1;font-weight:700}
+.char-field input,.char-field textarea{width:100%;background:#0c141d;border:1px solid #3a4e60;color:var(--white);padding:10px 11px;border-radius:8px;outline:none}
+.char-field textarea{min-height:73px;max-height:150px;resize:vertical;line-height:1.55}
+.char-field input:focus,.char-field textarea:focus{border-color:var(--accent)}
+.char-field .field-tip{color:var(--muted);font-size:11px;line-height:1.4}
+.char-form-actions{display:flex;gap:7px;justify-content:flex-end}
+.char-saved-head{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;font-weight:750;margin:16px 0 8px}
+.char-saved-head span{color:var(--muted);font-weight:400}
+.char-list{overflow:auto;min-height:80px;max-height:265px;display:flex;flex-direction:column;gap:7px;padding-right:3px}
+.char-row{display:flex;align-items:center;gap:10px;border:1px solid #344756;background:#101923;border-radius:9px;padding:9px 10px;min-width:0}
+.char-row-main{display:flex;align-items:center;gap:11px;flex:1;min-width:0}
+.char-row-sample{background:#21443e;border:1px solid #3d766c;color:#d5ffee;min-width:42px;max-width:95px;padding:7px 10px;border-radius:7px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700}
+.char-row-info{min-width:0;display:flex;flex-direction:column;gap:4px}
+.char-row-info strong{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.char-row-info small{color:#8b9ead;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.char-row-actions{display:flex;gap:5px;flex-shrink:0}
+.char-row-actions .btn{padding:5px 7px}
+.char-none{padding:23px 9px;text-align:center;color:var(--muted);font-size:12px;border:1px dashed #35495b;border-radius:8px}
+.char-modal-foot{font-size:11px;color:var(--muted);line-height:1.6;margin:11px 0 0}
+@media(max-width:570px){.char-modal{padding:15px}.char-fields{grid-template-columns:1fr}.char-form{padding:11px}.char-list{max-height:205px}.char-row{align-items:flex-start;flex-direction:column}.char-row-actions{align-self:flex-end}}
+/* Preview-to-editor navigation: a lightweight visual layer beneath the real textarea. */
+.editor-stack{position:relative;flex:1;min-height:0;min-width:0;overflow:hidden;background:#0e151e}
+.editor-stack #editor{position:relative;z-index:1;background:transparent;display:block}
+.editor-highlight-layer{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  padding:23px 25px;border:0;margin:0;box-sizing:border-box;
+  font:14px/1.85 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;
+  white-space:pre-wrap;overflow-wrap:break-word;word-break:normal;tab-size:2;color:transparent}
+.editor-highlight-layer mark{color:transparent;background:rgba(119,223,198,.21);border-radius:3px;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+#preview[data-linked="true"]{cursor:pointer}
+#preview[data-linked="true"] a{cursor:pointer}
+#preview[data-linked="true"] > :hover{outline:1px solid rgba(119,223,198,.18);outline-offset:4px;border-radius:3px}
 </style>
 </head>
 <body>
@@ -57,12 +101,12 @@
   <div class="header-right"><span class="save-state" id="save-status"><span class="dot"></span>자동 저장 준비</span><button class="btn ghost" id="guide-btn" aria-expanded="false">▤ 문법 예시</button></div>
 </header>
 <div class="toolbar">
-  <div class="tool-left"><span class="tool-label">빠른 서식</span><button class="btn small" data-insert="heading" title="제목 추가">H</button><button class="btn small" data-wrap="bold" title="굵게 (Ctrl+B)"><b>B</b></button><button class="btn small" data-wrap="italic" title="기울임"><i>I</i></button><button class="btn small" data-insert="list" title="목록">☷ 목록</button><button class="btn small" data-insert="quote" title="인용">❝ 인용</button><button class="btn small" data-insert="code" title="코드">{ } 코드</button><button class="btn small" data-insert="link" title="링크">↗ 링크</button><span class="divider"></span><button class="btn small" id="download-btn">↓ .md 저장</button><button class="btn small" id="import-btn">↑ .md 불러오기</button><input id="import-file" type="file" accept=".md,.markdown,.txt,text/plain,text/markdown" hidden></div>
+  <div class="tool-left"><span class="tool-label">빠른 문자</span><div class="quick-char-buttons" id="quick-char-buttons" aria-label="내 빠른 문자"></div><button class="btn small quick-manage" id="manage-chars" title="빠른 문자 등록, 수정, 삭제, 순서 변경">＋ 문자 관리</button><span class="divider"></span><button class="btn small" id="download-btn">↓ .md 저장</button><button class="btn small" id="import-btn">↑ .md 불러오기</button><input id="import-file" type="file" accept=".md,.markdown,.txt,text/plain,text/markdown" hidden></div>
   <div class="tool-right"><input id="preset-name" class="preset-name" type="text" maxlength="60" placeholder="프리셋 이름 입력" aria-label="프리셋 이름"><button class="btn accent" id="save-preset" title="현재 글 전체를 프리셋으로 저장">전체 저장</button><button class="btn" id="save-selection" title="편집기에서 선택한 부분만 프리셋으로 저장">선택 부분 저장</button><button class="btn" id="show-presets">내 프리셋 <span id="preset-total">0</span></button><button class="btn danger" id="clear-btn">초기화</button></div>
 </div>
 <main class="workspace">
   <div class="split">
-    <section class="pane" aria-label="마크다운 입력"><div class="pane-head"><div class="pane-title"><span class="tag">✎</span> EDITOR <span style="font-weight:400;color:#71899d">/ 마크다운 입력</span></div><span class="pane-meta">자동 임시저장</span></div><textarea id="editor" autocomplete="off" spellcheck="false" placeholder="# 제목을 입력하세요&#10;&#10;오른쪽에 **실시간 미리보기**가 표시됩니다.&#10;&#10;작성한 내용은 브라우저에 자동으로 임시저장됩니다."></textarea></section>
+    <section class="pane" aria-label="마크다운 입력"><div class="pane-head"><div class="pane-title"><span class="tag">✎</span> EDITOR <span style="font-weight:400;color:#71899d">/ 마크다운 입력</span></div><span class="pane-meta">자동 임시저장</span></div><div class="editor-stack"><div id="editor-highlight-layer" class="editor-highlight-layer" aria-hidden="true"></div><textarea id="editor" autocomplete="off" spellcheck="false" placeholder="# 제목을 입력하세요&#10;&#10;오른쪽에 **실시간 미리보기**가 표시됩니다.&#10;&#10;작성한 내용은 브라우저에 자동으로 임시저장됩니다."></textarea></div></section>
     <section class="pane" aria-label="마크다운 미리보기"><div class="pane-head"><div class="pane-title"><span class="tag">◈</span> PREVIEW <span style="font-weight:400;color:#71899d">/ 실시간 결과</span></div><span class="pane-meta">즉시 반영</span></div><div id="preview-wrap" class="preview-scroll"><div id="preview" class="md"></div><div id="empty-preview" class="empty"><div class="illustration">⌘</div><strong>여기에 문서가 나타납니다</strong><span>왼쪽에서 마크다운을 작성해 보세요.<br>오른쪽 상단의 '문법 예시'를 눌러 도움말을 열 수 있어요.</span></div></div></section>
   </div>
   <aside class="guide" id="guide" aria-label="마크다운 문법 예시"><div class="guide-head"><div class="guide-title">마크다운 문법 가이드</div><button id="close-guide" class="btn small ghost" aria-label="문법 예시 닫기">✕ 닫기</button></div><div class="guide-content"><p class="guide-note">항목을 눌러 펼치세요. 예시 코드를 클릭하면 편집기에 바로 넣을 수 있습니다.</p>
@@ -83,6 +127,21 @@
 <section class="preset-sidebar" aria-label="프리셋 목록"><div class="browser-section-head">저장된 프리셋 <span id="preset-list-total">0개</span></div><div class="list" id="preset-list"></div></section>
 <section class="preset-viewer" aria-label="선택한 프리셋 미리보기"><div class="browser-section-head">마크다운 미리보기 <span id="preset-preview-count"></span></div><div class="preset-view-content" id="preset-view-content"><div class="preset-placeholder">왼쪽에서 프리셋을 선택하세요.</div></div><div class="preset-view-actions"><div class="preset-action-note" id="preset-action-note">삽입하면 지금 작성 중인 글은 유지돼요.</div><div class="preset-action-buttons"><button class="btn small danger" id="delete-selected-preset" disabled>삭제</button><button class="btn small" id="replace-preset" disabled title="작성 중인 문서 전체를 선택한 프리셋으로 바꾸기">전체 대체</button><button class="btn accent" id="insert-preset" disabled>↳ 커서 위치에 삽입</button></div></div></section>
 </div><p class="preset-footnote">프리셋은 현재 브라우저에 저장됩니다. 다른 브라우저나 기기에는 자동으로 옮겨지지 않습니다.</p></div></div>
+<div id="char-modal-backdrop" class="modal-backdrop" role="presentation"><div class="modal char-modal" role="dialog" aria-modal="true" aria-labelledby="char-modal-title">
+  <h2 id="char-modal-title">내 빠른 문자 관리</h2>
+  <p class="char-intro">자주 쓰는 문자나 문구를 등록해 두면 상단 버튼을 누르는 즉시 커서 위치에 입력됩니다.</p>
+  <form id="char-form" class="char-form">
+    <div class="char-fields">
+      <div class="char-field"><label for="char-text">입력할 문자 / 문구</label><textarea id="char-text" name="char-text" rows="2" placeholder="예: ※ 또는 ─────" required></textarea><span class="field-tip">특수문자, 여러 글자, 줄바꿈도 그대로 저장됩니다.</span></div>
+      <div class="char-field"><label for="char-label">버튼에 표시할 이름 (선택)</label><input id="char-label" name="char-label" type="text" maxlength="40" placeholder="예: 구분선"><span class="field-tip">비워 두면 입력할 내용을 버튼에 표시합니다.</span></div>
+    </div>
+    <div class="char-form-actions"><button type="button" class="btn small" id="cancel-char-edit" hidden>수정 취소</button><button type="submit" class="btn accent" id="save-char">＋ 문자 등록</button></div>
+  </form>
+  <div class="char-saved-head">등록한 문자 <span id="char-count">0개</span></div>
+  <div id="char-list" class="char-list" aria-live="polite"></div>
+  <p class="char-modal-foot">↑ ↓ 버튼으로 표시 순서를 바꿀 수 있습니다. 등록 내용은 현재 브라우저에 저장됩니다.</p>
+  <div class="modal-foot"><button class="btn" id="close-char-modal">닫기</button></div>
+</div></div>
 <script>
 /* Local copy of marked.js bundled for offline rendering. License: MIT, Christopher Jeffrey et al. */
 /**
@@ -3154,7 +3213,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const editor=$('editor'),preview=$('preview'),empty=$('empty-preview'),status=$('save-status');
-const KEY_DRAFT='markdown-studio:draft:v1',KEY_PRESETS='markdown-studio:presets:v1';
+const KEY_DRAFT='markdown-studio:draft:v1',KEY_PRESETS='markdown-studio:presets:v1',KEY_QUICK_CHARS='markdown-studio:quick-chars:v1';
 let saveTimer=null,toastTimer=null,canStore=true;
 const fmt=n=>n.toLocaleString('ko-KR');
 function safeGet(key){try{return localStorage.getItem(key)}catch(e){canStore=false;return null}}
@@ -3182,18 +3241,234 @@ function cleanHTML(html){const tpl=document.createElement('template');tpl.innerH
 const escapeHTML=s=>s.replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const renderer=new marked.Renderer();renderer.html=function(html){return escapeHTML(html)};
 marked.setOptions({gfm:true,breaks:true,headerIds:false,mangle:false,renderer});
+// Navigate from rendered Markdown to its source block without changing the document.
+// Offsets are taken from Marked's lexer raw tokens, not a text search for repeated sentences.
+let previewHighlight=null;
+const editorHighlightLayer=$('editor-highlight-layer');
+function clearPreviewHighlight(){
+  if(previewHighlight===null)return;
+  previewHighlight=null;
+  editorHighlightLayer.replaceChildren();
+}
+function syncHighlightViewport(){
+  editorHighlightLayer.style.width=editor.clientWidth+'px';
+  editorHighlightLayer.style.height=editor.clientHeight+'px';
+  editorHighlightLayer.scrollTop=editor.scrollTop;
+  editorHighlightLayer.scrollLeft=editor.scrollLeft;
+}
+function locateRaw(raw,source,at){
+  if(!raw)return {start:at,end:at};
+  let found=source.indexOf(raw,at);
+  if(found<0){
+    // Marked can trim whitespace at block boundaries; align with the next source block.
+    const stripped=raw.trimEnd();
+    found=stripped?source.indexOf(stripped,at):-1;
+  }
+  if(found<0)found=at;
+  return {start:Math.min(found,source.length),end:Math.min(found+raw.length,source.length)};
+}
+function assignRange(node,start,end){
+  if(!node || start>=end)return;
+  node.dataset.sourceStart=String(start);
+  node.dataset.sourceEnd=String(end);
+}
+function linkPreviewToEditor(source){
+  preview.removeAttribute('data-linked');
+  const validTags={heading:null,paragraph:'P',text:'P',list:null,blockquote:'BLOCKQUOTE',code:'PRE',table:'TABLE',hr:'HR'};
+  const elements=Array.from(preview.children);
+  let blockIndex=0,position=0;
+  try{
+    const tokens=marked.lexer(source);
+    for(let i=0;i<tokens.length;i++){
+      const token=tokens[i],location=locateRaw(token.raw||'',source,position);
+      position=location.end;
+      if(!Object.prototype.hasOwnProperty.call(validTags,token.type))continue;
+      let end=location.end;
+      // Consecutive text tokens are rendered as one paragraph by Marked.
+      if(token.type==='text'){
+        while(i+1<tokens.length && tokens[i+1].type==='text'){
+          const next=locateRaw(tokens[++i].raw||'',source,position);
+          position=next.end;end=next.end;
+        }
+      }
+      const expected=token.type==='heading'?'H'+token.depth:token.type==='list'?(token.ordered?'OL':'UL'):validTags[token.type];
+      let node=elements[blockIndex];
+      if(!node || node.tagName!==expected){
+        // A raw HTML token may have produced plain text instead of a block.
+        const next=elements.findIndex((element,index)=>index>=blockIndex && index<blockIndex+3 && element.tagName===expected);
+        if(next<0)continue;
+        blockIndex=next;node=elements[blockIndex];
+      }
+      blockIndex++;
+      assignRange(node,location.start,end);
+      if(token.type==='list' && token.items){
+        let innerPosition=location.start;
+        const children=Array.from(node.children).filter(element=>element.tagName==='LI');
+        token.items.forEach((item,index)=>{
+          const itemLocation=locateRaw(item.raw||'',source,innerPosition);
+          innerPosition=itemLocation.end;
+          assignRange(children[index],itemLocation.start,Math.min(itemLocation.end,end));
+        });
+      }
+      if(token.type==='table'){
+        const rows=Array.from(node.querySelectorAll('tr'));
+        const lines=(token.raw||'').split('\n');
+        let lineStart=location.start,rowIndex=0;
+        lines.forEach((line,lineIndex)=>{
+          // The Markdown alignment row does not produce a visible table row.
+          if(line && lineIndex!==1 && rowIndex<rows.length){
+            assignRange(rows[rowIndex++],lineStart,Math.min(lineStart+line.length,end));
+          }
+          lineStart+=line.length+1;
+        });
+      }
+    }
+    if(preview.querySelector('[data-source-start]'))preview.dataset.linked='true';
+  }catch(err){console.warn('Preview source navigation unavailable:',err)}
+}
+function highlightEditorSource(start,end){
+  start=Math.max(0,Math.min(start,editor.value.length));
+  end=Math.max(start,Math.min(end,editor.value.length));
+  if(end===start)return;
+  previewHighlight={start,end};
+  const before=document.createTextNode(editor.value.slice(0,start));
+  const markedText=document.createElement('mark');
+  markedText.textContent=editor.value.slice(start,end);
+  const after=document.createTextNode(editor.value.slice(end));
+  editorHighlightLayer.replaceChildren(before,markedText,after,document.createTextNode('\u200b'));
+  syncHighlightViewport();
+  // Focus/caret at the beginning, but keep the visible mint highlight instead of native selection.
+  try{editor.focus({preventScroll:true})}catch{editor.focus()}
+  editor.setSelectionRange(start,start);
+  // Locate the mirrored source block, then scroll the actual textarea to it.
+  const top=markedText.offsetTop;
+  editor.scrollTop=Math.max(0,top-editor.clientHeight*0.28);
+  syncHighlightViewport();
+  // On stacked tablet/phone layouts the preview may be below the editor.
+  // Bring the editor back onscreen without shifting the whole page on desktop.
+  if(window.innerWidth<=850){
+    const rect=editor.getBoundingClientRect();
+    const sticky=$('save-status').closest('.topbar').getBoundingClientRect().height;
+    if(rect.bottom<sticky+55 || rect.top>window.innerHeight-100){
+      window.scrollBy({top:rect.top-sticky-55,behavior:'smooth'});
+    }
+  }
+}
+preview.addEventListener('click',event=>{
+  if((event.metaKey||event.ctrlKey||event.altKey)&&event.target.closest('a'))return;
+  const node=event.target.closest('[data-source-start]');
+  if(!node||!preview.contains(node))return;
+  event.preventDefault();
+  highlightEditorSource(Number(node.dataset.sourceStart),Number(node.dataset.sourceEnd));
+});
+editor.addEventListener('pointerdown',clearPreviewHighlight);
+editor.addEventListener('scroll',syncHighlightViewport,{passive:true});
+window.addEventListener('resize',syncHighlightViewport);
+if(typeof ResizeObserver!=='undefined')new ResizeObserver(syncHighlightViewport).observe(editor);
 function render(){const value=editor.value;
   $('chars').textContent=fmt(Array.from(value).length);
   $('chars-no-space').textContent=fmt(Array.from(value.replace(/\s/g,'')).length);
   $('words').textContent=fmt(value.trim()?value.trim().split(/\s+/u).length:0);
   $('lines').textContent=fmt(value?value.split(/\r\n|\r|\n/).length:0);
   empty.hidden=!!value.trim();preview.style.display=value.trim()?'block':'none';
-  if(value.trim()){try{const raw=marked.parse(value);preview.replaceChildren(cleanHTML(raw))}catch(e){preview.textContent='미리보기를 표시할 수 없습니다.';console.error(e)}}else preview.replaceChildren();
+  if(value.trim()){try{const raw=marked.parse(value);preview.replaceChildren(cleanHTML(raw));linkPreviewToEditor(value)}catch(e){preview.textContent='미리보기를 표시할 수 없습니다.';console.error(e)}}else preview.replaceChildren();
 }
 function saveDraft(){clearTimeout(saveTimer);if(safeSet(KEY_DRAFT,editor.value))setStatus('임시저장 완료')}
-function changed(){render();setStatus('저장 중...');clearTimeout(saveTimer);saveTimer=setTimeout(saveDraft,450)}
+function changed(){clearPreviewHighlight();render();setStatus('저장 중...');clearTimeout(saveTimer);saveTimer=setTimeout(saveDraft,450)}
 function insertText(text,selectFrom=0,selectLength=0){const start=editor.selectionStart,end=editor.selectionEnd;editor.setRangeText(text,start,end,'end');editor.focus();editor.setSelectionRange(start+selectFrom,start+selectFrom+selectLength);changed()}
 function wrapText(left,right=left,placeholder='텍스트'){const start=editor.selectionStart,end=editor.selectionEnd,selected=editor.value.slice(start,end)||placeholder;insertText(left+selected+right,left.length,selected.length)}
+// Quick characters: independent from the existing Markdown preset library.
+function getQuickChars(){
+  try{
+    const data=JSON.parse(safeGet(KEY_QUICK_CHARS)||'[]');
+    return Array.isArray(data)?data.filter(x=>x&&typeof x.id==='string'&&typeof x.text==='string'&&x.text.length>0).map(x=>({id:x.id,text:x.text,label:typeof x.label==='string'?x.label:''})):[];
+  }catch{return []}
+}
+function quickLabel(item){
+  const label=item.label.trim();
+  return label||Array.from(item.text.replace(/\r\n|\r|\n/g,' ↵ ').replace(/\t/g,' ⇥ ')).slice(0,18).join('');
+}
+let editingQuickCharId=null;
+function renderQuickChars(){
+  const host=$('quick-char-buttons');host.replaceChildren();
+  const items=getQuickChars();
+  if(!items.length){const hint=document.createElement('span');hint.className='quick-char-empty';hint.textContent='등록한 문자 없음';host.append(hint);return}
+  items.forEach(item=>{
+    const btn=document.createElement('button');btn.type='button';btn.className='btn small quick-char-btn';
+    btn.textContent=quickLabel(item);btn.title='입력: '+item.text;btn.setAttribute('aria-label',quickLabel(item)+' 입력');
+    btn.addEventListener('click',()=>insertText(item.text));
+    host.append(btn);
+  });
+}
+function saveQuickChars(items){
+  if(!safeSet(KEY_QUICK_CHARS,JSON.stringify(items))){showToast('문자 저장 실패 · 브라우저 저장 설정을 확인하세요');return false}
+  renderQuickChars();drawQuickCharList();return true;
+}
+function clearCharForm(){
+  editingQuickCharId=null;
+  $('char-form').reset();$('save-char').textContent='＋ 문자 등록';$('cancel-char-edit').hidden=true;
+}
+function drawQuickCharList(){
+  const list=$('char-list');list.replaceChildren();
+  const items=getQuickChars();$('char-count').textContent=fmt(items.length)+'개';
+  if(!items.length){
+    const emptyRow=document.createElement('div');emptyRow.className='char-none';emptyRow.textContent='아직 등록한 문자가 없어요. 위에서 첫 문자를 등록해 보세요.';list.append(emptyRow);return;
+  }
+  items.forEach((item,index)=>{
+    const row=document.createElement('div');row.className='char-row';
+    const main=document.createElement('div');main.className='char-row-main';
+    const sample=document.createElement('span');sample.className='char-row-sample';sample.textContent=quickLabel(item);sample.title=item.text;
+    const info=document.createElement('div');info.className='char-row-info';
+    const name=document.createElement('strong');name.textContent=item.label.trim()||'자동 이름';
+    const content=document.createElement('small');content.textContent='입력: '+item.text.replace(/\r\n|\r|\n/g,' ↵ ').replace(/\t/g,' ⇥ ');content.title=item.text;
+    info.append(name,content);main.append(sample,info);
+    const actions=document.createElement('div');actions.className='char-row-actions';
+    const action=(text,title,onClick,disabled=false)=>{
+      const btn=document.createElement('button');btn.className='btn small';btn.type='button';btn.textContent=text;btn.title=title;btn.setAttribute('aria-label',title);btn.disabled=disabled;btn.onclick=onClick;actions.append(btn);
+    };
+    action('↑','위로 이동',()=>moveQuickChar(index,-1),index===0);
+    action('↓','아래로 이동',()=>moveQuickChar(index,1),index===items.length-1);
+    action('수정','문자 수정',()=>{
+      editingQuickCharId=item.id;$('char-text').value=item.text;$('char-label').value=item.label;
+      $('save-char').textContent='수정 저장';$('cancel-char-edit').hidden=false;$('char-text').focus();
+    });
+    action('삭제','문자 삭제',()=>{
+      if(!confirm('이 빠른 문자를 삭제할까요?'))return;
+      const updated=getQuickChars().filter(x=>x.id!==item.id);
+      if(saveQuickChars(updated)){
+        if(editingQuickCharId===item.id)clearCharForm();
+        showToast('빠른 문자 삭제됨');
+      }
+    });
+    row.append(main,actions);list.append(row);
+  });
+}
+function moveQuickChar(index,offset){
+  const items=getQuickChars();const next=index+offset;if(next<0||next>=items.length)return;
+  [items[index],items[next]]=[items[next],items[index]];
+  saveQuickChars(items);
+}
+function openCharModal(){clearCharForm();drawQuickCharList();$('char-modal-backdrop').classList.add('show');$('char-text').focus()}
+function closeCharModal(){$('char-modal-backdrop').classList.remove('show');clearCharForm()}
+$('manage-chars').onclick=openCharModal;
+$('close-char-modal').onclick=closeCharModal;
+$('cancel-char-edit').onclick=()=>{$('char-text').focus();clearCharForm()};
+$('char-modal-backdrop').addEventListener('click',e=>{if(e.target===$('char-modal-backdrop'))closeCharModal()});
+$('char-form').addEventListener('submit',e=>{
+  e.preventDefault();const content=$('char-text').value,label=$('char-label').value.trim();
+  if(!content.length){$('char-text').focus();showToast('등록할 문자를 입력하세요');return}
+  const items=getQuickChars();
+  if(editingQuickCharId){
+    const found=items.find(x=>x.id===editingQuickCharId);
+    if(!found){clearCharForm();showToast('수정할 항목을 찾지 못했습니다');return}
+    found.text=content;found.label=label;
+  }else{
+    items.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2),text:content,label});
+  }
+  const isEdit=!!editingQuickCharId;
+  if(saveQuickChars(items)){clearCharForm();$('char-text').focus();showToast(isEdit?'빠른 문자 수정 완료':'빠른 문자 등록 완료')}
+});
+renderQuickChars();
 function getPresets(){try{const arr=JSON.parse(safeGet(KEY_PRESETS)||'[]');return Array.isArray(arr)?arr.filter(x=>x&&typeof x.id==='string'&&typeof x.name==='string'&&typeof x.text==='string'):[]}catch{return []}}
 function savePresets(arr){if(safeSet(KEY_PRESETS,JSON.stringify(arr))){$('preset-total').textContent=fmt(arr.length);return true}return false}
 let selectedPresetId=null;
@@ -3291,10 +3566,10 @@ $('import-btn').onclick=()=>$('import-file').click();
 $('import-file').onchange=async(e)=>{const file=e.target.files&&e.target.files[0];if(!file)return;if(editor.value&&!confirm('파일을 불러오면 현재 입력 내용을 대체합니다. 계속할까요?')){e.target.value='';return}try{editor.value=await file.text();changed();saveDraft();showToast(`'${file.name}' 불러옴`)}catch{showToast('파일을 읽지 못했습니다')}e.target.value=''};
 editor.addEventListener('input',changed);
 editor.addEventListener('keydown',e=>{if(e.key==='Tab'){e.preventDefault();insertText('  ')} });
-document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&!e.shiftKey){if(e.key.toLowerCase()==='s'){e.preventDefault();saveDraft();showToast('임시저장 완료')}else if(e.key.toLowerCase()==='b'&&document.activeElement===editor){e.preventDefault();wrapText('**')}}if(e.key==='Escape')closeModal()});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&!e.shiftKey){if(e.key.toLowerCase()==='s'){e.preventDefault();saveDraft();showToast('임시저장 완료')}else if(e.key.toLowerCase()==='b'&&document.activeElement===editor){e.preventDefault();wrapText('**')}}if(e.key==='Escape'){closeModal();if($('char-modal-backdrop').classList.contains('show'))closeCharModal()}});
 window.addEventListener('pagehide',()=>{if(saveTimer)saveDraft()});
 const prior=safeGet(KEY_DRAFT);if(prior!==null){editor.value=prior;setStatus('임시저장 복원됨')}else if(canStore){setStatus('자동 임시저장 켜짐')}else{setStatus('브라우저 저장이 차단됨',true)}
-$('preset-total').textContent=fmt(getPresets().length);render();
+$('preset-total').textContent=fmt(getPresets().length);render();syncHighlightViewport();
 })();
 </script>
 </body></html>
