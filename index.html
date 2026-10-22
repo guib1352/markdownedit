@@ -74,7 +74,11 @@
 .char-row-actions .btn{padding:5px 7px}
 .char-none{padding:23px 9px;text-align:center;color:var(--muted);font-size:12px;border:1px dashed #35495b;border-radius:8px}
 .char-modal-foot{font-size:11px;color:var(--muted);line-height:1.6;margin:11px 0 0}
-@media(max-width:570px){.char-modal{padding:15px}.char-fields{grid-template-columns:1fr}.char-form{padding:11px}.char-list{max-height:205px}.char-row{align-items:flex-start;flex-direction:column}.char-row-actions{align-self:flex-end}}
+.char-cloud-panel{border-top:1px solid var(--border);padding:12px 0 0;margin-top:12px;flex-shrink:0}
+.char-cloud-status{font-size:11px;line-height:1.55;color:#a5bac5;min-height:17px;margin-bottom:9px}
+.char-cloud-status.error{color:#ffb3b9}
+.char-cloud-buttons{display:flex;gap:7px;justify-content:flex-end;flex-wrap:wrap}
+@media(max-width:570px){.char-modal{padding:15px}.char-fields{grid-template-columns:1fr}.char-form{padding:11px}.char-list{max-height:205px}.char-row{align-items:flex-start;flex-direction:column}.char-row-actions{align-self:flex-end}.char-cloud-buttons .btn{flex:1}}
 /* Preview-to-editor navigation: a lightweight visual layer beneath the real textarea. */
 .editor-stack{position:relative;flex:1;min-height:0;min-width:0;overflow:hidden;background:#0e151e}
 .editor-stack #editor{position:relative;z-index:1;background:transparent;display:block}
@@ -87,6 +91,105 @@
 #preview[data-linked="true"]{cursor:pointer}
 #preview[data-linked="true"] a{cursor:pointer}
 #preview[data-linked="true"] > :hover{outline:1px solid rgba(119,223,198,.18);outline-offset:4px;border-radius:3px}
+
+/* False-positive word spotting. Rendered PREVIEW only; no source replacement. */
+.term-hit{background:rgba(243,94,106,.24);color:inherit;border-radius:3px;box-shadow:inset 0 -1px 0 rgba(248,135,140,.57);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.term-counter{color:#ee9ca7!important;font-variant-numeric:tabular-nums}
+.term-counter.is-clear{color:var(--muted)!important}
+.term-manage-btn{border-color:#87505a;color:#f2b4bb;background:#34212a}
+.term-manage-btn:hover{background:#452b34}
+.term-modal{width:min(690px,calc(100vw - 24px));max-height:calc(100dvh - 28px);padding:0;display:flex;flex-direction:column;overflow:hidden}
+.term-modal-head{padding:19px 20px 12px;border-bottom:1px solid var(--border);flex-shrink:0}
+.term-modal-head h2{margin:0 0 5px;font-size:18px}
+.term-modal-head p{margin:0 0 4px;line-height:1.6}
+.term-modal-content{padding:14px 20px;overflow-y:auto;min-height:0;flex:1}
+.term-add-form{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 14px}
+.term-add-form input{min-width:140px;flex:1;height:39px}
+.term-list-head{display:flex;justify-content:space-between;gap:9px;font-size:12px;color:#cbdbe7;font-weight:700;margin-bottom:8px}
+.term-list{display:flex;flex-direction:column;gap:7px;max-height:min(320px,42dvh);overflow-y:auto}
+.term-list-item{background:#111b26;border:1px solid #344453;border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:10px;justify-content:space-between}
+.term-word{min-width:0;overflow-wrap:anywhere;white-space:pre-wrap;color:#f5c2c7;font-size:13px}
+.term-row-actions{display:flex;gap:5px;flex-shrink:0}
+.term-empty{border:1px dashed #3f4d60;color:#90a0b1;text-align:center;padding:29px 12px;border-radius:8px;font-size:12px}
+.term-modal-foot{padding:12px 20px 15px;border-top:1px solid var(--border);background:#14202c;flex-shrink:0}
+.term-sync-message{min-height:17px;color:#a5bac5;font-size:11px;line-height:1.5;margin-bottom:10px}
+.term-sync-message.error{color:#ffb3b9}
+.term-foot-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+@media(max-width:570px){.term-modal-head{padding:13px 14px}.term-modal-content{padding:12px 14px}.term-modal-foot{padding:10px 14px}.term-foot-actions .btn{flex:1}.term-add-form button{flex-shrink:0}}
+/* Notion manual save/load - keep the original editor and preview unchanged. */
+.notion-tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.notion-tools .notion-name{max-width:190px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px;color:#9bb8b1}
+.notion-tools .notion-btn{border-color:#497c74}
+.notion-modal{width:min(740px,calc(100vw - 24px));max-height:calc(100dvh - 28px);overflow:auto}
+.notion-modal-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}
+.notion-modal-head h2{margin:0}
+.notion-field{display:flex;flex-direction:column;gap:5px;margin:12px 0;min-width:0}
+.notion-field label{font-size:12px;color:#c9dce5;font-weight:700}
+.notion-input{width:100%;min-width:0;height:39px;padding:9px 11px;background:#0e1722;border:1px solid #3a5060;border-radius:8px;color:#e8f4f7}
+.notion-input:focus{outline:2px solid #398675;outline-offset:1px}
+.notion-help{font-size:11px;line-height:1.65;color:#91a5b6;margin:4px 0 10px}
+.notion-feedback{font-size:12px;min-height:20px;color:#a2d8ca;white-space:pre-wrap;line-height:1.55}
+.notion-feedback.error{color:#ffacac}
+.notion-buttons{display:flex;flex-wrap:wrap;gap:7px;justify-content:flex-end;align-items:center}
+.notion-browser-modal{width:min(1160px,calc(100vw - 18px));height:min(780px,calc(100dvh - 20px));padding:0;display:flex;flex-direction:column;overflow:hidden}
+.notion-browser-top{padding:17px 20px 13px;border-bottom:1px solid var(--border);flex-shrink:0}
+.notion-browser-top h2{margin:0 0 5px;font-size:18px}
+.notion-browser-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px}
+.notion-browser-controls .notion-input{flex:1;min-width:180px}
+.notion-sort{height:38px;background:#15222e;border:1px solid #35495a;color:#e5f1f5;border-radius:8px;padding:0 10px;max-width:205px}
+.notion-grid-scroll{overflow:auto;overscroll-behavior:contain;flex:1;min-height:180px;min-width:0;background:#131d29}
+.notion-grid{border-collapse:separate;border-spacing:0;min-width:max-content;width:max-content;font-size:12px}
+.notion-grid th,.notion-grid td{border-bottom:1px solid #2b3c4b;border-right:1px solid #22313f;padding:11px 14px;text-align:left;white-space:nowrap;vertical-align:middle;max-width:360px;overflow:hidden;text-overflow:ellipsis;height:44px}
+.notion-grid thead th{position:sticky;top:0;z-index:3;background:#192736;color:#cadbe6;font-weight:750;min-width:145px;box-shadow:0 1px 0 #344455}
+.notion-grid .notion-first{position:sticky;left:0;z-index:2;background:#172330;min-width:225px;max-width:290px;box-shadow:1px 0 0 #344455}
+.notion-grid thead .notion-first{z-index:5;background:#203143}
+.notion-grid tbody tr:hover td{background:#1c3140}
+.notion-grid tbody tr:hover .notion-first{background:#244054}
+.notion-grid tbody tr.selected td{background:#1a3a37}
+.notion-grid tbody tr.selected .notion-first{background:#1e4841}
+.notion-row-btn{background:transparent;color:#bff9e6;border:0;padding:3px 0;text-align:left;font-weight:650;max-width:250px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.notion-row-btn:hover{text-decoration:underline}
+.notion-pill{display:inline-flex;padding:3px 8px;margin-right:5px;background:#29434a;color:#c9f3e6;border:1px solid #3d665f;border-radius:5px;max-width:145px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis}
+.notion-pill.status{background:#304153;border-color:#445b72;color:#d0e3f6}
+.notion-grid-loading{padding:24px;color:#9bb0bf}
+.notion-browser-foot{border-top:1px solid #314253;padding:12px 16px;background:#172431;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.notion-browser-foot .notion-feedback{min-height:0;flex:1}
+.notion-linked-caption{font-size:11px;color:#91bcb1}
+@media(max-width:650px){.notion-modal{padding:16px}.notion-browser-top{padding:12px}.notion-browser-foot{padding:10px}.notion-grid th,.notion-grid td{padding:10px 12px}.notion-grid .notion-first{min-width:165px;max-width:205px}.notion-browser-controls .notion-sort{width:100%;max-width:unset}.notion-browser-controls .notion-input{width:100%;flex:auto}.notion-tools .notion-name{max-width:120px}}
+
+/* Compact toolbar: quick characters + Notion documents; global settings in a top-right popover. */
+.topbar{gap:12px}
+.header-right{gap:7px;min-width:0}
+.header-tool-btn{flex-shrink:0}
+.tools-settings-shell{position:relative;flex-shrink:0}
+.tools-settings-trigger{min-width:37px;height:37px;padding:0!important;font-size:21px;line-height:1;display:grid;place-items:center;border-color:#4a6e70;color:#d5f5eb;background:#19312f}
+.tools-settings-trigger:hover,.tools-settings-trigger.active{background:#255046;border-color:#66a897}
+.tools-settings-menu{position:absolute;z-index:35;right:0;top:calc(100% + 10px);width:min(350px,calc(100vw - 18px));max-height:min(74dvh,690px);overflow-y:auto;overscroll-behavior:contain;padding:0;background:#182431;border:1px solid #465869;border-radius:13px;box-shadow:0 22px 65px rgba(0,0,0,.7)}
+.tools-settings-heading{position:sticky;top:0;background:#1b2938;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:11px 13px;border-bottom:1px solid #354756}
+.tools-settings-heading strong{font-size:13px}
+.tools-settings-heading .btn{padding:3px 7px}
+.tools-settings-section{padding:12px 13px 13px;border-bottom:1px solid #324151}
+.tools-settings-section:last-child{border-bottom:0}
+.tools-settings-section h3{font-size:12px;color:#b6cbc9;margin:0 0 10px;font-weight:750}
+.tools-settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.tools-settings-grid .btn{min-width:0;width:100%;padding:9px 6px;text-align:center}
+.tools-settings-section .preset-name{display:block;width:100%;min-width:0;max-width:none;margin:0 0 9px}
+.tools-notion-connect{width:100%;padding:9px 10px}
+.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:nowrap;min-height:57px;padding:8px 16px}
+.quick-strip{display:flex;align-items:center;gap:10px;flex:1 1 auto;min-width:0}
+.quick-strip-label{flex-shrink:0;white-space:nowrap;color:var(--muted);font-size:11px}
+.quick-strip-scroller{flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#385466 transparent;padding:3px 0;overscroll-behavior-x:contain}
+.quick-strip-scroller:focus-visible{outline:2px solid var(--accent);outline-offset:0;border-radius:6px}
+.quick-strip .quick-char-buttons{min-width:max-content;width:max-content;flex-wrap:nowrap;min-height:29px}
+.quick-strip .quick-char-btn{flex-shrink:0}
+.notion-tools{flex:0 0 auto;flex-wrap:nowrap;min-width:0;gap:6px}
+.notion-tools .notion-name{max-width:110px}
+@media(min-width:851px){body{height:100dvh;min-height:100dvh;display:flex;flex-direction:column}.topbar,.toolbar{flex-shrink:0}.workspace{min-height:0;height:auto;flex:1}}
+@media(max-width:1330px){.topbar{height:auto;min-height:69px;padding:9px 15px;flex-wrap:wrap}.stats{order:3;width:100%;justify-content:center}.stats .stat{flex:1;justify-content:center}.header-right{margin-left:auto}}
+@media(max-width:1100px){.toolbar{flex-wrap:wrap;gap:5px;padding:7px 12px}.quick-strip{flex:1 1 100%;width:100%}.notion-tools{width:100%;justify-content:flex-end}}
+@media(max-width:850px){.toolbar{gap:6px}.quick-strip-label{display:none}.notion-tools .notion-name{display:none}.stats{order:3;width:100%;justify-content:space-around}}
+@media(max-width:650px){.header-tool-suffix{display:none}.brand .logo{width:31px;height:31px}.brand strong{font-size:13px}.brand small{display:none}.topbar{padding:8px 10px;min-height:53px;column-gap:5px;row-gap:7px}.header-right{gap:5px}.save-state{display:none}.header-guide-text{display:none}.header-guide-btn{width:32px;height:32px;padding:0!important;font-size:17px}.header-tool-btn{padding:7px 8px!important;font-size:11px!important}.tools-settings-trigger{min-width:33px;height:33px;font-size:19px}.stats .stat{padding:5px 3px!important}.stat span{font-size:10px}.stat b{font-size:14px}.toolbar .btn{padding:6px 8px;font-size:11px}.quick-strip .quick-char-btn{max-width:220px}.notion-tools{justify-content:flex-start}.notion-tools .btn{flex:1 1 0}}
+@media(max-width:400px){.header-tool-btn{height:32px;padding:0 5px!important;font-size:10px!important}.brand{gap:6px}.brand strong{font-size:12px}.topbar{column-gap:4px}.header-right{gap:4px}}
 </style>
 </head>
 <body>
@@ -98,16 +201,59 @@
     <div class="stat"><span>단어</span><b id="words">0</b></div>
     <div class="stat"><span>줄</span><b id="lines">0</b></div>
   </div>
-  <div class="header-right"><span class="save-state" id="save-status"><span class="dot"></span>자동 저장 준비</span><button class="btn ghost" id="guide-btn" aria-expanded="false">▤ 문법 예시</button></div>
+  <div class="header-right">
+    <span class="save-state" id="save-status"><span class="dot"></span>자동 저장 준비</span>
+    <button class="btn ghost header-guide-btn" id="guide-btn" aria-expanded="false" title="마크다운 문법 예시">▤ <span class="header-guide-text">문법 예시</span></button>
+    <button class="btn small term-manage-btn header-tool-btn" id="manage-terms" title="오탐 감지 금지어 목록 관리">◌ <span class="header-tool-label">금지어<span class="header-tool-suffix"> 관리</span></span></button>
+    <button class="btn small quick-manage header-tool-btn" id="manage-chars" title="빠른 문자 등록, 수정, 삭제, 순서 변경">＋ <span class="header-tool-label">문자<span class="header-tool-suffix"> 관리</span></span></button>
+    <div class="tools-settings-shell" id="tools-settings-shell">
+      <button type="button" class="btn tools-settings-trigger" id="tools-settings-btn" aria-label="도구 설정" aria-expanded="false" aria-controls="tools-settings-menu" aria-haspopup="true" title="MD · 프리셋 · 노션 연결 설정">⚙</button>
+      <div class="tools-settings-menu" id="tools-settings-menu" role="group" aria-label="도구 설정 메뉴" hidden>
+        <div class="tools-settings-heading"><strong>도구 설정</strong><button class="btn small ghost" id="tools-settings-close" type="button" aria-label="설정 메뉴 닫기">✕</button></div>
+        <section class="tools-settings-section" aria-label="MD 파일">
+          <h3>MD 파일</h3>
+          <div class="tools-settings-grid">
+            <button class="btn small" id="download-btn" type="button">↓ .md 저장</button>
+            <button class="btn small" id="import-btn" type="button">↑ .md 불러오기</button>
+            <input id="import-file" type="file" accept=".md,.markdown,.txt,text/plain,text/markdown" hidden>
+          </div>
+        </section>
+        <section class="tools-settings-section" aria-label="프리셋">
+          <h3>프리셋</h3>
+          <input id="preset-name" class="preset-name" type="text" maxlength="60" placeholder="프리셋 이름 입력" aria-label="프리셋 이름">
+          <div class="tools-settings-grid preset-settings-grid">
+            <button class="btn small accent" id="save-preset" title="현재 글 전체를 프리셋으로 저장">전체 저장</button>
+            <button class="btn small" id="save-selection" title="편집기에서 선택한 부분만 프리셋으로 저장">선택 부분 저장</button>
+            <button class="btn small" id="show-presets">내 프리셋 <span id="preset-total">0</span></button>
+            <button class="btn small danger" id="clear-btn">초기화</button>
+          </div>
+        </section>
+        <section class="tools-settings-section" aria-label="노션 설정">
+          <h3>노션 연결</h3>
+          <button class="btn small notion-btn tools-notion-connect" id="notion-connect-btn" title="노션 API 토큰과 데이터베이스 연결">⚙ 노션 연결 설정</button>
+        </section>
+      </div>
+    </div>
+  </div>
 </header>
-<div class="toolbar">
-  <div class="tool-left"><span class="tool-label">빠른 문자</span><div class="quick-char-buttons" id="quick-char-buttons" aria-label="내 빠른 문자"></div><button class="btn small quick-manage" id="manage-chars" title="빠른 문자 등록, 수정, 삭제, 순서 변경">＋ 문자 관리</button><span class="divider"></span><button class="btn small" id="download-btn">↓ .md 저장</button><button class="btn small" id="import-btn">↑ .md 불러오기</button><input id="import-file" type="file" accept=".md,.markdown,.txt,text/plain,text/markdown" hidden></div>
-  <div class="tool-right"><input id="preset-name" class="preset-name" type="text" maxlength="60" placeholder="프리셋 이름 입력" aria-label="프리셋 이름"><button class="btn accent" id="save-preset" title="현재 글 전체를 프리셋으로 저장">전체 저장</button><button class="btn" id="save-selection" title="편집기에서 선택한 부분만 프리셋으로 저장">선택 부분 저장</button><button class="btn" id="show-presets">내 프리셋 <span id="preset-total">0</span></button><button class="btn danger" id="clear-btn">초기화</button></div>
+<div class="toolbar" aria-label="빠른 문자와 노션 문서 작업">
+  <div class="quick-strip">
+    <span class="quick-strip-label">빠른 문자</span>
+    <div class="quick-strip-scroller" role="region" aria-label="등록된 빠른 문자, 좌우로 스크롤 가능" tabindex="0">
+      <div class="quick-char-buttons" id="quick-char-buttons" aria-label="내 빠른 문자"></div>
+    </div>
+  </div>
+  <div class="notion-tools" aria-label="노션 문서 동기화">
+    <button class="btn small notion-btn" id="notion-open-btn" title="노션의 프롬프트 표 불러오기">노션에서 불러오기</button>
+    <button class="btn small accent" id="notion-save-btn" title="현재 원문을 노션에 수동 저장">노션에 저장</button>
+    <button class="btn small" id="notion-new-btn" title="현재 원문을 노션에 새 문서로 저장">＋ 새 문서</button>
+    <span class="notion-name" id="notion-current-name" title="연결된 노션 문서">노션 문서 미선택</span>
+  </div>
 </div>
 <main class="workspace">
   <div class="split">
     <section class="pane" aria-label="마크다운 입력"><div class="pane-head"><div class="pane-title"><span class="tag">✎</span> EDITOR <span style="font-weight:400;color:#71899d">/ 마크다운 입력</span></div><span class="pane-meta">자동 임시저장</span></div><div class="editor-stack"><div id="editor-highlight-layer" class="editor-highlight-layer" aria-hidden="true"></div><textarea id="editor" autocomplete="off" spellcheck="false" placeholder="# 제목을 입력하세요&#10;&#10;오른쪽에 **실시간 미리보기**가 표시됩니다.&#10;&#10;작성한 내용은 브라우저에 자동으로 임시저장됩니다."></textarea></div></section>
-    <section class="pane" aria-label="마크다운 미리보기"><div class="pane-head"><div class="pane-title"><span class="tag">◈</span> PREVIEW <span style="font-weight:400;color:#71899d">/ 실시간 결과</span></div><span class="pane-meta">즉시 반영</span></div><div id="preview-wrap" class="preview-scroll"><div id="preview" class="md"></div><div id="empty-preview" class="empty"><div class="illustration">⌘</div><strong>여기에 문서가 나타납니다</strong><span>왼쪽에서 마크다운을 작성해 보세요.<br>오른쪽 상단의 '문법 예시'를 눌러 도움말을 열 수 있어요.</span></div></div></section>
+    <section class="pane" aria-label="마크다운 미리보기"><div class="pane-head"><div class="pane-title"><span class="tag">◈</span> PREVIEW <span style="font-weight:400;color:#71899d">/ 실시간 결과</span></div><span class="pane-meta term-counter is-clear" id="term-preview-counter">금지어 0건</span></div><div id="preview-wrap" class="preview-scroll"><div id="preview" class="md"></div><div id="empty-preview" class="empty"><div class="illustration">⌘</div><strong>여기에 문서가 나타납니다</strong><span>왼쪽에서 마크다운을 작성해 보세요.<br>오른쪽 상단의 '문법 예시'를 눌러 도움말을 열 수 있어요.</span></div></div></section>
   </div>
   <aside class="guide" id="guide" aria-label="마크다운 문법 예시"><div class="guide-head"><div class="guide-title">마크다운 문법 가이드</div><button id="close-guide" class="btn small ghost" aria-label="문법 예시 닫기">✕ 닫기</button></div><div class="guide-content"><p class="guide-note">항목을 눌러 펼치세요. 예시 코드를 클릭하면 편집기에 바로 넣을 수 있습니다.</p>
     <details open><summary>제목과 문단</summary><div class="examples"><div class="ex" data-snippet="# 큰 제목"><span class="what">제목 1</span><code># 큰 제목</code></div><div class="ex" data-snippet="## 중간 제목"><span class="what">제목 2</span><code>## 중간 제목</code></div><div class="ex" data-snippet="### 작은 제목"><span class="what">제목 3</span><code>### 작은 제목</code></div><div class="ex" data-snippet="문단 하나입니다.\n\n다른 문단입니다."><span class="what">문단 나누기 (빈 줄)</span><code>문단 하나입니다.\n\n다른 문단입니다.</code></div></div></details>
@@ -139,9 +285,49 @@
   </form>
   <div class="char-saved-head">등록한 문자 <span id="char-count">0개</span></div>
   <div id="char-list" class="char-list" aria-live="polite"></div>
-  <p class="char-modal-foot">↑ ↓ 버튼으로 표시 순서를 바꿀 수 있습니다. 등록 내용은 현재 브라우저에 저장됩니다.</p>
+  <p class="char-modal-foot">↑ ↓ 버튼으로 표시 순서를 바꿀 수 있습니다. 문자·버튼 이름·순서가 현재 브라우저에 즉시 저장됩니다.</p>
+  <div class="char-cloud-panel"><div class="char-cloud-status" id="char-cloud-status" role="status" aria-live="polite">노션에 저장하면 다른 기기에서도 같은 빠른 문자 목록을 쓸 수 있어요.</div>
+    <div class="char-cloud-buttons"><button type="button" class="btn small" id="char-notion-load">↻ 노션에서 불러오기</button><button type="button" class="btn small accent" id="char-notion-save">노션에 목록 저장</button></div></div>
   <div class="modal-foot"><button class="btn" id="close-char-modal">닫기</button></div>
 </div></div>
+
+<!-- Detection list settings. Separate from saved prompt documents. -->
+<div id="term-modal-backdrop" class="modal-backdrop"><div class="modal term-modal" role="dialog" aria-modal="true" aria-labelledby="term-modal-title">
+ <div class="term-modal-head"><div class="notion-modal-head"><h2 id="term-modal-title">금지어 감지 관리</h2><button class="btn small ghost" id="term-modal-close" type="button">✕ 닫기</button></div>
+ <p>크랙에서 오탐할 수 있는 문자열을 등록하세요. 예를 들어 <b>보지</b>를 등록하면 <b>보지않음</b>의 해당 글자만 PREVIEW에 붉게 표시합니다.</p>
+ <p>입력 방해·자동 치환 없이 확인만 합니다. 투명문자 입력은 기존 빠른 문자를 이용하세요.</p></div>
+ <div class="term-modal-content"><form id="term-add-form" class="term-add-form"><input class="notion-input" id="term-input" type="text" maxlength="120" autocomplete="off" spellcheck="false" placeholder="금지어 또는 오탐 문자열 입력" aria-label="감지 문자열"><button class="btn accent" type="submit" id="term-add-btn">＋ 등록</button><button class="btn small ghost" type="button" id="term-edit-cancel" hidden>수정 취소</button></form>
+ <div class="term-list-head"><span>등록된 문자열</span><span id="term-list-count">0개</span></div><div id="term-list" class="term-list" aria-live="polite"></div>
+ <p class="notion-help" style="margin-top:13px">부분 문자열 포함 검사, 대소문자 구분 없음. 등록·삭제 후 이 브라우저에는 즉시 저장되고 하이라이트가 반영됩니다.</p></div>
+ <div class="term-modal-foot"><div class="term-sync-message" id="term-sync-message" role="status" aria-live="polite">노션과 연결하면 모든 기기에서 같은 목록을 쓸 수 있어요.</div>
+ <div class="term-foot-actions"><button type="button" class="btn small" id="term-notion-load">↻ 노션에서 불러오기</button><button type="button" class="btn small accent" id="term-notion-save">노션에 목록 저장</button></div></div>
+</div></div>
+
+<!-- Notion connection settings; the API token is entered at runtime, never bundled in this file. -->
+<div class="modal-backdrop" id="notion-settings-backdrop"><div class="modal notion-modal" role="dialog" aria-modal="true" aria-labelledby="notion-settings-title">
+ <div class="notion-modal-head"><h2 id="notion-settings-title">노션 연결 설정</h2><button class="btn small ghost" type="button" id="notion-settings-close">✕ 닫기</button></div>
+ <p>내 노션 데이터베이스 하나를 프롬프트 보관함으로 사용합니다. API 토큰과 데이터베이스 주소는 이 브라우저에만 저장돼요.</p>
+ <div class="notion-field"><label for="notion-token">Notion 내부 연동 토큰</label><input class="notion-input" id="notion-token" type="password" autocomplete="off" spellcheck="false" placeholder="ntn_..."/><div class="notion-help">Notion 통합(연동)을 만든 뒤, 대상 데이터베이스에 연결 권한을 부여하세요. GitHub 파일에는 토큰을 직접 적지 않습니다.</div></div>
+ <div class="notion-field"><label for="notion-db">데이터베이스 링크 또는 ID</label><input class="notion-input" id="notion-db" type="text" autocomplete="off" spellcheck="false" placeholder="https://www.notion.so/... 또는 32자리 ID"/><div class="notion-help">노션의 일반 표가 아닌 <b>데이터베이스 표 보기</b>를 연결해야 합니다. 데이터베이스 링크나 '데이터 소스 ID 복사'로 얻은 ID도 사용할 수 있어요.</div></div>
+ <div class="notion-field" id="notion-source-row" hidden><label for="notion-source-select">연결할 데이터 소스</label><select class="notion-input" id="notion-source-select"></select></div>
+ <div class="notion-feedback" id="notion-settings-feedback" aria-live="polite"></div>
+ <div class="notion-buttons"><button class="btn small danger" id="notion-disconnect-btn" type="button">연결 해제</button><button class="btn small" id="notion-show-token-btn" type="button">토큰 보기</button><button class="btn accent" id="notion-connect-confirm" type="button">연결 테스트 및 저장</button></div>
+</div></div>
+<div class="modal-backdrop" id="notion-browser-backdrop"><div class="modal notion-browser-modal" role="dialog" aria-modal="true" aria-labelledby="notion-browser-title">
+ <div class="notion-browser-top"><div class="notion-modal-head"><div><h2 id="notion-browser-title">노션에서 불러오기</h2><div class="notion-help" id="notion-db-label">데이터베이스의 속성을 그대로 표시합니다.</div></div><button class="btn small ghost" id="notion-browser-close" type="button">✕ 닫기</button></div>
+ <div class="notion-browser-controls"><input class="notion-input" id="notion-search" type="search" placeholder="문서 이름 · 태그 · 상태 등 검색" aria-label="노션 문서 검색"/><select class="notion-sort" id="notion-sort"><option value="edited">최근 수정순</option><option value="created">최근 등록순</option><option value="title">제목순</option></select><button type="button" class="btn small" id="notion-refresh">↻ 새로고침</button></div>
+ </div>
+ <div class="notion-grid-scroll" id="notion-table-scroll"><table class="notion-grid" id="notion-table"><thead id="notion-table-head"></thead><tbody id="notion-table-body"><tr><td class="notion-grid-loading">불러오기 버튼을 누르면 목록이 표시됩니다.</td></tr></tbody></table></div>
+ <div class="notion-browser-foot"><span class="notion-feedback" id="notion-browser-feedback" aria-live="polite"></span><div class="notion-buttons"><button type="button" class="btn small" id="notion-more" hidden>더 불러오기</button><button type="button" class="btn accent" id="notion-load-selected" disabled>선택한 문서 불러오기</button></div></div>
+</div></div>
+<div class="modal-backdrop" id="notion-new-backdrop"><div class="modal notion-modal" role="dialog" aria-modal="true" aria-labelledby="notion-new-title">
+ <div class="notion-modal-head"><h2 id="notion-new-title">노션에 새 문서 저장</h2><button type="button" class="btn small ghost" id="notion-new-close">✕ 닫기</button></div>
+ <div class="notion-field"><label for="notion-new-name">노션 데이터베이스에 표시할 이름</label><input type="text" class="notion-input" id="notion-new-name" maxlength="150" placeholder="예: 캐릭터 기본 프롬프트"/></div>
+ <div class="notion-help">원문은 노션 페이지 내부의 코드 블록에 그대로 저장합니다. 기존 문서와 프리셋은 건드리지 않아요.</div>
+ <div class="notion-feedback" id="notion-new-feedback" aria-live="polite"></div>
+ <div class="notion-buttons"><button type="button" class="btn" id="notion-new-cancel">취소</button><button type="button" class="btn accent" id="notion-new-confirm">새 문서 저장</button></div>
+</div></div>
+
 <script>
 /* Local copy of marked.js bundled for offline rendering. License: MIT, Christopher Jeffrey et al. */
 /**
@@ -3213,7 +3399,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const editor=$('editor'),preview=$('preview'),empty=$('empty-preview'),status=$('save-status');
-const KEY_DRAFT='markdown-studio:draft:v1',KEY_PRESETS='markdown-studio:presets:v1',KEY_QUICK_CHARS='markdown-studio:quick-chars:v1';
+const KEY_DRAFT='markdown-studio:draft:v1',KEY_PRESETS='markdown-studio:presets:v1',KEY_QUICK_CHARS='markdown-studio:quick-chars:v1',KEY_QUICK_CLOUD='markdown-studio:quick-chars-cloud:v1';
 let saveTimer=null,toastTimer=null,canStore=true;
 const fmt=n=>n.toLocaleString('ko-KR');
 function safeGet(key){try{return localStorage.getItem(key)}catch(e){canStore=false;return null}}
@@ -3365,13 +3551,52 @@ editor.addEventListener('pointerdown',clearPreviewHighlight);
 editor.addEventListener('scroll',syncHighlightViewport,{passive:true});
 window.addEventListener('resize',syncHighlightViewport);
 if(typeof ResizeObserver!=='undefined')new ResizeObserver(syncHighlightViewport).observe(editor);
+/* Highlight only contiguous text-node substrings. Do not bridge spaces, zero-width separators,
+   or inline Markdown/HTML boundaries: intentional splitting must remain undetected. */
+const FILTER_TERMS_KEY='markdown-studio:filter-terms:v1';
+function activeFilterTerms(){try{const s=JSON.parse(localStorage.getItem(FILTER_TERMS_KEY)||'null');return Array.isArray(s?.terms)?s.terms.filter(x=>typeof x==='string'&&x.length):[]}catch{return []}}
+function highlightPreviewTerms(){
+ // Refresh without modifying the Markdown source or the existing preview-to-editor mapping.
+ for(const mark of preview.querySelectorAll('mark.term-hit'))mark.replaceWith(document.createTextNode(mark.textContent));
+ preview.normalize();
+ const terms=activeFilterTerms().slice().sort((a,b)=>b.length-a.length);
+ const counter=$('term-preview-counter');
+ if(!terms.length){counter.textContent='금지어 0건';counter.classList.add('is-clear');return}
+ const escaped=terms.map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+ let regexp;try{regexp=new RegExp(escaped.join('|'),'giu')}catch(err){console.warn('감지식 오류',err);return}
+ const groups=preview.querySelectorAll('p,h1,h2,h3,h4,h5,h6,li,th,td,pre');
+ let total=0;
+ for(const root of groups){
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];let node;
+  while((node=walker.nextNode())){
+   // Nested lists / paragraphs are handled by their own group, exactly once.
+   if(node.parentElement.closest('p,h1,h2,h3,h4,h5,h6,li,th,td,pre')!==root)continue;
+   if(node.textContent)nodes.push(node);
+  }
+  // Match EACH text node separately. Never concatenate across an inline element boundary.
+  for(const target of nodes){
+   const value=target.textContent,fragment=document.createDocumentFragment();let position=0,found=false;
+   regexp.lastIndex=0;
+   for(const match of value.matchAll(regexp)){
+    const begin=match.index,end=begin+match[0].length;
+    if(!match[0]||begin<position)continue;
+    if(begin>position)fragment.append(document.createTextNode(value.slice(position,begin)));
+    const mark=document.createElement('mark');mark.className='term-hit';mark.textContent=value.slice(begin,end);
+    fragment.append(mark);position=end;total++;found=true;
+   }
+   if(found){if(position<value.length)fragment.append(document.createTextNode(value.slice(position)));target.replaceWith(fragment)}
+  }
+ }
+ counter.textContent='금지어 '+total+'건';counter.classList.toggle('is-clear',!total);
+}
+window.addEventListener('markdown-studio:terms-updated',highlightPreviewTerms);
 function render(){const value=editor.value;
   $('chars').textContent=fmt(Array.from(value).length);
   $('chars-no-space').textContent=fmt(Array.from(value.replace(/\s/g,'')).length);
   $('words').textContent=fmt(value.trim()?value.trim().split(/\s+/u).length:0);
   $('lines').textContent=fmt(value?value.split(/\r\n|\r|\n/).length:0);
   empty.hidden=!!value.trim();preview.style.display=value.trim()?'block':'none';
-  if(value.trim()){try{const raw=marked.parse(value);preview.replaceChildren(cleanHTML(raw));linkPreviewToEditor(value)}catch(e){preview.textContent='미리보기를 표시할 수 없습니다.';console.error(e)}}else preview.replaceChildren();
+  if(value.trim()){try{const raw=marked.parse(value);preview.replaceChildren(cleanHTML(raw));linkPreviewToEditor(value);highlightPreviewTerms()}catch(e){preview.textContent='미리보기를 표시할 수 없습니다.';console.error(e)}}else{preview.replaceChildren();highlightPreviewTerms()}
 }
 function saveDraft(){clearTimeout(saveTimer);if(safeSet(KEY_DRAFT,editor.value))setStatus('임시저장 완료')}
 function changed(){clearPreviewHighlight();render();setStatus('저장 중...');clearTimeout(saveTimer);saveTimer=setTimeout(saveDraft,450)}
@@ -3388,7 +3613,23 @@ function quickLabel(item){
   const label=item.label.trim();
   return label||Array.from(item.text.replace(/\r\n|\r|\n/g,' ↵ ').replace(/\t/g,' ⇥ ')).slice(0,18).join('');
 }
-let editingQuickCharId=null;
+let editingQuickCharId=null,quickCloudNotice='';
+function readQuickCloud(){
+ try{
+  const meta=JSON.parse(safeGet(KEY_QUICK_CLOUD)||'null');
+  if(meta&&typeof meta==='object')return {dirty:!!meta.dirty,sourceId:meta.sourceId||'',remoteEditedAt:meta.remoteEditedAt||''};
+ }catch{}
+ // Protect quick characters created before the Notion-sync feature was installed.
+ return {dirty:getQuickChars().length>0,sourceId:'',remoteEditedAt:''};
+}
+function writeQuickCloud(meta){try{localStorage.setItem(KEY_QUICK_CLOUD,JSON.stringify(meta));return true}catch{return false}}
+function showQuickCloudStatus(){
+ const el=$('char-cloud-status');if(!el)return;
+ if(quickCloudNotice){el.textContent=quickCloudNotice;return}
+ const meta=readQuickCloud();el.textContent=meta.dirty
+  ?'이 기기의 빠른 문자 변경사항이 아직 노션에 저장되지 않았어요. [노션에 목록 저장]을 눌러 주세요.'
+  :getQuickChars().length+'개 등록됨 · 로컬 저장됨'+(meta.sourceId?' · 노션 동기화 완료':' · 노션 저장 전');
+}
 function renderQuickChars(){
   const host=$('quick-char-buttons');host.replaceChildren();
   const items=getQuickChars();
@@ -3400,9 +3641,10 @@ function renderQuickChars(){
     host.append(btn);
   });
 }
-function saveQuickChars(items){
+function saveQuickChars(items,{cloud=false}={}){
   if(!safeSet(KEY_QUICK_CHARS,JSON.stringify(items))){showToast('문자 저장 실패 · 브라우저 저장 설정을 확인하세요');return false}
-  renderQuickChars();drawQuickCharList();return true;
+  if(!cloud){const meta=readQuickCloud();writeQuickCloud({...meta,dirty:true});quickCloudNotice='';$('char-cloud-status').classList.remove('error')}
+  renderQuickChars();drawQuickCharList();showQuickCloudStatus();return true;
 }
 function clearCharForm(){
   editingQuickCharId=null;
@@ -3448,7 +3690,7 @@ function moveQuickChar(index,offset){
   [items[index],items[next]]=[items[next],items[index]];
   saveQuickChars(items);
 }
-function openCharModal(){clearCharForm();drawQuickCharList();$('char-modal-backdrop').classList.add('show');$('char-text').focus()}
+function openCharModal(){clearCharForm();drawQuickCharList();showQuickCloudStatus();$('char-modal-backdrop').classList.add('show');$('char-text').focus()}
 function closeCharModal(){$('char-modal-backdrop').classList.remove('show');clearCharForm()}
 $('manage-chars').onclick=openCharModal;
 $('close-char-modal').onclick=closeCharModal;
@@ -3468,7 +3710,29 @@ $('char-form').addEventListener('submit',e=>{
   const isEdit=!!editingQuickCharId;
   if(saveQuickChars(items)){clearCharForm();$('char-text').focus();showToast(isEdit?'빠른 문자 수정 완료':'빠른 문자 등록 완료')}
 });
-renderQuickChars();
+$('char-notion-load').onclick=()=>window.dispatchEvent(new Event('markdown-studio:quick-request-load'));
+$('char-notion-save').onclick=()=>window.dispatchEvent(new Event('markdown-studio:quick-request-save'));
+window.addEventListener('markdown-studio:quick-cloud-received',e=>{
+ const data=e.detail||{},items=data.items||[];
+ quickCloudNotice='노션에서 빠른 문자 '+items.length+'개 불러왔어요. 버튼과 표시 순서에 바로 반영됩니다.';$('char-cloud-status').classList.remove('error');
+ clearCharForm();
+ if(saveQuickChars(items,{cloud:true}))writeQuickCloud({dirty:false,sourceId:data.sourceId||'',remoteEditedAt:data.remoteEditedAt||''});
+ showQuickCloudStatus();
+});
+window.addEventListener('markdown-studio:quick-cloud-saved',e=>{
+ const data=e.detail||{},same=JSON.stringify(data.items)===JSON.stringify(getQuickChars());
+ const meta=readQuickCloud();
+ writeQuickCloud({dirty:!same,sourceId:data.sourceId||meta.sourceId,remoteEditedAt:data.remoteEditedAt||''});
+ quickCloudNotice=same?'노션에 빠른 문자 '+getQuickChars().length+'개 저장 완료!':'저장 중 빠른 문자가 바뀌었어요. 최신 변경사항은 아직 노션에 저장되지 않았습니다.';$('char-cloud-status').classList.remove('error');
+ showQuickCloudStatus();
+});
+window.addEventListener('markdown-studio:quick-sync-status',e=>{
+ quickCloudNotice=String(e.detail?.message||'');$('char-cloud-status').classList.toggle('error',!!e.detail?.error);showQuickCloudStatus();
+});
+window.addEventListener('storage',e=>{
+ if(e.key===KEY_QUICK_CHARS||e.key===KEY_QUICK_CLOUD){renderQuickChars();drawQuickCharList();quickCloudNotice='';showQuickCloudStatus()}
+});
+renderQuickChars();showQuickCloudStatus();
 function getPresets(){try{const arr=JSON.parse(safeGet(KEY_PRESETS)||'[]');return Array.isArray(arr)?arr.filter(x=>x&&typeof x.id==='string'&&typeof x.name==='string'&&typeof x.text==='string'):[]}catch{return []}}
 function savePresets(arr){if(safeSet(KEY_PRESETS,JSON.stringify(arr))){$('preset-total').textContent=fmt(arr.length);return true}return false}
 let selectedPresetId=null;
@@ -3570,6 +3834,506 @@ document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&!e.shiftKey){
 window.addEventListener('pagehide',()=>{if(saveTimer)saveDraft()});
 const prior=safeGet(KEY_DRAFT);if(prior!==null){editor.value=prior;setStatus('임시저장 복원됨')}else if(canStore){setStatus('자동 임시저장 켜짐')}else{setStatus('브라우저 저장이 차단됨',true)}
 $('preset-total').textContent=fmt(getPresets().length);render();syncHighlightViewport();
+})();
+</script>
+
+<script>
+/* Local term editor. A separate Notion module handles remote synchronization. */
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id),KEY='markdown-studio:filter-terms:v1';
+const normalize=list=>{const seen=new Set(),result=[];for(const x of Array.isArray(list)?list:[]){if(typeof x!=='string')continue;const value=x.trim();const key=value.toLocaleLowerCase('ko-KR');if(!value||seen.has(key))continue;seen.add(key);result.push(value)}return result};
+function read(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');return {terms:normalize(s?.terms),dirty:!!s?.dirty,sourceId:typeof s?.sourceId==='string'?s.sourceId:'',remoteEditedAt:s?.remoteEditedAt||''}}catch{return {terms:[],dirty:false,sourceId:'',remoteEditedAt:''}}}
+let state=read(),editing=null,notice='';
+function syncLabel(){const hint=$('term-sync-message');if(notice){hint.textContent=notice;return}hint.textContent=state.dirty?'로컬 변경사항이 있어요. 다른 기기에도 적용하려면 아래 [노션에 목록 저장]을 누르세요.':state.terms.length+'개 등록됨 · 로컬 저장됨'+(state.sourceId?' · 노션 동기화 완료':' · 노션 저장 전')}
+function commit(next,{notify=true}={}){state={...state,...next,terms:normalize(next.terms??state.terms)};try{localStorage.setItem(KEY,JSON.stringify(state))}catch{notice='브라우저에 저장하지 못했어요. 저장소 설정을 확인하세요.'}draw();if(notify)window.dispatchEvent(new Event('markdown-studio:terms-updated'))}
+function resetForm(){editing=null;$('term-input').value='';$('term-add-btn').textContent='＋ 등록';$('term-edit-cancel').hidden=true}
+function draw(){const host=$('term-list');host.replaceChildren();$('term-list-count').textContent=state.terms.length+'개';
+ if(!state.terms.length){const empty=document.createElement('div');empty.className='term-empty';empty.textContent='등록한 문자열이 없습니다. 위에서 추가해 주세요.';host.append(empty)}
+ for(const word of state.terms){const row=document.createElement('div');row.className='term-list-item';const title=document.createElement('span');title.className='term-word';title.textContent=word;
+  const actions=document.createElement('div');actions.className='term-row-actions';
+  const edit=document.createElement('button');edit.type='button';edit.className='btn small';edit.textContent='수정';edit.onclick=()=>{editing=word;$('term-input').value=word;$('term-add-btn').textContent='수정 저장';$('term-edit-cancel').hidden=false;$('term-input').focus()};
+  const del=document.createElement('button');del.type='button';del.className='btn small danger';del.textContent='삭제';del.onclick=()=>{if(editing===word)resetForm();notice='';commit({terms:state.terms.filter(x=>x!==word),dirty:true})};actions.append(edit,del);row.append(title,actions);host.append(row)}
+ syncLabel();
+}
+$('manage-terms').onclick=()=>{$('term-modal-backdrop').classList.add('show');draw()};
+function close(){$('term-modal-backdrop').classList.remove('show');resetForm()}
+$('term-modal-close').onclick=close;
+$('term-modal-backdrop').addEventListener('click',e=>{if(e.target===$('term-modal-backdrop'))close()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('term-modal-backdrop').classList.contains('show'))close()});
+$('term-edit-cancel').onclick=resetForm;
+$('term-add-form').onsubmit=e=>{e.preventDefault();const value=$('term-input').value.trim();if(!value){$('term-input').focus();return}const key=value.toLocaleLowerCase('ko-KR');
+ if(state.terms.some(x=>x.toLocaleLowerCase('ko-KR')===key&&x!==editing)){notice='이미 등록된 문자열이에요.';syncLabel();return}
+ const terms=editing?state.terms.map(x=>x===editing?value:x):[...state.terms,value];notice='';resetForm();commit({terms,dirty:true})};
+$('term-notion-load').onclick=()=>window.dispatchEvent(new Event('markdown-studio:filter-request-load'));
+$('term-notion-save').onclick=()=>window.dispatchEvent(new Event('markdown-studio:filter-request-save'));
+window.addEventListener('markdown-studio:filter-cloud-received',e=>{const data=e.detail||{};notice='노션에서 '+normalize(data.terms).length+'개 불러왔어요. PREVIEW에 바로 적용됩니다.';resetForm();commit({terms:data.terms,dirty:false,sourceId:data.sourceId||'',remoteEditedAt:data.remoteEditedAt||''})});
+window.addEventListener('markdown-studio:filter-cloud-saved',e=>{const data=e.detail||{};const same=JSON.stringify(normalize(data.terms))===JSON.stringify(state.terms);notice=same?'노션에 '+state.terms.length+'개 저장 완료!':'저장하는 동안 목록이 수정되었어요. 새 변경사항은 아직 노션에 저장되지 않았습니다.';commit({dirty:!same,sourceId:data.sourceId||state.sourceId,remoteEditedAt:data.remoteEditedAt||''}, {notify:false})});
+window.addEventListener('markdown-studio:filter-sync-status',e=>{notice=String(e.detail?.message||'');$('term-sync-message').classList.toggle('error',!!e.detail?.error);syncLabel()});
+window.addEventListener('storage',e=>{if(e.key===KEY){state=read();notice='';draw();window.dispatchEvent(new Event('markdown-studio:terms-updated'))}});
+draw();
+})();
+</script>
+
+<script>
+/* Direct Notion API integration for a personal Markdown Studio. No external dependencies. */
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const editor=$('editor');
+const NOTION_VERSION='2025-09-03';
+const SETTINGS_KEY='markdown-studio:notion-settings:v1';
+const LINK_KEY='markdown-studio:notion-linked:v1';
+const RAW_CAPTION='Markdown Studio RAW v1';
+const FILTER_DOC_TITLE='⚙ Markdown Studio · 금지어 목록';
+const FILTER_CAPTION='Markdown Studio FILTER TERMS v1';
+const FILTER_STORE_KEY='markdown-studio:filter-terms:v1';
+const QUICK_DOC_TITLE='⚙ Markdown Studio · 빠른 문자 목록';
+const QUICK_CAPTION='Markdown Studio QUICK CHARS v1';
+const QUICK_STORE_KEY='markdown-studio:quick-chars:v1';
+const QUICK_META_KEY='markdown-studio:quick-chars-cloud:v1';
+const CHUNK_SIZE=1600,MAX_CHUNKS=95;
+let config={token:'',databaseId:'',sourceId:'',sourceName:''},current=null,sourceSchema=null;
+let sourceChoices=[],rows=[],cursor=null,selectedPageId=null,busy=false,tableColumns=[];
+const textNode=(name,cls)=>{const el=document.createElement(name);if(cls)el.className=cls;return el};
+const stored=key=>{try{return JSON.parse(localStorage.getItem(key)||'null')}catch{return null}};
+const store=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));return true}catch{return false}};
+const forget=key=>{try{localStorage.removeItem(key)}catch{}};
+const say=(id,message,error=false)=>{const el=$(id);el.textContent=message;el.classList.toggle('error',!!error)};
+function modal(id,on){$(id).classList.toggle('show',!!on)}
+function updateCurrent(){ $('notion-current-name').textContent=current?.name?'노션: '+current.name:'노션 문서 미선택';$('notion-current-name').title=current?.name||'노션 문서 미선택' }
+function saveLink(link){current=link; if(link)store(LINK_KEY,link);else forget(LINK_KEY);updateCurrent()}
+function normalizeId(input){
+ const raw=(input||'').trim();const plain=raw.match(/^[0-9a-f-]{32,36}$/i);
+ if(plain&&plain[0].replace(/-/g,'').length===32)return plain[0].replace(/-/g,'');
+ try{const u=new URL(raw);if(!/(^|\.)notion\.so$|(^|\.)notion\.site$/.test(u.hostname))return null;
+  const final=u.pathname.match(/([0-9a-f]{32})(?:\/)?$/i);return final?final[1]:null
+ }catch{return null}
+}
+const uuid=id=>id.replace(/-/g,'').toLowerCase();
+const loaded=stored(SETTINGS_KEY);
+if(loaded&&typeof loaded==='object'){
+ config={token:typeof loaded.token==='string'?loaded.token:'',databaseId:loaded.databaseId||'',sourceId:loaded.sourceId||'',sourceName:loaded.sourceName||''};
+}
+const remembered=stored(LINK_KEY);
+if(remembered&&remembered.pageId&&uuid(remembered.sourceId||'')===uuid(config.sourceId||''))current=remembered;
+updateCurrent();
+const fmtDate=value=>{if(!value)return '—';if(/^\d{4}-\d{2}-\d{2}$/.test(value))return value;try{return new Date(value).toLocaleString('ko-KR',{year:'2-digit',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})}catch{return String(value)}};
+async function request(path,{method='GET',body,token=config.token}={}){
+ if(!token)throw Error('노션 토큰을 먼저 연결하세요.');
+ const url='https://api.notion.com/v1'+path;
+ for(let n=0;n<3;n++){
+  let response;
+  try{response=await fetch(url,{method,headers:{'Authorization':'Bearer '+token,'Notion-Version':NOTION_VERSION,'Content-Type':'application/json'},...(body===undefined?{}:{body:JSON.stringify(body)})})}
+  catch(err){throw Error('노션 API에 접속하지 못했어요. 네트워크 또는 브라우저 설정을 확인하세요. ('+err.message+')')}
+  if(response.status===429&&n<2){const wait=Number(response.headers.get('Retry-After'));await new Promise(r=>setTimeout(r,Number.isFinite(wait)&&wait>0?Math.min(wait*1000,6000):1000*(n+1)));continue}
+  let data=null;try{data=await response.json()}catch{}
+  if(!response.ok){let why=data?.message||response.statusText||'알 수 없는 오류';if(response.status===401)why='토큰이 올바르지 않거나 만료되었어요.';if(response.status===403)why='연동에 읽기/쓰기 권한이 없어요.';if(response.status===404)why='대상을 찾지 못했어요. 노션에서 해당 데이터베이스에 연동을 연결했는지 확인하세요.';throw Error(why+' (HTTP '+response.status+')')}
+  return data;
+ }
+ throw Error('노션 요청이 제한되어 실패했어요. 잠시 후 다시 시도해 주세요.');
+}
+function showSettings(){
+ $('notion-token').value=config.token;$('notion-db').value=config.databaseId||config.sourceId;
+ $('notion-source-row').hidden=true;sourceChoices=[];
+ say('notion-settings-feedback',config.sourceId?'현재 연결: '+(config.sourceName||config.sourceId):'토큰과 노션 데이터베이스 주소를 입력하세요.');modal('notion-settings-backdrop',true);
+}
+$('notion-connect-btn').onclick=showSettings;
+$('notion-settings-close').onclick=()=>modal('notion-settings-backdrop',false);
+$('notion-show-token-btn').onclick=()=>{const el=$('notion-token');el.type=el.type==='password'?'text':'password';$('notion-show-token-btn').textContent=el.type==='password'?'토큰 보기':'토큰 숨기기'};
+$('notion-disconnect-btn').onclick=()=>{
+ if(!confirm('이 기기에 저장된 노션 토큰과 연결 정보를 지울까요? 노션에 저장한 문서 자체는 삭제되지 않습니다.'))return;
+ config={token:'',databaseId:'',sourceId:'',sourceName:''};sourceSchema=null;rows=[];forget(SETTINGS_KEY);saveLink(null);
+ $('notion-token').value='';$('notion-db').value='';$('notion-source-row').hidden=true;sourceChoices=[];
+ say('notion-settings-feedback','이 기기의 노션 연결을 해제했어요.');
+};
+$('notion-connect-confirm').onclick=async()=>{
+ if(busy)return;
+ const token=$('notion-token').value.trim(),id=normalizeId($('notion-db').value);
+ if(!token||!id){say('notion-settings-feedback','토큰과 올바른 노션 데이터베이스 URL 또는 ID를 입력하세요.',true);return}
+ busy=true;$('notion-connect-confirm').disabled=true;say('notion-settings-feedback','노션 데이터베이스를 확인 중...');
+ try{
+  let candidates=[];let databaseId='';
+  // A database URL resolves to its container; a copied data-source ID works too.
+  try{const db=await request('/databases/'+id,{token});databaseId=db.id;
+   candidates=(db.data_sources||[]).map(x=>({id:x.id,name:x.name||'데이터 소스'}));
+   if(!candidates.length)throw Error('이 데이터베이스에서 데이터 소스를 찾지 못했어요.');
+  }catch(err){
+   if(err.message.startsWith('이 데이터베이스에서'))throw err;
+   const src=await request('/data_sources/'+id,{token});databaseId=src.parent?.database_id||'';candidates=[{id:src.id,name:src.title?.map(x=>x.plain_text).join('')||'데이터 소스'}];
+  }
+  // If the database has multiple sources, let the user choose explicitly.
+  const chosen=$('notion-source-select').value;
+  if(candidates.length>1&&(!sourceChoices.length||!candidates.some(x=>x.id===chosen))){
+   sourceChoices=candidates;const select=$('notion-source-select');select.replaceChildren();
+   candidates.forEach(c=>{const option=new Option(c.name,c.id);select.append(option)});
+   $('notion-source-row').hidden=false;
+   say('notion-settings-feedback','이 데이터베이스에 여러 데이터 소스가 있어요. 하나를 선택하고 다시 연결 버튼을 눌러 주세요.');return;
+  }
+  const source=candidates.find(c=>c.id===chosen)||candidates[0];
+  const schema=await request('/data_sources/'+source.id,{token});
+  if(!Object.values(schema.properties||{}).some(p=>p.type==='title'))throw Error('제목 속성이 있는 노션 데이터베이스가 필요해요.');
+  const next={token,databaseId,sourceId:source.id,sourceName:source.name};
+  if(!store(SETTINGS_KEY,next))throw Error('브라우저에 연결 정보를 저장할 수 없어요. 저장 허용 설정을 확인하세요.');
+  if(uuid(next.sourceId)!==uuid(config.sourceId))saveLink(null);
+  config=next;sourceSchema=schema;
+  setTimeout(()=>{loadTermsFromNotion({automatic:true});loadQuickFromNotion({automatic:true})},0);
+  say('notion-settings-feedback','연결 성공! '+source.name+' · 속성 '+Object.keys(schema.properties).length+'개 확인됨');
+  setTimeout(()=>modal('notion-settings-backdrop',false),650);
+ }catch(err){say('notion-settings-feedback',err.message,true)}finally{busy=false;$('notion-connect-confirm').disabled=false}
+};
+async function ensureSchema(){
+ if(!config.sourceId||!config.token){showSettings();throw Error('먼저 노션 연동을 연결하세요.')} 
+ sourceSchema=await request('/data_sources/'+config.sourceId);return sourceSchema;
+}
+function plain(rich){return (rich||[]).map(x=>x.plain_text??x.text?.content??'').join('')}
+function propText(prop){if(!prop)return '—';const t=prop.type;switch(t){
+ case 'title':return plain(prop.title)||'—';case 'rich_text':return plain(prop.rich_text)||'—';
+ case 'select':case 'status':return prop[t]?.name||'—';
+ case 'multi_select':return (prop.multi_select||[]).map(x=>x.name).join(', ')||'—';
+ case 'created_time':case 'last_edited_time':return fmtDate(prop[t]);
+ case 'date':return prop.date?(fmtDate(prop.date.start)+(prop.date.end?' ~ '+fmtDate(prop.date.end):'')):'—';
+ case 'number':return prop.number===null?'—':String(prop.number);
+ case 'checkbox':return prop.checkbox?'✓':'—';
+ case 'url':case 'email':case 'phone_number':return prop[t]||'—';
+ case 'people':return (prop.people||[]).map(x=>x.name||x.id).join(', ')||'—';
+ case 'relation':return (prop.relation||[]).map(x=>x.id.slice(0,8)).join(', ')||'—';
+ case 'files':return (prop.files||[]).map(x=>x.name||'파일').join(', ')||'—';
+ case 'formula':return prop.formula?propText({type:prop.formula.type,[prop.formula.type]:prop.formula[prop.formula.type]}):'—';
+ case 'rollup':return prop.rollup?.type==='number'?String(prop.rollup.number??'—'):prop.rollup?.type==='date'?fmtDate(prop.rollup.date?.start):prop.rollup?.type==='array'?prop.rollup.array.length+'개':'—';
+ case 'string':return prop.string||'—';case 'boolean':return prop.boolean?'✓':'—';
+ case 'unique_id':return (prop.unique_id?.prefix||'')+(prop.unique_id?.number??'');
+ case 'created_by':case 'last_edited_by':return prop[t]?.name||prop[t]?.id?.slice(0,8)||'—';
+ default:return '—';
+}}
+function getTitle(row){const prop=Object.values(row.properties||{}).find(p=>p.type==='title');return propText(prop)||'제목 없음'}
+function cells(){
+ const props=sourceSchema?.properties||{};
+ const entries=Object.entries(props);const title=entries.find(([,p])=>p.type==='title');
+ return [...(title?[title]:[]),...entries.filter(([,p])=>p.type!=='title')].map(([name,p])=>({name,id:p.id,type:p.type}));
+}
+function fieldFor(row,col){const props=row.properties||{};return props[col.name]||Object.values(props).find(p=>p.id===col.id)||null}
+function displayList(){
+ const search=$('notion-search').value.trim().toLocaleLowerCase('ko-KR');const sort=$('notion-sort').value;
+ let subset=rows.filter(r=>!search||[getTitle(r),...tableColumns.map(c=>propText(fieldFor(r,c)))].join(' ').toLocaleLowerCase('ko-KR').includes(search));
+ subset=subset.slice().sort((a,b)=>sort==='created'?new Date(b.created_time)-new Date(a.created_time):sort==='title'?getTitle(a).localeCompare(getTitle(b),'ko'):new Date(b.last_edited_time)-new Date(a.last_edited_time));
+ const scrollBox=$('notion-table-scroll'),oldLeft=scrollBox.scrollLeft,oldTop=scrollBox.scrollTop;
+ const head=$('notion-table-head'),body=$('notion-table-body');head.replaceChildren();body.replaceChildren();
+ const hr=textNode('tr');tableColumns.forEach((c,i)=>{const th=textNode('th',i===0?'notion-first':'');th.textContent=c.name;hr.append(th)});head.append(hr);
+ if(!subset.length){const tr=textNode('tr'),td=textNode('td','notion-grid-loading');td.colSpan=Math.max(1,tableColumns.length);td.textContent=rows.length?'검색 결과가 없습니다.':'이 데이터베이스에 문서가 없습니다.';tr.append(td);body.append(tr)}
+ for(const r of subset){const tr=textNode('tr');if(r.id===selectedPageId)tr.classList.add('selected');
+  tableColumns.forEach((c,i)=>{const td=textNode('td',i===0?'notion-first':'');const p=fieldFor(r,c),val=propText(p);
+   if(i===0){const btn=textNode('button','notion-row-btn');btn.type='button';btn.textContent=val==='—'?getTitle(r):val;btn.title=btn.textContent;btn.onclick=()=>{selectedPageId=r.id;displayList()};td.append(btn)}
+   else if((p?.type==='multi_select')&&p.multi_select?.length){p.multi_select.forEach(x=>{const pill=textNode('span','notion-pill');pill.textContent=x.name;td.append(pill)})}
+   else if((p?.type==='status'||p?.type==='select')&&val!=='—'){const pill=textNode('span','notion-pill status');pill.textContent=val;td.append(pill)}
+   else{td.textContent=val;td.title=val}
+   tr.append(td)});tr.onclick=()=>{if(selectedPageId===r.id)return;selectedPageId=r.id;displayList()};body.append(tr)
+ }
+ $('notion-load-selected').disabled=!selectedPageId||!rows.some(x=>x.id===selectedPageId);
+ say('notion-browser-feedback',`${subset.length}개 표시 / ${rows.length}개 조회${cursor?' · 더 불러올 문서 있음':''}`);
+ $('notion-more').hidden=!cursor;scrollBox.scrollLeft=oldLeft;scrollBox.scrollTop=oldTop;
+}
+async function fetchRows(append=false){
+ if(busy)return;busy=true;$('notion-refresh').disabled=true;$('notion-more').disabled=true;
+ say('notion-browser-feedback','노션에서 목록을 읽는 중...');
+ try{await ensureSchema();tableColumns=cells();
+  const data=await request('/data_sources/'+config.sourceId+'/query',{method:'POST',body:{page_size:100,...(append&&cursor?{start_cursor:cursor}:{})}});
+  const onlyDocs=data.results.filter(x=>x.object==='page'&&!new Set([FILTER_DOC_TITLE,QUICK_DOC_TITLE]).has(getTitle(x)));
+  rows=append?[...rows,...onlyDocs]:onlyDocs;
+  cursor=data.has_more?data.next_cursor:null;
+  if(!rows.some(r=>r.id===selectedPageId))selectedPageId=null;
+  displayList();
+ }catch(err){say('notion-browser-feedback',err.message,true);if(!append){rows=[];tableColumns=[];$('notion-table-head').replaceChildren();$('notion-table-body').textContent='불러오지 못했어요.'}}
+ finally{busy=false;$('notion-refresh').disabled=false;$('notion-more').disabled=false}
+}
+$('notion-open-btn').onclick=()=>{if(!config.token||!config.sourceId){showSettings();return}selectedPageId=null;rows=[];cursor=null;$('notion-search').value='';modal('notion-browser-backdrop',true);fetchRows(false)};
+$('notion-browser-close').onclick=()=>modal('notion-browser-backdrop',false);
+$('notion-refresh').onclick=()=>fetchRows(false);
+$('notion-more').onclick=()=>fetchRows(true);
+$('notion-search').addEventListener('input',()=>{if(tableColumns.length)displayList()});
+$('notion-sort').addEventListener('change',()=>{if(tableColumns.length)displayList()});
+function chunkText(text){const points=Array.from(text),parts=[];for(let i=0;i<points.length;i+=CHUNK_SIZE)parts.push(points.slice(i,i+CHUNK_SIZE).join(''));if(!parts.length)parts.push('');if(parts.length>MAX_CHUNKS)throw Error('한 문서의 원문이 너무 길어요. 약 15만 자 이하로 나눠 저장해 주세요.');return parts}
+function makeCode(text){return {object:'block',type:'code',code:{language:'plain text',rich_text:chunkText(text).map(content=>({type:'text',text:{content}})),caption:[{type:'text',text:{content:RAW_CAPTION}}]}}}
+function managed(b){return b?.type==='code'&&plain(b.code?.caption)===RAW_CAPTION}
+async function findRawBlock(pageId){
+ let pos=null,loops=0;
+ do{const url='/blocks/'+pageId+'/children?page_size=100'+(pos?'&start_cursor='+encodeURIComponent(pos):'');const result=await request(url);
+  const found=(result.results||[]).find(managed);if(found)return found;
+  pos=result.has_more?result.next_cursor:null;if(++loops>30)throw Error('페이지 블록이 너무 많아 원문 위치를 찾지 못했어요.');
+ }while(pos);
+ return null;
+}
+async function loadSelected(){
+ if(busy||!selectedPageId)return;
+ const row=rows.find(x=>x.id===selectedPageId);if(!row)return;
+ if(editor.value.trim()&&!confirm('노션 문서를 불러오면 현재 EDITOR 내용이 대체됩니다. 브라우저 임시저장본도 바뀝니다. 계속할까요?'))return;
+ busy=true;$('notion-load-selected').disabled=true;say('notion-browser-feedback','원문을 불러오는 중...');
+ try{
+  const block=await findRawBlock(row.id);if(!block)throw Error('이 페이지에는 Markdown Studio로 저장한 원문 블록이 없어요. 노션에서 직접 작성한 일반 페이지는 이 방식으로 열 수 없습니다.');
+  const text=plain(block.code.rich_text);
+  editor.value=text;editor.dispatchEvent(new Event('input',{bubbles:true}));
+  // Existing local draft saving is debounced; trigger an input before closing.
+  editor.scrollTop=0;
+  saveLink({pageId:row.id,sourceId:config.sourceId,name:getTitle(row),lastEditedTime:row.last_edited_time,blockId:block.id});
+  modal('notion-browser-backdrop',false);editor.focus();
+  say('notion-browser-feedback',`${getTitle(row)} 문서를 불러왔어요.`);
+ }catch(err){say('notion-browser-feedback',err.message,true)}
+ finally{busy=false;$('notion-load-selected').disabled=false}
+}
+$('notion-load-selected').onclick=loadSelected;
+function showNew(){
+ if(!config.token||!config.sourceId){showSettings();return}
+ if(!editor.value.trim()){alert('먼저 저장할 원문을 작성하세요.');return}
+ $('notion-new-name').value=current?.name||'';say('notion-new-feedback','');modal('notion-new-backdrop',true);$('notion-new-name').focus();
+}
+$('notion-new-btn').onclick=showNew;
+$('notion-new-close').onclick=()=>modal('notion-new-backdrop',false);
+$('notion-new-cancel').onclick=()=>modal('notion-new-backdrop',false);
+async function createNew(){
+ if(busy)return;
+ const name=$('notion-new-name').value.trim(),snapshot=editor.value;
+ if(!name){say('notion-new-feedback','문서 이름을 입력하세요.',true);return}
+ if(!snapshot.trim()){say('notion-new-feedback','저장할 원문이 없어요.',true);return}
+ busy=true;$('notion-new-confirm').disabled=true;say('notion-new-feedback','노션에 새 문서를 저장하는 중...');
+ try{
+  const schema=await ensureSchema();const prop=Object.entries(schema.properties).find(([,v])=>v.type==='title');if(!prop)throw Error('데이터베이스에 제목 속성이 없어요.');
+  const page=await request('/pages',{method:'POST',body:{parent:{type:'data_source_id',data_source_id:config.sourceId},properties:{[prop[0]]:{title:[{type:'text',text:{content:name}}]}},children:[makeCode(snapshot)]}});
+  // Verify that the page has our source block before labeling the save successful.
+  const block=await findRawBlock(page.id);
+  if(!block||plain(block.code.rich_text)!==snapshot)throw Error('페이지가 생성되었지만 원문 검증에 실패했어요. 노션 페이지를 확인하세요. 중복 저장하지 마세요.');
+  saveLink({pageId:page.id,sourceId:config.sourceId,name,lastEditedTime:page.last_edited_time,blockId:block.id});
+  modal('notion-new-backdrop',false);alert('노션에 새 문서로 저장했어요.');
+ }catch(err){say('notion-new-feedback',err.message,true)}finally{busy=false;$('notion-new-confirm').disabled=false}
+}
+$('notion-new-confirm').onclick=createNew;
+$('notion-new-name').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();createNew()}});
+async function updateExisting(){
+ if(busy||!current)return;
+ const snapshot=editor.value;
+ if(!snapshot.trim()){alert('빈 문서는 노션에 덮어쓸 수 없어요.');return}
+ busy=true;$('notion-save-btn').disabled=true;const linked={...current};
+ try{
+  const page=await request('/pages/'+linked.pageId);
+  if(uuid(page.parent?.data_source_id||'')!==uuid(config.sourceId))throw Error('선택된 페이지가 현재 연결한 데이터 소스에 속하지 않아요.');
+  if(linked.lastEditedTime&&page.last_edited_time!==linked.lastEditedTime){
+   if(!confirm('이 문서가 다른 기기나 노션에서 수정되었어요. 현재 EDITOR 내용으로 덮어쓸까요?'))return;
+  }
+  const block=await findRawBlock(linked.pageId);
+  if(!block)throw Error('기존 원문 블록을 찾지 못했어요. 잘못 덮어쓰지 않도록 저장을 중단했어요. 새 문서로 저장해 주세요.');
+  const payload=makeCode(snapshot);
+  await request('/blocks/'+block.id,{method:'PATCH',body:{code:payload.code}});
+  const checked=await request('/blocks/'+block.id);
+  if(plain(checked.code?.rich_text)!==snapshot)throw Error('저장 후 원문 검증에 실패했어요. 노션 문서를 확인하세요.');
+  const updated=await request('/pages/'+linked.pageId);
+  saveLink({pageId:linked.pageId,sourceId:config.sourceId,name:getTitle(updated),lastEditedTime:updated.last_edited_time,blockId:block.id});
+  alert('노션에 저장 완료!');
+ }catch(err){alert('노션 저장 실패: '+err.message)}finally{busy=false;$('notion-save-btn').disabled=false}
+}
+$('notion-save-btn').onclick=()=>{
+ if(!config.token||!config.sourceId){showSettings();return}
+ if(current?.pageId&&uuid(current.sourceId)===uuid(config.sourceId))updateExisting();else showNew();
+};
+/* The detector's Notion record is separate from normal Markdown documents. */
+let filterSyncBusy=false;
+function filterMessage(message,error=false){window.dispatchEvent(new CustomEvent('markdown-studio:filter-sync-status',{detail:{message,error}}))}
+function getLocalFilter(){const saved=stored(FILTER_STORE_KEY);return {terms:Array.isArray(saved?.terms)?saved.terms.filter(x=>typeof x==='string'):[],dirty:!!saved?.dirty,sourceId:saved?.sourceId||'',remoteEditedAt:saved?.remoteEditedAt||''}}
+async function findFilterCode(pageId){
+ let pos=null,attempts=0;
+ do{const result=await request('/blocks/'+pageId+'/children?page_size=100'+(pos?'&start_cursor='+encodeURIComponent(pos):''));
+  const hit=(result.results||[]).find(b=>b?.type==='code'&&plain(b.code?.caption)===FILTER_CAPTION);
+  if(hit)return hit;pos=result.has_more?result.next_cursor:null;
+  if(++attempts>30)throw Error('금지어 설정 페이지에 블록이 너무 많아요.');
+ }while(pos);
+ return null;
+}
+async function findFilterRecord(){
+ const schema=await ensureSchema();const titleProp=Object.entries(schema.properties||{}).find(([,prop])=>prop.type==='title');
+ if(!titleProp)throw Error('노션 데이터베이스에 제목 속성이 없어요.');
+ let pos=null,loops=0;
+ do{const result=await request('/data_sources/'+config.sourceId+'/query',{method:'POST',body:{page_size:100,filter:{property:titleProp[0],title:{equals:FILTER_DOC_TITLE}},...(pos?{start_cursor:pos}:{})}});
+  for(const page of result.results||[]){if(page.object!=='page')continue;const block=await findFilterCode(page.id);if(block)return {page,block}}
+  pos=result.has_more?result.next_cursor:null;if(++loops>20)throw Error('금지어 설정 페이지 검색 범위가 너무 커요.');
+ }while(pos);
+ return null;
+}
+function makeFilterCode(terms){const json=JSON.stringify({version:1,kind:'markdown-studio:filter-terms',terms});return {object:'block',type:'code',code:{language:'json',rich_text:chunkText(json).map(content=>({type:'text',text:{content}})),caption:[{type:'text',text:{content:FILTER_CAPTION}}]}}}
+function parseFilterCode(block){let data;try{data=JSON.parse(plain(block.code?.rich_text))}catch{throw Error('노션에 저장된 금지어 목록 JSON을 읽지 못했어요.')};if(data?.version!==1||data.kind!=='markdown-studio:filter-terms'||!Array.isArray(data.terms)||!data.terms.every(x=>typeof x==='string'))throw Error('금지어 목록 데이터 형식이 올바르지 않아요.');return data.terms}
+async function loadTermsFromNotion({automatic=false}={}){
+ if(filterSyncBusy)return;
+ if(!config.token||!config.sourceId){if(!automatic)showSettings();return}
+ const local=getLocalFilter();if(automatic&&local.dirty){filterMessage('이 기기에 노션에 저장하지 않은 금지어 변경사항이 있어 자동 불러오기를 건너뛰었어요.');return}
+ if(!automatic&&local.dirty&&!confirm('노션 목록으로 바꾸면 이 기기에서 아직 노션에 저장하지 않은 금지어 변경사항이 사라집니다. 계속할까요?'))return;
+ filterSyncBusy=true;$('term-notion-load').disabled=true;$('term-notion-save').disabled=true;filterMessage('노션에서 금지어 목록을 읽는 중...');
+ try{
+  const sourceAtStart=config.sourceId,record=await findFilterRecord();
+  if(sourceAtStart!==config.sourceId)throw Error('연결 데이터베이스가 변경되어 불러오기를 중단했어요.');
+  if(getLocalFilter().dirty&&automatic){filterMessage('불러오는 동안 로컬 목록이 바뀌어 덮어쓰지 않았어요.');return}
+  if(!record){filterMessage('노션에 금지어 설정 페이지가 아직 없어요. 로컬 목록을 유지합니다. 금지어를 등록한 뒤 [노션에 목록 저장]을 누르세요.');return}
+  const terms=parseFilterCode(record.block);
+  window.dispatchEvent(new CustomEvent('markdown-studio:filter-cloud-received',{detail:{terms,sourceId:config.sourceId,remoteEditedAt:record.page.last_edited_time}}));
+ }catch(err){filterMessage('금지어 불러오기 실패: '+err.message,true)}
+ finally{filterSyncBusy=false;$('term-notion-load').disabled=false;$('term-notion-save').disabled=false}
+}
+async function saveTermsToNotion(){
+ if(filterSyncBusy)return;
+ if(!config.token||!config.sourceId){showSettings();return}
+ const local=getLocalFilter(),snapshot=local.terms.slice();
+ filterSyncBusy=true;$('term-notion-save').disabled=true;$('term-notion-load').disabled=true;filterMessage('노션에 금지어 목록 저장 중...');
+ try{
+  const sourceAtStart=config.sourceId,record=await findFilterRecord();
+  if(sourceAtStart!==config.sourceId)throw Error('연결 데이터베이스가 변경되어 저장을 중단했어요.');
+  if(record&&local.sourceId===config.sourceId&&local.remoteEditedAt&&record.page.last_edited_time!==local.remoteEditedAt){
+   if(!confirm('다른 기기에서 노션 금지어 목록을 수정했어요. 현재 목록으로 덮어쓸까요?')){filterMessage('노션 저장을 취소했어요.');return}
+  }
+  const payload=makeFilterCode(snapshot);let pageId,blockId;
+  if(record){pageId=record.page.id;blockId=record.block.id;await request('/blocks/'+blockId,{method:'PATCH',body:{code:payload.code}})}
+  else{
+   const schema=sourceSchema||await ensureSchema();const titleProp=Object.entries(schema.properties).find(([,p])=>p.type==='title');
+   if(!titleProp)throw Error('노션 데이터베이스에 제목 속성이 없어요.');
+   const page=await request('/pages',{method:'POST',body:{parent:{type:'data_source_id',data_source_id:config.sourceId},properties:{[titleProp[0]]:{title:[{type:'text',text:{content:FILTER_DOC_TITLE}}]}},children:[payload]}});
+   pageId=page.id;
+  }
+  const checked=blockId?await request('/blocks/'+blockId):await findFilterCode(pageId);
+  if(!checked||JSON.stringify(parseFilterCode(checked))!==JSON.stringify(snapshot))throw Error('저장 후 목록 검증에 실패했어요. 노션을 확인한 뒤 다시 시도하세요.');
+  const updated=await request('/pages/'+pageId);
+  window.dispatchEvent(new CustomEvent('markdown-studio:filter-cloud-saved',{detail:{terms:snapshot,sourceId:config.sourceId,remoteEditedAt:updated.last_edited_time}}));
+ }catch(err){filterMessage('금지어 저장 실패: '+err.message,true)}
+ finally{filterSyncBusy=false;$('term-notion-save').disabled=false;$('term-notion-load').disabled=false}
+}
+/* Quick character settings use a separate hidden Notion page, never a prompt page. */
+let quickSyncBusy=false;
+const quickSyncStatus=(message,error=false)=>window.dispatchEvent(new CustomEvent('markdown-studio:quick-sync-status',{detail:{message,error}}));
+function localQuickState(){
+ const input=stored(QUICK_STORE_KEY),items=Array.isArray(input)?input.filter(x=>x&&typeof x.id==='string'&&typeof x.text==='string'&&x.text.length>0).map(x=>({id:x.id,text:x.text,label:typeof x.label==='string'?x.label:''})):[];
+ const meta=stored(QUICK_META_KEY);
+ return {items,dirty:meta&&typeof meta==='object'?!!meta.dirty:items.length>0,sourceId:meta?.sourceId||'',remoteEditedAt:meta?.remoteEditedAt||''};
+}
+function validateQuickItems(items){
+ if(!Array.isArray(items)||items.length>2000)throw Error('빠른 문자 데이터 형식이 올바르지 않아요.');
+ const ids=new Set();
+ for(const x of items){
+  if(!x||typeof x.id!=='string'||!x.id||ids.has(x.id)||typeof x.text!=='string'||!x.text.length||typeof x.label!=='string')throw Error('빠른 문자 데이터 형식이 올바르지 않아요.');
+  ids.add(x.id);
+ }
+ return items.map(x=>({id:x.id,text:x.text,label:x.label}));
+}
+async function findQuickCode(pageId){
+ let pos=null,attempts=0;
+ do{
+  const result=await request('/blocks/'+pageId+'/children?page_size=100'+(pos?'&start_cursor='+encodeURIComponent(pos):''));
+  const found=(result.results||[]).find(b=>b?.type==='code'&&plain(b.code?.caption)===QUICK_CAPTION);
+  if(found)return found;
+  pos=result.has_more?result.next_cursor:null;
+  if(++attempts>30)throw Error('빠른 문자 설정 페이지에 블록이 너무 많아요.');
+ }while(pos);
+ return null;
+}
+async function findQuickRecord(){
+ const schema=await ensureSchema(),titleProp=Object.entries(schema.properties||{}).find(([,p])=>p.type==='title');
+ if(!titleProp)throw Error('노션 데이터베이스에 제목 속성이 없어요.');
+ let pos=null,loops=0;
+ do{
+  const result=await request('/data_sources/'+config.sourceId+'/query',{method:'POST',body:{page_size:100,filter:{property:titleProp[0],title:{equals:QUICK_DOC_TITLE}},...(pos?{start_cursor:pos}:{})}});
+  for(const page of result.results||[]){if(page.object!=='page')continue;const block=await findQuickCode(page.id);if(block)return {page,block}}
+  pos=result.has_more?result.next_cursor:null;
+  if(++loops>20)throw Error('빠른 문자 설정 페이지 검색 범위가 너무 커요.');
+ }while(pos);
+ return null;
+}
+function makeQuickCode(items){
+ const json=JSON.stringify({version:1,kind:'markdown-studio:quick-chars',items:validateQuickItems(items)});
+ return {object:'block',type:'code',code:{language:'json',rich_text:chunkText(json).map(content=>({type:'text',text:{content}})),caption:[{type:'text',text:{content:QUICK_CAPTION}}]}};
+}
+function parseQuickCode(block){
+ let data;try{data=JSON.parse(plain(block.code?.rich_text))}catch{throw Error('노션의 빠른 문자 JSON을 읽지 못했어요.')}
+ if(data?.version!==1||data.kind!=='markdown-studio:quick-chars')throw Error('빠른 문자 설정 파일이 올바르지 않아요.');
+ return validateQuickItems(data.items);
+}
+async function loadQuickFromNotion({automatic=false}={}){
+ if(quickSyncBusy)return;
+ if(!config.token||!config.sourceId){if(!automatic)showSettings();return}
+ const local=localQuickState(),snapshot=JSON.stringify(local.items);
+ if(automatic&&local.dirty){quickSyncStatus('이 기기에 노션에 저장하지 않은 빠른 문자가 있어 자동 불러오기를 건너뛰었어요.');return}
+ if(!automatic&&local.dirty&&!confirm('노션 목록을 불러오면 이 기기의 저장되지 않은 빠른 문자 변경사항과 버튼 순서가 사라집니다. 계속할까요?'))return;
+ quickSyncBusy=true;$('char-notion-load').disabled=true;$('char-notion-save').disabled=true;quickSyncStatus('노션에서 빠른 문자 목록을 읽는 중...');
+ try{
+  const sourceAtStart=config.sourceId,record=await findQuickRecord();
+  if(sourceAtStart!==config.sourceId)throw Error('연결 데이터베이스가 변경되어 불러오기를 중단했어요.');
+  if(JSON.stringify(localQuickState().items)!==snapshot){quickSyncStatus('불러오는 도중 빠른 문자가 수정되어 로컬 목록을 유지했어요.');return}
+  if(!record){quickSyncStatus('노션에 빠른 문자 설정 페이지가 아직 없어요. 로컬 목록을 유지합니다. [노션에 목록 저장]으로 생성할 수 있어요.');return}
+  window.dispatchEvent(new CustomEvent('markdown-studio:quick-cloud-received',{detail:{items:parseQuickCode(record.block),sourceId:config.sourceId,remoteEditedAt:record.page.last_edited_time}}));
+ }catch(err){quickSyncStatus('빠른 문자 불러오기 실패: '+err.message,true)}
+ finally{quickSyncBusy=false;$('char-notion-load').disabled=false;$('char-notion-save').disabled=false}
+}
+async function saveQuickToNotion(){
+ if(quickSyncBusy)return;
+ if(!config.token||!config.sourceId){showSettings();return}
+ const local=localQuickState(),snapshot=local.items.map(x=>({...x}));
+ quickSyncBusy=true;$('char-notion-save').disabled=true;$('char-notion-load').disabled=true;quickSyncStatus('노션에 빠른 문자 목록 저장 중...');
+ try{
+  const sourceAtStart=config.sourceId,record=await findQuickRecord();
+  if(sourceAtStart!==config.sourceId)throw Error('연결 데이터베이스가 변경되어 저장을 중단했어요.');
+  if(record&&local.sourceId===config.sourceId&&local.remoteEditedAt&&record.page.last_edited_time!==local.remoteEditedAt){
+   if(!confirm('다른 기기에서 노션 빠른 문자 목록을 수정했어요. 현재 목록으로 덮어쓸까요?')){quickSyncStatus('빠른 문자 저장을 취소했어요.');return}
+  }
+  const payload=makeQuickCode(snapshot);let pageId,blockId;
+  if(record){pageId=record.page.id;blockId=record.block.id;await request('/blocks/'+blockId,{method:'PATCH',body:{code:payload.code}})}
+  else{
+   const schema=sourceSchema||await ensureSchema(),titleProp=Object.entries(schema.properties).find(([,p])=>p.type==='title');
+   if(!titleProp)throw Error('노션 데이터베이스에 제목 속성이 없어요.');
+   const page=await request('/pages',{method:'POST',body:{parent:{type:'data_source_id',data_source_id:config.sourceId},properties:{[titleProp[0]]:{title:[{type:'text',text:{content:QUICK_DOC_TITLE}}]}},children:[payload]}});
+   pageId=page.id;
+  }
+  const checked=blockId?await request('/blocks/'+blockId):await findQuickCode(pageId);
+  if(!checked||JSON.stringify(parseQuickCode(checked))!==JSON.stringify(snapshot))throw Error('저장 후 빠른 문자 목록 검증에 실패했어요.');
+  const updated=await request('/pages/'+pageId);
+  window.dispatchEvent(new CustomEvent('markdown-studio:quick-cloud-saved',{detail:{items:snapshot,sourceId:config.sourceId,remoteEditedAt:updated.last_edited_time}}));
+ }catch(err){quickSyncStatus('빠른 문자 저장 실패: '+err.message,true)}
+ finally{quickSyncBusy=false;$('char-notion-save').disabled=false;$('char-notion-load').disabled=false}
+}
+window.addEventListener('markdown-studio:quick-request-load',()=>loadQuickFromNotion());
+window.addEventListener('markdown-studio:quick-request-save',saveQuickToNotion);
+if(config.token&&config.sourceId)setTimeout(()=>loadQuickFromNotion({automatic:true}),350);
+
+window.addEventListener('markdown-studio:filter-request-load',()=>loadTermsFromNotion());
+window.addEventListener('markdown-studio:filter-request-save',saveTermsToNotion);
+if(config.token&&config.sourceId)setTimeout(()=>loadTermsFromNotion({automatic:true}),250);
+
+// A local draft created by clearing, importing or replacing must not silently overwrite the old cloud page.
+for(const id of ['clear-btn','replace-preset']){
+ const button=$(id);button.addEventListener('click',()=>{const old=editor.value;setTimeout(()=>{if(editor.value!==old)saveLink(null)},0)})
+}
+$('import-file').addEventListener('change',()=>{const old=editor.value;setTimeout(()=>{if(editor.value!==old)saveLink(null)},400)})
+for(const id of ['notion-settings-backdrop','notion-browser-backdrop','notion-new-backdrop']){
+ $(id).addEventListener('click',e=>{if(e.target===$(id))modal(id,false)})
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')for(const id of ['notion-settings-backdrop','notion-browser-backdrop','notion-new-backdrop'])modal(id,false)});
+})();
+</script>
+<script>
+/* UI-only settings toggle; existing actions and local/Notion data handlers remain unchanged. */
+(()=>{
+ 'use strict';
+ const button=document.getElementById('tools-settings-btn');
+ const panel=document.getElementById('tools-settings-menu');
+ const shell=document.getElementById('tools-settings-shell');
+ const closeButton=document.getElementById('tools-settings-close');
+ if(!button||!panel||!shell)return;
+ function setOpen(open){
+  panel.hidden=!open;
+  button.setAttribute('aria-expanded',String(open));
+  button.classList.toggle('active',open);
+ }
+ button.addEventListener('click',()=>setOpen(panel.hidden));
+ closeButton.addEventListener('click',()=>{setOpen(false);button.focus()});
+ document.addEventListener('pointerdown',event=>{if(!panel.hidden&&!shell.contains(event.target))setOpen(false)});
+ document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&!panel.hidden){event.preventDefault();setOpen(false);button.focus()}
+ });
+ // Close when opening a new dialog, selecting a file or completing an action.
+ for(const id of ['download-btn','import-btn','show-presets','clear-btn','notion-connect-btn','save-preset','save-selection']){
+  document.getElementById(id)?.addEventListener('click',()=>setOpen(false));
+ }
 })();
 </script>
 </body></html>
