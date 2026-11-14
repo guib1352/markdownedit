@@ -74,11 +74,7 @@
 .char-row-actions .btn{padding:5px 7px}
 .char-none{padding:23px 9px;text-align:center;color:var(--muted);font-size:12px;border:1px dashed #35495b;border-radius:8px}
 .char-modal-foot{font-size:11px;color:var(--muted);line-height:1.6;margin:11px 0 0}
-.char-cloud-panel{border-top:1px solid var(--border);padding:12px 0 0;margin-top:12px;flex-shrink:0}
-.char-cloud-status{font-size:11px;line-height:1.55;color:#a5bac5;min-height:17px;margin-bottom:9px}
-.char-cloud-status.error{color:#ffb3b9}
-.char-cloud-buttons{display:flex;gap:7px;justify-content:flex-end;flex-wrap:wrap}
-@media(max-width:570px){.char-modal{padding:15px}.char-fields{grid-template-columns:1fr}.char-form{padding:11px}.char-list{max-height:205px}.char-row{align-items:flex-start;flex-direction:column}.char-row-actions{align-self:flex-end}.char-cloud-buttons .btn{flex:1}}
+@media(max-width:570px){.char-modal{padding:15px}.char-fields{grid-template-columns:1fr}.char-form{padding:11px}.char-list{max-height:205px}.char-row{align-items:flex-start;flex-direction:column}.char-row-actions{align-self:flex-end}}
 /* Preview-to-editor navigation: a lightweight visual layer beneath the real textarea. */
 .editor-stack{position:relative;flex:1;min-height:0;min-width:0;overflow:hidden;background:#0e151e}
 .editor-stack #editor{position:relative;z-index:1;background:transparent;display:block}
@@ -92,30 +88,6 @@
 #preview[data-linked="true"] a{cursor:pointer}
 #preview[data-linked="true"] > :hover{outline:1px solid rgba(119,223,198,.18);outline-offset:4px;border-radius:3px}
 
-/* False-positive word spotting. Rendered PREVIEW only; no source replacement. */
-.term-hit{background:rgba(243,94,106,.24);color:inherit;border-radius:3px;box-shadow:inset 0 -1px 0 rgba(248,135,140,.57);-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.term-counter{color:#ee9ca7!important;font-variant-numeric:tabular-nums}
-.term-counter.is-clear{color:var(--muted)!important}
-.term-manage-btn{border-color:#87505a;color:#f2b4bb;background:#34212a}
-.term-manage-btn:hover{background:#452b34}
-.term-modal{width:min(690px,calc(100vw - 24px));max-height:calc(100dvh - 28px);padding:0;display:flex;flex-direction:column;overflow:hidden}
-.term-modal-head{padding:19px 20px 12px;border-bottom:1px solid var(--border);flex-shrink:0}
-.term-modal-head h2{margin:0 0 5px;font-size:18px}
-.term-modal-head p{margin:0 0 4px;line-height:1.6}
-.term-modal-content{padding:14px 20px;overflow-y:auto;min-height:0;flex:1}
-.term-add-form{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 14px}
-.term-add-form input{min-width:140px;flex:1;height:39px}
-.term-list-head{display:flex;justify-content:space-between;gap:9px;font-size:12px;color:#cbdbe7;font-weight:700;margin-bottom:8px}
-.term-list{display:flex;flex-direction:column;gap:7px;max-height:min(320px,42dvh);overflow-y:auto}
-.term-list-item{background:#111b26;border:1px solid #344453;border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:10px;justify-content:space-between}
-.term-word{min-width:0;overflow-wrap:anywhere;white-space:pre-wrap;color:#f5c2c7;font-size:13px}
-.term-row-actions{display:flex;gap:5px;flex-shrink:0}
-.term-empty{border:1px dashed #3f4d60;color:#90a0b1;text-align:center;padding:29px 12px;border-radius:8px;font-size:12px}
-.term-modal-foot{padding:12px 20px 15px;border-top:1px solid var(--border);background:#14202c;flex-shrink:0}
-.term-sync-message{min-height:17px;color:#a5bac5;font-size:11px;line-height:1.5;margin-bottom:10px}
-.term-sync-message.error{color:#ffb3b9}
-.term-foot-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
-@media(max-width:570px){.term-modal-head{padding:13px 14px}.term-modal-content{padding:12px 14px}.term-modal-foot{padding:10px 14px}.term-foot-actions .btn{flex:1}.term-add-form button{flex-shrink:0}}
 /* Notion manual save/load - keep the original editor and preview unchanged. */
 .notion-tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .notion-tools .notion-name{max-width:190px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px;color:#9bb8b1}
@@ -157,39 +129,23 @@
 .notion-linked-caption{font-size:11px;color:#91bcb1}
 @media(max-width:650px){.notion-modal{padding:16px}.notion-browser-top{padding:12px}.notion-browser-foot{padding:10px}.notion-grid th,.notion-grid td{padding:10px 12px}.notion-grid .notion-first{min-width:165px;max-width:205px}.notion-browser-controls .notion-sort{width:100%;max-width:unset}.notion-browser-controls .notion-input{width:100%;flex:auto}.notion-tools .notion-name{max-width:120px}}
 
-/* Compact toolbar: quick characters + Notion documents; global settings in a top-right popover. */
-.topbar{gap:12px}
-.header-right{gap:7px;min-width:0}
-.header-tool-btn{flex-shrink:0}
-.tools-settings-shell{position:relative;flex-shrink:0}
-.tools-settings-trigger{min-width:37px;height:37px;padding:0!important;font-size:21px;line-height:1;display:grid;place-items:center;border-color:#4a6e70;color:#d5f5eb;background:#19312f}
-.tools-settings-trigger:hover,.tools-settings-trigger.active{background:#255046;border-color:#66a897}
-.tools-settings-menu{position:absolute;z-index:35;right:0;top:calc(100% + 10px);width:min(350px,calc(100vw - 18px));max-height:min(74dvh,690px);overflow-y:auto;overscroll-behavior:contain;padding:0;background:#182431;border:1px solid #465869;border-radius:13px;box-shadow:0 22px 65px rgba(0,0,0,.7)}
-.tools-settings-heading{position:sticky;top:0;background:#1b2938;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:11px 13px;border-bottom:1px solid #354756}
-.tools-settings-heading strong{font-size:13px}
-.tools-settings-heading .btn{padding:3px 7px}
-.tools-settings-section{padding:12px 13px 13px;border-bottom:1px solid #324151}
-.tools-settings-section:last-child{border-bottom:0}
-.tools-settings-section h3{font-size:12px;color:#b6cbc9;margin:0 0 10px;font-weight:750}
-.tools-settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.tools-settings-grid .btn{min-width:0;width:100%;padding:9px 6px;text-align:center}
-.tools-settings-section .preset-name{display:block;width:100%;min-width:0;max-width:none;margin:0 0 9px}
-.tools-notion-connect{width:100%;padding:9px 10px}
-.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:nowrap;min-height:57px;padding:8px 16px}
-.quick-strip{display:flex;align-items:center;gap:10px;flex:1 1 auto;min-width:0}
-.quick-strip-label{flex-shrink:0;white-space:nowrap;color:var(--muted);font-size:11px}
-.quick-strip-scroller{flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#385466 transparent;padding:3px 0;overscroll-behavior-x:contain}
-.quick-strip-scroller:focus-visible{outline:2px solid var(--accent);outline-offset:0;border-radius:6px}
-.quick-strip .quick-char-buttons{min-width:max-content;width:max-content;flex-wrap:nowrap;min-height:29px}
-.quick-strip .quick-char-btn{flex-shrink:0}
-.notion-tools{flex:0 0 auto;flex-wrap:nowrap;min-width:0;gap:6px}
-.notion-tools .notion-name{max-width:110px}
-@media(min-width:851px){body{height:100dvh;min-height:100dvh;display:flex;flex-direction:column}.topbar,.toolbar{flex-shrink:0}.workspace{min-height:0;height:auto;flex:1}}
-@media(max-width:1330px){.topbar{height:auto;min-height:69px;padding:9px 15px;flex-wrap:wrap}.stats{order:3;width:100%;justify-content:center}.stats .stat{flex:1;justify-content:center}.header-right{margin-left:auto}}
-@media(max-width:1100px){.toolbar{flex-wrap:wrap;gap:5px;padding:7px 12px}.quick-strip{flex:1 1 100%;width:100%}.notion-tools{width:100%;justify-content:flex-end}}
-@media(max-width:850px){.toolbar{gap:6px}.quick-strip-label{display:none}.notion-tools .notion-name{display:none}.stats{order:3;width:100%;justify-content:space-around}}
-@media(max-width:650px){.header-tool-suffix{display:none}.brand .logo{width:31px;height:31px}.brand strong{font-size:13px}.brand small{display:none}.topbar{padding:8px 10px;min-height:53px;column-gap:5px;row-gap:7px}.header-right{gap:5px}.save-state{display:none}.header-guide-text{display:none}.header-guide-btn{width:32px;height:32px;padding:0!important;font-size:17px}.header-tool-btn{padding:7px 8px!important;font-size:11px!important}.tools-settings-trigger{min-width:33px;height:33px;font-size:19px}.stats .stat{padding:5px 3px!important}.stat span{font-size:10px}.stat b{font-size:14px}.toolbar .btn{padding:6px 8px;font-size:11px}.quick-strip .quick-char-btn{max-width:220px}.notion-tools{justify-content:flex-start}.notion-tools .btn{flex:1 1 0}}
-@media(max-width:400px){.header-tool-btn{height:32px;padding:0 5px!important;font-size:10px!important}.brand{gap:6px}.brand strong{font-size:12px}.topbar{column-gap:4px}.header-right{gap:4px}}
+/* Compact management layout. */
+.header-right{min-width:0;gap:6px}
+.settings-holder{position:relative;flex-shrink:0}
+#studio-settings-toggle{font-size:18px;line-height:1;padding:8px 11px}
+.studio-settings-menu{position:absolute;right:0;top:calc(100% + 12px);z-index:70;background:#16212d;border:1px solid #405768;border-radius:13px;box-shadow:0 20px 60px #000b;width:min(420px,calc(100vw - 20px));max-height:min(590px,calc(100dvh - 95px));overflow:auto;padding:8px}
+.settings-section{display:flex;flex-direction:column;gap:10px;padding:12px 10px;border-bottom:1px solid #324455}.settings-section:last-child{border:0}.settings-section strong{font-size:12px;color:#c4d7e4}.settings-actions{display:flex;flex-wrap:wrap;align-items:center;gap:7px}.settings-section .preset-name{max-width:none;width:100%;height:36px}.settings-section .btn{flex:0 0 auto}
+.compact-toolbar{display:flex;flex-wrap:nowrap;min-height:54px;gap:10px;padding:9px 16px;align-items:center}
+.compact-toolbar .quick-char-buttons{flex:1 1 auto;overflow-x:auto;overflow-y:hidden;min-width:0;display:flex;align-items:center;flex-wrap:nowrap;scrollbar-width:thin;padding:3px 0}
+.compact-toolbar .quick-char-btn{flex:0 0 auto}.compact-toolbar .notion-tools{display:flex;flex:0 0 auto;flex-wrap:nowrap;gap:6px}
+.compact-toolbar .notion-name{max-width:120px}
+.terms-modal{width:min(580px,100%);max-height:calc(100dvh - 32px);overflow-y:auto}.terms-modal .terms-intro{margin:6px 0 14px}.terms-form{display:flex;align-items:center;gap:8px}.terms-form input{flex:1}.terms-list-heading{display:flex;justify-content:space-between;align-items:center;margin:17px 0 9px;font-size:12px}.terms-list-heading span{color:var(--muted)}
+.terms-list{display:flex;flex-direction:column;gap:7px;overflow:auto;max-height:230px;min-height:55px}.terms-item{display:flex;gap:8px;align-items:center;justify-content:space-between;background:#101a25;border:1px solid #344655;padding:9px 11px;border-radius:9px;overflow-wrap:anywhere}.terms-item-name{flex:1;min-width:0}.terms-item-actions{display:flex;gap:6px}.terms-sync-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:7px;margin-top:14px}.terms-sync-status{color:#91acbd!important;font-size:11px!important;margin:9px 0 0!important;min-height:18px}.terms-sync-status.error{color:#ff9999!important}
+.md .ms-term-hit{background:rgba(233,95,101,.24);box-shadow:0 0 0 1px rgba(218,86,95,.13);border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+@media(min-width:851px) and (max-width:1270px){.topbar{height:auto;min-height:70px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.topbar .header-right{margin-left:auto}}
+@media(max-width:850px){.topbar .header-right{margin-left:auto}.topbar .header-right>.btn{padding:7px 8px;font-size:11px}.compact-toolbar{padding:7px 10px}.compact-toolbar .notion-name{display:none}}
+@media(max-width:570px){.topbar{gap:8px}.topbar .header-right{width:100%;justify-content:flex-end;order:2}.topbar .header-right .save-state{margin-right:auto}.topbar .stats{order:3}.compact-toolbar{flex-wrap:wrap}.compact-toolbar .quick-char-buttons{flex:1 0 100%;min-height:33px}.compact-toolbar .notion-tools{width:100%;justify-content:flex-end}.compact-toolbar .notion-tools .btn{flex:1 1 auto;padding:7px 5px;font-size:12px}.terms-modal{padding:16px}.terms-form{flex-wrap:wrap}.terms-form input{min-width:160px}.terms-form button{flex:0 0 auto}}
+
 </style>
 </head>
 <body>
@@ -201,59 +157,26 @@
     <div class="stat"><span>단어</span><b id="words">0</b></div>
     <div class="stat"><span>줄</span><b id="lines">0</b></div>
   </div>
-  <div class="header-right">
-    <span class="save-state" id="save-status"><span class="dot"></span>자동 저장 준비</span>
-    <button class="btn ghost header-guide-btn" id="guide-btn" aria-expanded="false" title="마크다운 문법 예시">▤ <span class="header-guide-text">문법 예시</span></button>
-    <button class="btn small term-manage-btn header-tool-btn" id="manage-terms" title="오탐 감지 금지어 목록 관리">◌ <span class="header-tool-label">금지어<span class="header-tool-suffix"> 관리</span></span></button>
-    <button class="btn small quick-manage header-tool-btn" id="manage-chars" title="빠른 문자 등록, 수정, 삭제, 순서 변경">＋ <span class="header-tool-label">문자<span class="header-tool-suffix"> 관리</span></span></button>
-    <div class="tools-settings-shell" id="tools-settings-shell">
-      <button type="button" class="btn tools-settings-trigger" id="tools-settings-btn" aria-label="도구 설정" aria-expanded="false" aria-controls="tools-settings-menu" aria-haspopup="true" title="MD · 프리셋 · 노션 연결 설정">⚙</button>
-      <div class="tools-settings-menu" id="tools-settings-menu" role="group" aria-label="도구 설정 메뉴" hidden>
-        <div class="tools-settings-heading"><strong>도구 설정</strong><button class="btn small ghost" id="tools-settings-close" type="button" aria-label="설정 메뉴 닫기">✕</button></div>
-        <section class="tools-settings-section" aria-label="MD 파일">
-          <h3>MD 파일</h3>
-          <div class="tools-settings-grid">
-            <button class="btn small" id="download-btn" type="button">↓ .md 저장</button>
-            <button class="btn small" id="import-btn" type="button">↑ .md 불러오기</button>
-            <input id="import-file" type="file" accept=".md,.markdown,.txt,text/plain,text/markdown" hidden>
-          </div>
-        </section>
-        <section class="tools-settings-section" aria-label="프리셋">
-          <h3>프리셋</h3>
-          <input id="preset-name" class="preset-name" type="text" maxlength="60" placeholder="프리셋 이름 입력" aria-label="프리셋 이름">
-          <div class="tools-settings-grid preset-settings-grid">
-            <button class="btn small accent" id="save-preset" title="현재 글 전체를 프리셋으로 저장">전체 저장</button>
-            <button class="btn small" id="save-selection" title="편집기에서 선택한 부분만 프리셋으로 저장">선택 부분 저장</button>
-            <button class="btn small" id="show-presets">내 프리셋 <span id="preset-total">0</span></button>
-            <button class="btn small danger" id="clear-btn">초기화</button>
-          </div>
-        </section>
-        <section class="tools-settings-section" aria-label="노션 설정">
-          <h3>노션 연결</h3>
-          <button class="btn small notion-btn tools-notion-connect" id="notion-connect-btn" title="노션 API 토큰과 데이터베이스 연결">⚙ 노션 연결 설정</button>
-        </section>
-      </div>
+  <div class="header-right"><span class="save-state" id="save-status"><span class="dot"></span>자동 저장 준비</span>
+  <button class="btn small ghost" id="guide-btn" aria-expanded="false">▤ 문법 예시</button>
+  <button class="btn small" id="manage-terms" type="button">금지어 관리</button>
+  <button class="btn small quick-manage" id="manage-chars" type="button" title="빠른 문자 등록 및 관리">문자 관리</button>
+  <div class="settings-holder"><button type="button" class="btn small" id="studio-settings-toggle" title="MD 파일, 프리셋, 노션 연결 설정" aria-label="설정" aria-expanded="false" aria-controls="studio-settings-menu">⚙</button>
+    <div class="studio-settings-menu" id="studio-settings-menu" hidden>
+      <div class="settings-section"><strong>MD 파일</strong><div class="settings-actions"><button class="btn small" id="download-btn">↓ .md 저장</button><button class="btn small" id="import-btn">↑ .md 불러오기</button><input id="import-file" type="file" accept=".md,.markdown,.txt,text/plain,text/markdown" hidden></div></div>
+      <div class="settings-section"><strong>프리셋</strong><input id="preset-name" class="preset-name" type="text" maxlength="60" placeholder="프리셋 이름 입력" aria-label="프리셋 이름"><div class="settings-actions"><button class="btn small accent" id="save-preset">전체 저장</button><button class="btn small" id="save-selection">선택 저장</button><button class="btn small" id="show-presets">내 프리셋 <span id="preset-total">0</span></button><button class="btn small danger" id="clear-btn">초기화</button></div></div>
+      <div class="settings-section"><strong>노션 연결</strong><button class="btn small notion-btn" id="notion-connect-btn" title="노션 연결 설정">⚙ 노션 연결 설정</button></div>
     </div>
-  </div>
+  </div></div>
 </header>
-<div class="toolbar" aria-label="빠른 문자와 노션 문서 작업">
-  <div class="quick-strip">
-    <span class="quick-strip-label">빠른 문자</span>
-    <div class="quick-strip-scroller" role="region" aria-label="등록된 빠른 문자, 좌우로 스크롤 가능" tabindex="0">
-      <div class="quick-char-buttons" id="quick-char-buttons" aria-label="내 빠른 문자"></div>
-    </div>
-  </div>
-  <div class="notion-tools" aria-label="노션 문서 동기화">
-    <button class="btn small notion-btn" id="notion-open-btn" title="노션의 프롬프트 표 불러오기">노션에서 불러오기</button>
-    <button class="btn small accent" id="notion-save-btn" title="현재 원문을 노션에 수동 저장">노션에 저장</button>
-    <button class="btn small" id="notion-new-btn" title="현재 원문을 노션에 새 문서로 저장">＋ 새 문서</button>
-    <span class="notion-name" id="notion-current-name" title="연결된 노션 문서">노션 문서 미선택</span>
-  </div>
+<div class="toolbar compact-toolbar" aria-label="빠른 문자 및 노션 문서">
+  <div class="quick-char-buttons" id="quick-char-buttons" aria-label="내 빠른 문자"></div>
+  <div class="notion-tools" aria-label="노션 문서 작업"><button class="btn small notion-btn" id="notion-open-btn" title="노션에서 문서 불러오기">불러오기</button><button class="btn small accent" id="notion-save-btn" title="현재 노션 문서에 저장">저장</button><button class="btn small" id="notion-new-btn" title="노션에 새 문서로 저장">새저장</button><button type="button" class="btn small" id="local-new-document-btn" title="새 문서 작성 · 기존 노션 연결 해제">새문서</button><span class="notion-name" id="notion-current-name" title="연결된 노션 문서">노션 문서 미선택</span></div>
 </div>
 <main class="workspace">
   <div class="split">
     <section class="pane" aria-label="마크다운 입력"><div class="pane-head"><div class="pane-title"><span class="tag">✎</span> EDITOR <span style="font-weight:400;color:#71899d">/ 마크다운 입력</span></div><span class="pane-meta">자동 임시저장</span></div><div class="editor-stack"><div id="editor-highlight-layer" class="editor-highlight-layer" aria-hidden="true"></div><textarea id="editor" autocomplete="off" spellcheck="false" placeholder="# 제목을 입력하세요&#10;&#10;오른쪽에 **실시간 미리보기**가 표시됩니다.&#10;&#10;작성한 내용은 브라우저에 자동으로 임시저장됩니다."></textarea></div></section>
-    <section class="pane" aria-label="마크다운 미리보기"><div class="pane-head"><div class="pane-title"><span class="tag">◈</span> PREVIEW <span style="font-weight:400;color:#71899d">/ 실시간 결과</span></div><span class="pane-meta term-counter is-clear" id="term-preview-counter">금지어 0건</span></div><div id="preview-wrap" class="preview-scroll"><div id="preview" class="md"></div><div id="empty-preview" class="empty"><div class="illustration">⌘</div><strong>여기에 문서가 나타납니다</strong><span>왼쪽에서 마크다운을 작성해 보세요.<br>오른쪽 상단의 '문법 예시'를 눌러 도움말을 열 수 있어요.</span></div></div></section>
+    <section class="pane" aria-label="마크다운 미리보기"><div class="pane-head"><div class="pane-title"><span class="tag">◈</span> PREVIEW <span style="font-weight:400;color:#71899d">/ 실시간 결과</span></div><span class="pane-meta" id="term-match-count" aria-live="polite">즉시 반영</span></div><div id="preview-wrap" class="preview-scroll"><div id="preview" class="md"></div><div id="empty-preview" class="empty"><div class="illustration">⌘</div><strong>여기에 문서가 나타납니다</strong><span>왼쪽에서 마크다운을 작성해 보세요.<br>오른쪽 상단의 '문법 예시'를 눌러 도움말을 열 수 있어요.</span></div></div></section>
   </div>
   <aside class="guide" id="guide" aria-label="마크다운 문법 예시"><div class="guide-head"><div class="guide-title">마크다운 문법 가이드</div><button id="close-guide" class="btn small ghost" aria-label="문법 예시 닫기">✕ 닫기</button></div><div class="guide-content"><p class="guide-note">항목을 눌러 펼치세요. 예시 코드를 클릭하면 편집기에 바로 넣을 수 있습니다.</p>
     <details open><summary>제목과 문단</summary><div class="examples"><div class="ex" data-snippet="# 큰 제목"><span class="what">제목 1</span><code># 큰 제목</code></div><div class="ex" data-snippet="## 중간 제목"><span class="what">제목 2</span><code>## 중간 제목</code></div><div class="ex" data-snippet="### 작은 제목"><span class="what">제목 3</span><code>### 작은 제목</code></div><div class="ex" data-snippet="문단 하나입니다.\n\n다른 문단입니다."><span class="what">문단 나누기 (빈 줄)</span><code>문단 하나입니다.\n\n다른 문단입니다.</code></div></div></details>
@@ -285,22 +208,23 @@
   </form>
   <div class="char-saved-head">등록한 문자 <span id="char-count">0개</span></div>
   <div id="char-list" class="char-list" aria-live="polite"></div>
-  <p class="char-modal-foot">↑ ↓ 버튼으로 표시 순서를 바꿀 수 있습니다. 문자·버튼 이름·순서가 현재 브라우저에 즉시 저장됩니다.</p>
-  <div class="char-cloud-panel"><div class="char-cloud-status" id="char-cloud-status" role="status" aria-live="polite">노션에 저장하면 다른 기기에서도 같은 빠른 문자 목록을 쓸 수 있어요.</div>
-    <div class="char-cloud-buttons"><button type="button" class="btn small" id="char-notion-load">↻ 노션에서 불러오기</button><button type="button" class="btn small accent" id="char-notion-save">노션에 목록 저장</button></div></div>
+  <div class="terms-sync-actions"><button type="button" id="quick-notion-load" class="btn small">노션에서 불러오기</button><button type="button" id="quick-notion-save" class="btn small accent">노션에 목록 저장</button></div>
+  <p class="terms-sync-status" id="quick-sync-status" aria-live="polite">버튼 이름과 순서도 함께 동기화돼요.</p>
+  <p class="char-modal-foot">↑ ↓ 버튼으로 순서를 변경할 수 있습니다. 로컬 변경은 즉시 적용되며, 노션 저장은 수동이에요.</p>
   <div class="modal-foot"><button class="btn" id="close-char-modal">닫기</button></div>
 </div></div>
 
-<!-- Detection list settings. Separate from saved prompt documents. -->
-<div id="term-modal-backdrop" class="modal-backdrop"><div class="modal term-modal" role="dialog" aria-modal="true" aria-labelledby="term-modal-title">
- <div class="term-modal-head"><div class="notion-modal-head"><h2 id="term-modal-title">금지어 감지 관리</h2><button class="btn small ghost" id="term-modal-close" type="button">✕ 닫기</button></div>
- <p>크랙에서 오탐할 수 있는 문자열을 등록하세요. 예를 들어 <b>보지</b>를 등록하면 <b>보지않음</b>의 해당 글자만 PREVIEW에 붉게 표시합니다.</p>
- <p>입력 방해·자동 치환 없이 확인만 합니다. 투명문자 입력은 기존 빠른 문자를 이용하세요.</p></div>
- <div class="term-modal-content"><form id="term-add-form" class="term-add-form"><input class="notion-input" id="term-input" type="text" maxlength="120" autocomplete="off" spellcheck="false" placeholder="금지어 또는 오탐 문자열 입력" aria-label="감지 문자열"><button class="btn accent" type="submit" id="term-add-btn">＋ 등록</button><button class="btn small ghost" type="button" id="term-edit-cancel" hidden>수정 취소</button></form>
- <div class="term-list-head"><span>등록된 문자열</span><span id="term-list-count">0개</span></div><div id="term-list" class="term-list" aria-live="polite"></div>
- <p class="notion-help" style="margin-top:13px">부분 문자열 포함 검사, 대소문자 구분 없음. 등록·삭제 후 이 브라우저에는 즉시 저장되고 하이라이트가 반영됩니다.</p></div>
- <div class="term-modal-foot"><div class="term-sync-message" id="term-sync-message" role="status" aria-live="polite">노션과 연결하면 모든 기기에서 같은 목록을 쓸 수 있어요.</div>
- <div class="term-foot-actions"><button type="button" class="btn small" id="term-notion-load">↻ 노션에서 불러오기</button><button type="button" class="btn small accent" id="term-notion-save">노션에 목록 저장</button></div></div>
+
+<!-- Literal substring inspection only: text is never modified. -->
+<div id="terms-modal-backdrop" class="modal-backdrop" role="presentation"><div class="modal terms-modal" role="dialog" aria-modal="true" aria-labelledby="terms-modal-title">
+  <div class="notion-modal-head"><h2 id="terms-modal-title">금지어 관리</h2><button type="button" class="btn small ghost" id="terms-close-top">✕ 닫기</button></div>
+  <p class="terms-intro">등록된 문자열이 연속해서 나타날 때 PREVIEW에서만 옅은 붉은색으로 표시해요. 공백·투명문자·마크다운으로 분리된 글자는 감지하지 않습니다. 원문을 자동 변경하지 않아요.</p>
+  <form id="terms-form" class="terms-form"><input class="notion-input" id="terms-entry" placeholder="감지할 단어 또는 문구" maxlength="150" required><button class="btn accent" type="submit" id="terms-add">＋ 추가</button></form>
+  <div class="terms-list-heading"><strong>등록된 문자열</strong><span id="terms-total">0개</span></div>
+  <div id="terms-list" class="terms-list"></div>
+  <div class="terms-sync-actions"><button type="button" id="terms-notion-load" class="btn small">노션에서 불러오기</button><button type="button" id="terms-notion-save" class="btn small accent">노션에 목록 저장</button></div>
+  <p id="terms-sync-status" class="terms-sync-status" aria-live="polite">이 기기에서 수정하면 즉시 하이라이트돼요.</p>
+  <div class="modal-foot"><button type="button" id="terms-close" class="btn">닫기</button></div>
 </div></div>
 
 <!-- Notion connection settings; the API token is entered at runtime, never bundled in this file. -->
@@ -3399,7 +3323,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const editor=$('editor'),preview=$('preview'),empty=$('empty-preview'),status=$('save-status');
-const KEY_DRAFT='markdown-studio:draft:v1',KEY_PRESETS='markdown-studio:presets:v1',KEY_QUICK_CHARS='markdown-studio:quick-chars:v1',KEY_QUICK_CLOUD='markdown-studio:quick-chars-cloud:v1';
+const KEY_DRAFT='markdown-studio:draft:v1',KEY_PRESETS='markdown-studio:presets:v1',KEY_QUICK_CHARS='markdown-studio:quick-chars:v1';
 let saveTimer=null,toastTimer=null,canStore=true;
 const fmt=n=>n.toLocaleString('ko-KR');
 function safeGet(key){try{return localStorage.getItem(key)}catch(e){canStore=false;return null}}
@@ -3551,52 +3475,14 @@ editor.addEventListener('pointerdown',clearPreviewHighlight);
 editor.addEventListener('scroll',syncHighlightViewport,{passive:true});
 window.addEventListener('resize',syncHighlightViewport);
 if(typeof ResizeObserver!=='undefined')new ResizeObserver(syncHighlightViewport).observe(editor);
-/* Highlight only contiguous text-node substrings. Do not bridge spaces, zero-width separators,
-   or inline Markdown/HTML boundaries: intentional splitting must remain undetected. */
-const FILTER_TERMS_KEY='markdown-studio:filter-terms:v1';
-function activeFilterTerms(){try{const s=JSON.parse(localStorage.getItem(FILTER_TERMS_KEY)||'null');return Array.isArray(s?.terms)?s.terms.filter(x=>typeof x==='string'&&x.length):[]}catch{return []}}
-function highlightPreviewTerms(){
- // Refresh without modifying the Markdown source or the existing preview-to-editor mapping.
- for(const mark of preview.querySelectorAll('mark.term-hit'))mark.replaceWith(document.createTextNode(mark.textContent));
- preview.normalize();
- const terms=activeFilterTerms().slice().sort((a,b)=>b.length-a.length);
- const counter=$('term-preview-counter');
- if(!terms.length){counter.textContent='금지어 0건';counter.classList.add('is-clear');return}
- const escaped=terms.map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
- let regexp;try{regexp=new RegExp(escaped.join('|'),'giu')}catch(err){console.warn('감지식 오류',err);return}
- const groups=preview.querySelectorAll('p,h1,h2,h3,h4,h5,h6,li,th,td,pre');
- let total=0;
- for(const root of groups){
-  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];let node;
-  while((node=walker.nextNode())){
-   // Nested lists / paragraphs are handled by their own group, exactly once.
-   if(node.parentElement.closest('p,h1,h2,h3,h4,h5,h6,li,th,td,pre')!==root)continue;
-   if(node.textContent)nodes.push(node);
-  }
-  // Match EACH text node separately. Never concatenate across an inline element boundary.
-  for(const target of nodes){
-   const value=target.textContent,fragment=document.createDocumentFragment();let position=0,found=false;
-   regexp.lastIndex=0;
-   for(const match of value.matchAll(regexp)){
-    const begin=match.index,end=begin+match[0].length;
-    if(!match[0]||begin<position)continue;
-    if(begin>position)fragment.append(document.createTextNode(value.slice(position,begin)));
-    const mark=document.createElement('mark');mark.className='term-hit';mark.textContent=value.slice(begin,end);
-    fragment.append(mark);position=end;total++;found=true;
-   }
-   if(found){if(position<value.length)fragment.append(document.createTextNode(value.slice(position)));target.replaceWith(fragment)}
-  }
- }
- counter.textContent='금지어 '+total+'건';counter.classList.toggle('is-clear',!total);
-}
-window.addEventListener('markdown-studio:terms-updated',highlightPreviewTerms);
 function render(){const value=editor.value;
   $('chars').textContent=fmt(Array.from(value).length);
   $('chars-no-space').textContent=fmt(Array.from(value.replace(/\s/g,'')).length);
   $('words').textContent=fmt(value.trim()?value.trim().split(/\s+/u).length:0);
   $('lines').textContent=fmt(value?value.split(/\r\n|\r|\n/).length:0);
   empty.hidden=!!value.trim();preview.style.display=value.trim()?'block':'none';
-  if(value.trim()){try{const raw=marked.parse(value);preview.replaceChildren(cleanHTML(raw));linkPreviewToEditor(value);highlightPreviewTerms()}catch(e){preview.textContent='미리보기를 표시할 수 없습니다.';console.error(e)}}else{preview.replaceChildren();highlightPreviewTerms()}
+  if(value.trim()){try{const raw=marked.parse(value);preview.replaceChildren(cleanHTML(raw));linkPreviewToEditor(value)}catch(e){preview.textContent='미리보기를 표시할 수 없습니다.';console.error(e)}}else preview.replaceChildren();
+  if(window.MarkdownStudioTerms)window.MarkdownStudioTerms.scan();
 }
 function saveDraft(){clearTimeout(saveTimer);if(safeSet(KEY_DRAFT,editor.value))setStatus('임시저장 완료')}
 function changed(){clearPreviewHighlight();render();setStatus('저장 중...');clearTimeout(saveTimer);saveTimer=setTimeout(saveDraft,450)}
@@ -3613,23 +3499,7 @@ function quickLabel(item){
   const label=item.label.trim();
   return label||Array.from(item.text.replace(/\r\n|\r|\n/g,' ↵ ').replace(/\t/g,' ⇥ ')).slice(0,18).join('');
 }
-let editingQuickCharId=null,quickCloudNotice='';
-function readQuickCloud(){
- try{
-  const meta=JSON.parse(safeGet(KEY_QUICK_CLOUD)||'null');
-  if(meta&&typeof meta==='object')return {dirty:!!meta.dirty,sourceId:meta.sourceId||'',remoteEditedAt:meta.remoteEditedAt||''};
- }catch{}
- // Protect quick characters created before the Notion-sync feature was installed.
- return {dirty:getQuickChars().length>0,sourceId:'',remoteEditedAt:''};
-}
-function writeQuickCloud(meta){try{localStorage.setItem(KEY_QUICK_CLOUD,JSON.stringify(meta));return true}catch{return false}}
-function showQuickCloudStatus(){
- const el=$('char-cloud-status');if(!el)return;
- if(quickCloudNotice){el.textContent=quickCloudNotice;return}
- const meta=readQuickCloud();el.textContent=meta.dirty
-  ?'이 기기의 빠른 문자 변경사항이 아직 노션에 저장되지 않았어요. [노션에 목록 저장]을 눌러 주세요.'
-  :getQuickChars().length+'개 등록됨 · 로컬 저장됨'+(meta.sourceId?' · 노션 동기화 완료':' · 노션 저장 전');
-}
+let editingQuickCharId=null;
 function renderQuickChars(){
   const host=$('quick-char-buttons');host.replaceChildren();
   const items=getQuickChars();
@@ -3637,14 +3507,13 @@ function renderQuickChars(){
   items.forEach(item=>{
     const btn=document.createElement('button');btn.type='button';btn.className='btn small quick-char-btn';
     btn.textContent=quickLabel(item);btn.title='입력: '+item.text;btn.setAttribute('aria-label',quickLabel(item)+' 입력');
-    btn.addEventListener('click',()=>insertText(item.text));
+    btn.addEventListener('click',()=>insertText(item.text,item.text.length));
     host.append(btn);
   });
 }
-function saveQuickChars(items,{cloud=false}={}){
+function saveQuickChars(items){
   if(!safeSet(KEY_QUICK_CHARS,JSON.stringify(items))){showToast('문자 저장 실패 · 브라우저 저장 설정을 확인하세요');return false}
-  if(!cloud){const meta=readQuickCloud();writeQuickCloud({...meta,dirty:true});quickCloudNotice='';$('char-cloud-status').classList.remove('error')}
-  renderQuickChars();drawQuickCharList();showQuickCloudStatus();return true;
+  renderQuickChars();drawQuickCharList();return true;
 }
 function clearCharForm(){
   editingQuickCharId=null;
@@ -3690,7 +3559,7 @@ function moveQuickChar(index,offset){
   [items[index],items[next]]=[items[next],items[index]];
   saveQuickChars(items);
 }
-function openCharModal(){clearCharForm();drawQuickCharList();showQuickCloudStatus();$('char-modal-backdrop').classList.add('show');$('char-text').focus()}
+function openCharModal(){clearCharForm();drawQuickCharList();$('char-modal-backdrop').classList.add('show');$('char-text').focus()}
 function closeCharModal(){$('char-modal-backdrop').classList.remove('show');clearCharForm()}
 $('manage-chars').onclick=openCharModal;
 $('close-char-modal').onclick=closeCharModal;
@@ -3710,29 +3579,8 @@ $('char-form').addEventListener('submit',e=>{
   const isEdit=!!editingQuickCharId;
   if(saveQuickChars(items)){clearCharForm();$('char-text').focus();showToast(isEdit?'빠른 문자 수정 완료':'빠른 문자 등록 완료')}
 });
-$('char-notion-load').onclick=()=>window.dispatchEvent(new Event('markdown-studio:quick-request-load'));
-$('char-notion-save').onclick=()=>window.dispatchEvent(new Event('markdown-studio:quick-request-save'));
-window.addEventListener('markdown-studio:quick-cloud-received',e=>{
- const data=e.detail||{},items=data.items||[];
- quickCloudNotice='노션에서 빠른 문자 '+items.length+'개 불러왔어요. 버튼과 표시 순서에 바로 반영됩니다.';$('char-cloud-status').classList.remove('error');
- clearCharForm();
- if(saveQuickChars(items,{cloud:true}))writeQuickCloud({dirty:false,sourceId:data.sourceId||'',remoteEditedAt:data.remoteEditedAt||''});
- showQuickCloudStatus();
-});
-window.addEventListener('markdown-studio:quick-cloud-saved',e=>{
- const data=e.detail||{},same=JSON.stringify(data.items)===JSON.stringify(getQuickChars());
- const meta=readQuickCloud();
- writeQuickCloud({dirty:!same,sourceId:data.sourceId||meta.sourceId,remoteEditedAt:data.remoteEditedAt||''});
- quickCloudNotice=same?'노션에 빠른 문자 '+getQuickChars().length+'개 저장 완료!':'저장 중 빠른 문자가 바뀌었어요. 최신 변경사항은 아직 노션에 저장되지 않았습니다.';$('char-cloud-status').classList.remove('error');
- showQuickCloudStatus();
-});
-window.addEventListener('markdown-studio:quick-sync-status',e=>{
- quickCloudNotice=String(e.detail?.message||'');$('char-cloud-status').classList.toggle('error',!!e.detail?.error);showQuickCloudStatus();
-});
-window.addEventListener('storage',e=>{
- if(e.key===KEY_QUICK_CHARS||e.key===KEY_QUICK_CLOUD){renderQuickChars();drawQuickCharList();quickCloudNotice='';showQuickCloudStatus()}
-});
-renderQuickChars();showQuickCloudStatus();
+renderQuickChars();
+window.MarkdownStudioQuickSync={get:getQuickChars,apply:saveQuickChars};
 function getPresets(){try{const arr=JSON.parse(safeGet(KEY_PRESETS)||'[]');return Array.isArray(arr)?arr.filter(x=>x&&typeof x.id==='string'&&typeof x.name==='string'&&typeof x.text==='string'):[]}catch{return []}}
 function savePresets(arr){if(safeSet(KEY_PRESETS,JSON.stringify(arr))){$('preset-total').textContent=fmt(arr.length);return true}return false}
 let selectedPresetId=null;
@@ -3838,44 +3686,6 @@ $('preset-total').textContent=fmt(getPresets().length);render();syncHighlightVie
 </script>
 
 <script>
-/* Local term editor. A separate Notion module handles remote synchronization. */
-(()=>{
-'use strict';
-const $=id=>document.getElementById(id),KEY='markdown-studio:filter-terms:v1';
-const normalize=list=>{const seen=new Set(),result=[];for(const x of Array.isArray(list)?list:[]){if(typeof x!=='string')continue;const value=x.trim();const key=value.toLocaleLowerCase('ko-KR');if(!value||seen.has(key))continue;seen.add(key);result.push(value)}return result};
-function read(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');return {terms:normalize(s?.terms),dirty:!!s?.dirty,sourceId:typeof s?.sourceId==='string'?s.sourceId:'',remoteEditedAt:s?.remoteEditedAt||''}}catch{return {terms:[],dirty:false,sourceId:'',remoteEditedAt:''}}}
-let state=read(),editing=null,notice='';
-function syncLabel(){const hint=$('term-sync-message');if(notice){hint.textContent=notice;return}hint.textContent=state.dirty?'로컬 변경사항이 있어요. 다른 기기에도 적용하려면 아래 [노션에 목록 저장]을 누르세요.':state.terms.length+'개 등록됨 · 로컬 저장됨'+(state.sourceId?' · 노션 동기화 완료':' · 노션 저장 전')}
-function commit(next,{notify=true}={}){state={...state,...next,terms:normalize(next.terms??state.terms)};try{localStorage.setItem(KEY,JSON.stringify(state))}catch{notice='브라우저에 저장하지 못했어요. 저장소 설정을 확인하세요.'}draw();if(notify)window.dispatchEvent(new Event('markdown-studio:terms-updated'))}
-function resetForm(){editing=null;$('term-input').value='';$('term-add-btn').textContent='＋ 등록';$('term-edit-cancel').hidden=true}
-function draw(){const host=$('term-list');host.replaceChildren();$('term-list-count').textContent=state.terms.length+'개';
- if(!state.terms.length){const empty=document.createElement('div');empty.className='term-empty';empty.textContent='등록한 문자열이 없습니다. 위에서 추가해 주세요.';host.append(empty)}
- for(const word of state.terms){const row=document.createElement('div');row.className='term-list-item';const title=document.createElement('span');title.className='term-word';title.textContent=word;
-  const actions=document.createElement('div');actions.className='term-row-actions';
-  const edit=document.createElement('button');edit.type='button';edit.className='btn small';edit.textContent='수정';edit.onclick=()=>{editing=word;$('term-input').value=word;$('term-add-btn').textContent='수정 저장';$('term-edit-cancel').hidden=false;$('term-input').focus()};
-  const del=document.createElement('button');del.type='button';del.className='btn small danger';del.textContent='삭제';del.onclick=()=>{if(editing===word)resetForm();notice='';commit({terms:state.terms.filter(x=>x!==word),dirty:true})};actions.append(edit,del);row.append(title,actions);host.append(row)}
- syncLabel();
-}
-$('manage-terms').onclick=()=>{$('term-modal-backdrop').classList.add('show');draw()};
-function close(){$('term-modal-backdrop').classList.remove('show');resetForm()}
-$('term-modal-close').onclick=close;
-$('term-modal-backdrop').addEventListener('click',e=>{if(e.target===$('term-modal-backdrop'))close()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('term-modal-backdrop').classList.contains('show'))close()});
-$('term-edit-cancel').onclick=resetForm;
-$('term-add-form').onsubmit=e=>{e.preventDefault();const value=$('term-input').value.trim();if(!value){$('term-input').focus();return}const key=value.toLocaleLowerCase('ko-KR');
- if(state.terms.some(x=>x.toLocaleLowerCase('ko-KR')===key&&x!==editing)){notice='이미 등록된 문자열이에요.';syncLabel();return}
- const terms=editing?state.terms.map(x=>x===editing?value:x):[...state.terms,value];notice='';resetForm();commit({terms,dirty:true})};
-$('term-notion-load').onclick=()=>window.dispatchEvent(new Event('markdown-studio:filter-request-load'));
-$('term-notion-save').onclick=()=>window.dispatchEvent(new Event('markdown-studio:filter-request-save'));
-window.addEventListener('markdown-studio:filter-cloud-received',e=>{const data=e.detail||{};notice='노션에서 '+normalize(data.terms).length+'개 불러왔어요. PREVIEW에 바로 적용됩니다.';resetForm();commit({terms:data.terms,dirty:false,sourceId:data.sourceId||'',remoteEditedAt:data.remoteEditedAt||''})});
-window.addEventListener('markdown-studio:filter-cloud-saved',e=>{const data=e.detail||{};const same=JSON.stringify(normalize(data.terms))===JSON.stringify(state.terms);notice=same?'노션에 '+state.terms.length+'개 저장 완료!':'저장하는 동안 목록이 수정되었어요. 새 변경사항은 아직 노션에 저장되지 않았습니다.';commit({dirty:!same,sourceId:data.sourceId||state.sourceId,remoteEditedAt:data.remoteEditedAt||''}, {notify:false})});
-window.addEventListener('markdown-studio:filter-sync-status',e=>{notice=String(e.detail?.message||'');$('term-sync-message').classList.toggle('error',!!e.detail?.error);syncLabel()});
-window.addEventListener('storage',e=>{if(e.key===KEY){state=read();notice='';draw();window.dispatchEvent(new Event('markdown-studio:terms-updated'))}});
-draw();
-})();
-</script>
-
-<script>
 /* Direct Notion API integration for a personal Markdown Studio. No external dependencies. */
 (()=>{
 'use strict';
@@ -3885,13 +3695,6 @@ const NOTION_VERSION='2025-09-03';
 const SETTINGS_KEY='markdown-studio:notion-settings:v1';
 const LINK_KEY='markdown-studio:notion-linked:v1';
 const RAW_CAPTION='Markdown Studio RAW v1';
-const FILTER_DOC_TITLE='⚙ Markdown Studio · 금지어 목록';
-const FILTER_CAPTION='Markdown Studio FILTER TERMS v1';
-const FILTER_STORE_KEY='markdown-studio:filter-terms:v1';
-const QUICK_DOC_TITLE='⚙ Markdown Studio · 빠른 문자 목록';
-const QUICK_CAPTION='Markdown Studio QUICK CHARS v1';
-const QUICK_STORE_KEY='markdown-studio:quick-chars:v1';
-const QUICK_META_KEY='markdown-studio:quick-chars-cloud:v1';
 const CHUNK_SIZE=1600,MAX_CHUNKS=95;
 let config={token:'',databaseId:'',sourceId:'',sourceName:''},current=null,sourceSchema=null;
 let sourceChoices=[],rows=[],cursor=null,selectedPageId=null,busy=false,tableColumns=[];
@@ -3976,8 +3779,7 @@ $('notion-connect-confirm').onclick=async()=>{
   const next={token,databaseId,sourceId:source.id,sourceName:source.name};
   if(!store(SETTINGS_KEY,next))throw Error('브라우저에 연결 정보를 저장할 수 없어요. 저장 허용 설정을 확인하세요.');
   if(uuid(next.sourceId)!==uuid(config.sourceId))saveLink(null);
-  config=next;sourceSchema=schema;
-  setTimeout(()=>{loadTermsFromNotion({automatic:true});loadQuickFromNotion({automatic:true})},0);
+  config=next;sourceSchema=schema;document.dispatchEvent(new CustomEvent('markdown-studio:notion-ready'));
   say('notion-settings-feedback','연결 성공! '+source.name+' · 속성 '+Object.keys(schema.properties).length+'개 확인됨');
   setTimeout(()=>modal('notion-settings-backdrop',false),650);
  }catch(err){say('notion-settings-feedback',err.message,true)}finally{busy=false;$('notion-connect-confirm').disabled=false}
@@ -4038,8 +3840,8 @@ async function fetchRows(append=false){
  say('notion-browser-feedback','노션에서 목록을 읽는 중...');
  try{await ensureSchema();tableColumns=cells();
   const data=await request('/data_sources/'+config.sourceId+'/query',{method:'POST',body:{page_size:100,...(append&&cursor?{start_cursor:cursor}:{})}});
-  const onlyDocs=data.results.filter(x=>x.object==='page'&&!new Set([FILTER_DOC_TITLE,QUICK_DOC_TITLE]).has(getTitle(x)));
-  rows=append?[...rows,...onlyDocs]:onlyDocs;
+  const visible=data.results.filter(x=>x.object==='page'&&!/(?:Markdown Studio|MarkdownStudio).*(?:금지어|빠른\s*문자).*(?:설정|목록)|(?:Markdown Studio|MarkdownStudio)\s*(?:금지어|빠른\s*문자)/i.test(getTitle(x)));
+  rows=append?[...rows,...visible]:visible;
   cursor=data.has_more?data.next_cursor:null;
   if(!rows.some(r=>r.id===selectedPageId))selectedPageId=null;
   displayList();
@@ -4087,6 +3889,12 @@ function showNew(){
  $('notion-new-name').value=current?.name||'';say('notion-new-feedback','');modal('notion-new-backdrop',true);$('notion-new-name').focus();
 }
 $('notion-new-btn').onclick=showNew;
+$('local-new-document-btn').onclick=()=>{
+  if(editor.value && !confirm('새 문서를 시작하면 현재 편집 내용이 지워지고 노션 연결이 해제돼요. 노션에 저장된 기존 문서는 그대로 남습니다. 계속할까요?'))return;
+  editor.value='';saveLink(null);editor.dispatchEvent(new Event('input',{bubbles:true}));
+  try{localStorage.setItem('markdown-studio:draft:v1','')}catch(e){}
+  editor.focus();editor.setSelectionRange(0,0);
+};
 $('notion-new-close').onclick=()=>modal('notion-new-backdrop',false);
 $('notion-new-cancel').onclick=()=>modal('notion-new-backdrop',false);
 async function createNew(){
@@ -4133,172 +3941,6 @@ $('notion-save-btn').onclick=()=>{
  if(!config.token||!config.sourceId){showSettings();return}
  if(current?.pageId&&uuid(current.sourceId)===uuid(config.sourceId))updateExisting();else showNew();
 };
-/* The detector's Notion record is separate from normal Markdown documents. */
-let filterSyncBusy=false;
-function filterMessage(message,error=false){window.dispatchEvent(new CustomEvent('markdown-studio:filter-sync-status',{detail:{message,error}}))}
-function getLocalFilter(){const saved=stored(FILTER_STORE_KEY);return {terms:Array.isArray(saved?.terms)?saved.terms.filter(x=>typeof x==='string'):[],dirty:!!saved?.dirty,sourceId:saved?.sourceId||'',remoteEditedAt:saved?.remoteEditedAt||''}}
-async function findFilterCode(pageId){
- let pos=null,attempts=0;
- do{const result=await request('/blocks/'+pageId+'/children?page_size=100'+(pos?'&start_cursor='+encodeURIComponent(pos):''));
-  const hit=(result.results||[]).find(b=>b?.type==='code'&&plain(b.code?.caption)===FILTER_CAPTION);
-  if(hit)return hit;pos=result.has_more?result.next_cursor:null;
-  if(++attempts>30)throw Error('금지어 설정 페이지에 블록이 너무 많아요.');
- }while(pos);
- return null;
-}
-async function findFilterRecord(){
- const schema=await ensureSchema();const titleProp=Object.entries(schema.properties||{}).find(([,prop])=>prop.type==='title');
- if(!titleProp)throw Error('노션 데이터베이스에 제목 속성이 없어요.');
- let pos=null,loops=0;
- do{const result=await request('/data_sources/'+config.sourceId+'/query',{method:'POST',body:{page_size:100,filter:{property:titleProp[0],title:{equals:FILTER_DOC_TITLE}},...(pos?{start_cursor:pos}:{})}});
-  for(const page of result.results||[]){if(page.object!=='page')continue;const block=await findFilterCode(page.id);if(block)return {page,block}}
-  pos=result.has_more?result.next_cursor:null;if(++loops>20)throw Error('금지어 설정 페이지 검색 범위가 너무 커요.');
- }while(pos);
- return null;
-}
-function makeFilterCode(terms){const json=JSON.stringify({version:1,kind:'markdown-studio:filter-terms',terms});return {object:'block',type:'code',code:{language:'json',rich_text:chunkText(json).map(content=>({type:'text',text:{content}})),caption:[{type:'text',text:{content:FILTER_CAPTION}}]}}}
-function parseFilterCode(block){let data;try{data=JSON.parse(plain(block.code?.rich_text))}catch{throw Error('노션에 저장된 금지어 목록 JSON을 읽지 못했어요.')};if(data?.version!==1||data.kind!=='markdown-studio:filter-terms'||!Array.isArray(data.terms)||!data.terms.every(x=>typeof x==='string'))throw Error('금지어 목록 데이터 형식이 올바르지 않아요.');return data.terms}
-async function loadTermsFromNotion({automatic=false}={}){
- if(filterSyncBusy)return;
- if(!config.token||!config.sourceId){if(!automatic)showSettings();return}
- const local=getLocalFilter();if(automatic&&local.dirty){filterMessage('이 기기에 노션에 저장하지 않은 금지어 변경사항이 있어 자동 불러오기를 건너뛰었어요.');return}
- if(!automatic&&local.dirty&&!confirm('노션 목록으로 바꾸면 이 기기에서 아직 노션에 저장하지 않은 금지어 변경사항이 사라집니다. 계속할까요?'))return;
- filterSyncBusy=true;$('term-notion-load').disabled=true;$('term-notion-save').disabled=true;filterMessage('노션에서 금지어 목록을 읽는 중...');
- try{
-  const sourceAtStart=config.sourceId,record=await findFilterRecord();
-  if(sourceAtStart!==config.sourceId)throw Error('연결 데이터베이스가 변경되어 불러오기를 중단했어요.');
-  if(getLocalFilter().dirty&&automatic){filterMessage('불러오는 동안 로컬 목록이 바뀌어 덮어쓰지 않았어요.');return}
-  if(!record){filterMessage('노션에 금지어 설정 페이지가 아직 없어요. 로컬 목록을 유지합니다. 금지어를 등록한 뒤 [노션에 목록 저장]을 누르세요.');return}
-  const terms=parseFilterCode(record.block);
-  window.dispatchEvent(new CustomEvent('markdown-studio:filter-cloud-received',{detail:{terms,sourceId:config.sourceId,remoteEditedAt:record.page.last_edited_time}}));
- }catch(err){filterMessage('금지어 불러오기 실패: '+err.message,true)}
- finally{filterSyncBusy=false;$('term-notion-load').disabled=false;$('term-notion-save').disabled=false}
-}
-async function saveTermsToNotion(){
- if(filterSyncBusy)return;
- if(!config.token||!config.sourceId){showSettings();return}
- const local=getLocalFilter(),snapshot=local.terms.slice();
- filterSyncBusy=true;$('term-notion-save').disabled=true;$('term-notion-load').disabled=true;filterMessage('노션에 금지어 목록 저장 중...');
- try{
-  const sourceAtStart=config.sourceId,record=await findFilterRecord();
-  if(sourceAtStart!==config.sourceId)throw Error('연결 데이터베이스가 변경되어 저장을 중단했어요.');
-  if(record&&local.sourceId===config.sourceId&&local.remoteEditedAt&&record.page.last_edited_time!==local.remoteEditedAt){
-   if(!confirm('다른 기기에서 노션 금지어 목록을 수정했어요. 현재 목록으로 덮어쓸까요?')){filterMessage('노션 저장을 취소했어요.');return}
-  }
-  const payload=makeFilterCode(snapshot);let pageId,blockId;
-  if(record){pageId=record.page.id;blockId=record.block.id;await request('/blocks/'+blockId,{method:'PATCH',body:{code:payload.code}})}
-  else{
-   const schema=sourceSchema||await ensureSchema();const titleProp=Object.entries(schema.properties).find(([,p])=>p.type==='title');
-   if(!titleProp)throw Error('노션 데이터베이스에 제목 속성이 없어요.');
-   const page=await request('/pages',{method:'POST',body:{parent:{type:'data_source_id',data_source_id:config.sourceId},properties:{[titleProp[0]]:{title:[{type:'text',text:{content:FILTER_DOC_TITLE}}]}},children:[payload]}});
-   pageId=page.id;
-  }
-  const checked=blockId?await request('/blocks/'+blockId):await findFilterCode(pageId);
-  if(!checked||JSON.stringify(parseFilterCode(checked))!==JSON.stringify(snapshot))throw Error('저장 후 목록 검증에 실패했어요. 노션을 확인한 뒤 다시 시도하세요.');
-  const updated=await request('/pages/'+pageId);
-  window.dispatchEvent(new CustomEvent('markdown-studio:filter-cloud-saved',{detail:{terms:snapshot,sourceId:config.sourceId,remoteEditedAt:updated.last_edited_time}}));
- }catch(err){filterMessage('금지어 저장 실패: '+err.message,true)}
- finally{filterSyncBusy=false;$('term-notion-save').disabled=false;$('term-notion-load').disabled=false}
-}
-/* Quick character settings use a separate hidden Notion page, never a prompt page. */
-let quickSyncBusy=false;
-const quickSyncStatus=(message,error=false)=>window.dispatchEvent(new CustomEvent('markdown-studio:quick-sync-status',{detail:{message,error}}));
-function localQuickState(){
- const input=stored(QUICK_STORE_KEY),items=Array.isArray(input)?input.filter(x=>x&&typeof x.id==='string'&&typeof x.text==='string'&&x.text.length>0).map(x=>({id:x.id,text:x.text,label:typeof x.label==='string'?x.label:''})):[];
- const meta=stored(QUICK_META_KEY);
- return {items,dirty:meta&&typeof meta==='object'?!!meta.dirty:items.length>0,sourceId:meta?.sourceId||'',remoteEditedAt:meta?.remoteEditedAt||''};
-}
-function validateQuickItems(items){
- if(!Array.isArray(items)||items.length>2000)throw Error('빠른 문자 데이터 형식이 올바르지 않아요.');
- const ids=new Set();
- for(const x of items){
-  if(!x||typeof x.id!=='string'||!x.id||ids.has(x.id)||typeof x.text!=='string'||!x.text.length||typeof x.label!=='string')throw Error('빠른 문자 데이터 형식이 올바르지 않아요.');
-  ids.add(x.id);
- }
- return items.map(x=>({id:x.id,text:x.text,label:x.label}));
-}
-async function findQuickCode(pageId){
- let pos=null,attempts=0;
- do{
-  const result=await request('/blocks/'+pageId+'/children?page_size=100'+(pos?'&start_cursor='+encodeURIComponent(pos):''));
-  const found=(result.results||[]).find(b=>b?.type==='code'&&plain(b.code?.caption)===QUICK_CAPTION);
-  if(found)return found;
-  pos=result.has_more?result.next_cursor:null;
-  if(++attempts>30)throw Error('빠른 문자 설정 페이지에 블록이 너무 많아요.');
- }while(pos);
- return null;
-}
-async function findQuickRecord(){
- const schema=await ensureSchema(),titleProp=Object.entries(schema.properties||{}).find(([,p])=>p.type==='title');
- if(!titleProp)throw Error('노션 데이터베이스에 제목 속성이 없어요.');
- let pos=null,loops=0;
- do{
-  const result=await request('/data_sources/'+config.sourceId+'/query',{method:'POST',body:{page_size:100,filter:{property:titleProp[0],title:{equals:QUICK_DOC_TITLE}},...(pos?{start_cursor:pos}:{})}});
-  for(const page of result.results||[]){if(page.object!=='page')continue;const block=await findQuickCode(page.id);if(block)return {page,block}}
-  pos=result.has_more?result.next_cursor:null;
-  if(++loops>20)throw Error('빠른 문자 설정 페이지 검색 범위가 너무 커요.');
- }while(pos);
- return null;
-}
-function makeQuickCode(items){
- const json=JSON.stringify({version:1,kind:'markdown-studio:quick-chars',items:validateQuickItems(items)});
- return {object:'block',type:'code',code:{language:'json',rich_text:chunkText(json).map(content=>({type:'text',text:{content}})),caption:[{type:'text',text:{content:QUICK_CAPTION}}]}};
-}
-function parseQuickCode(block){
- let data;try{data=JSON.parse(plain(block.code?.rich_text))}catch{throw Error('노션의 빠른 문자 JSON을 읽지 못했어요.')}
- if(data?.version!==1||data.kind!=='markdown-studio:quick-chars')throw Error('빠른 문자 설정 파일이 올바르지 않아요.');
- return validateQuickItems(data.items);
-}
-async function loadQuickFromNotion({automatic=false}={}){
- if(quickSyncBusy)return;
- if(!config.token||!config.sourceId){if(!automatic)showSettings();return}
- const local=localQuickState(),snapshot=JSON.stringify(local.items);
- if(automatic&&local.dirty){quickSyncStatus('이 기기에 노션에 저장하지 않은 빠른 문자가 있어 자동 불러오기를 건너뛰었어요.');return}
- if(!automatic&&local.dirty&&!confirm('노션 목록을 불러오면 이 기기의 저장되지 않은 빠른 문자 변경사항과 버튼 순서가 사라집니다. 계속할까요?'))return;
- quickSyncBusy=true;$('char-notion-load').disabled=true;$('char-notion-save').disabled=true;quickSyncStatus('노션에서 빠른 문자 목록을 읽는 중...');
- try{
-  const sourceAtStart=config.sourceId,record=await findQuickRecord();
-  if(sourceAtStart!==config.sourceId)throw Error('연결 데이터베이스가 변경되어 불러오기를 중단했어요.');
-  if(JSON.stringify(localQuickState().items)!==snapshot){quickSyncStatus('불러오는 도중 빠른 문자가 수정되어 로컬 목록을 유지했어요.');return}
-  if(!record){quickSyncStatus('노션에 빠른 문자 설정 페이지가 아직 없어요. 로컬 목록을 유지합니다. [노션에 목록 저장]으로 생성할 수 있어요.');return}
-  window.dispatchEvent(new CustomEvent('markdown-studio:quick-cloud-received',{detail:{items:parseQuickCode(record.block),sourceId:config.sourceId,remoteEditedAt:record.page.last_edited_time}}));
- }catch(err){quickSyncStatus('빠른 문자 불러오기 실패: '+err.message,true)}
- finally{quickSyncBusy=false;$('char-notion-load').disabled=false;$('char-notion-save').disabled=false}
-}
-async function saveQuickToNotion(){
- if(quickSyncBusy)return;
- if(!config.token||!config.sourceId){showSettings();return}
- const local=localQuickState(),snapshot=local.items.map(x=>({...x}));
- quickSyncBusy=true;$('char-notion-save').disabled=true;$('char-notion-load').disabled=true;quickSyncStatus('노션에 빠른 문자 목록 저장 중...');
- try{
-  const sourceAtStart=config.sourceId,record=await findQuickRecord();
-  if(sourceAtStart!==config.sourceId)throw Error('연결 데이터베이스가 변경되어 저장을 중단했어요.');
-  if(record&&local.sourceId===config.sourceId&&local.remoteEditedAt&&record.page.last_edited_time!==local.remoteEditedAt){
-   if(!confirm('다른 기기에서 노션 빠른 문자 목록을 수정했어요. 현재 목록으로 덮어쓸까요?')){quickSyncStatus('빠른 문자 저장을 취소했어요.');return}
-  }
-  const payload=makeQuickCode(snapshot);let pageId,blockId;
-  if(record){pageId=record.page.id;blockId=record.block.id;await request('/blocks/'+blockId,{method:'PATCH',body:{code:payload.code}})}
-  else{
-   const schema=sourceSchema||await ensureSchema(),titleProp=Object.entries(schema.properties).find(([,p])=>p.type==='title');
-   if(!titleProp)throw Error('노션 데이터베이스에 제목 속성이 없어요.');
-   const page=await request('/pages',{method:'POST',body:{parent:{type:'data_source_id',data_source_id:config.sourceId},properties:{[titleProp[0]]:{title:[{type:'text',text:{content:QUICK_DOC_TITLE}}]}},children:[payload]}});
-   pageId=page.id;
-  }
-  const checked=blockId?await request('/blocks/'+blockId):await findQuickCode(pageId);
-  if(!checked||JSON.stringify(parseQuickCode(checked))!==JSON.stringify(snapshot))throw Error('저장 후 빠른 문자 목록 검증에 실패했어요.');
-  const updated=await request('/pages/'+pageId);
-  window.dispatchEvent(new CustomEvent('markdown-studio:quick-cloud-saved',{detail:{items:snapshot,sourceId:config.sourceId,remoteEditedAt:updated.last_edited_time}}));
- }catch(err){quickSyncStatus('빠른 문자 저장 실패: '+err.message,true)}
- finally{quickSyncBusy=false;$('char-notion-save').disabled=false;$('char-notion-load').disabled=false}
-}
-window.addEventListener('markdown-studio:quick-request-load',()=>loadQuickFromNotion());
-window.addEventListener('markdown-studio:quick-request-save',saveQuickToNotion);
-if(config.token&&config.sourceId)setTimeout(()=>loadQuickFromNotion({automatic:true}),350);
-
-window.addEventListener('markdown-studio:filter-request-load',()=>loadTermsFromNotion());
-window.addEventListener('markdown-studio:filter-request-save',saveTermsToNotion);
-if(config.token&&config.sourceId)setTimeout(()=>loadTermsFromNotion({automatic:true}),250);
-
 // A local draft created by clearing, importing or replacing must not silently overwrite the old cloud page.
 for(const id of ['clear-btn','replace-preset']){
  const button=$(id);button.addEventListener('click',()=>{const old=editor.value;setTimeout(()=>{if(editor.value!==old)saveLink(null)},0)})
@@ -4308,32 +3950,244 @@ for(const id of ['notion-settings-backdrop','notion-browser-backdrop','notion-ne
  $(id).addEventListener('click',e=>{if(e.target===$(id))modal(id,false)})
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')for(const id of ['notion-settings-backdrop','notion-browser-backdrop','notion-new-backdrop'])modal(id,false)});
+
+// Private settings bridge; the token never leaves this file and is not exposed publicly.
+window.MarkdownStudioSettingsAPI={
+  connected:()=>!!(config.token&&config.sourceId),
+  sourceId:()=>config.sourceId||'',
+  async read(kind){
+    const spec=settingTypes[kind];if(!spec)throw Error('알 수 없는 설정 종류');
+    const page=await locateSettingsPage(spec);
+    if(!page)return null;
+    const block=await findSettingsBlock(page.id,spec.caption);
+    if(!block)throw Error('노션에 설정 문서가 있지만 전용 데이터 블록이 없어요. 기존 문서는 건드리지 않았습니다.');
+    const raw=plain(block.code.rich_text);let data;
+    try{data=JSON.parse(raw)}catch{throw Error('노션 설정 문서의 데이터가 올바른 JSON이 아니에요.')}
+    const items=Array.isArray(data)?data:(data?.items||data?.terms||data?.words||data?.quickChars||data?.characters);
+    if(!Array.isArray(items))throw Error('노션 설정 문서의 데이터 구조가 올바르지 않아요.');
+    return {items,pageId:page.id,lastEdited:page.last_edited_time};
+  },
+  async write(kind,items){
+    const spec=settingTypes[kind];if(!spec)throw Error('알 수 없는 설정 종류');
+    const serialized=JSON.stringify({version:1,items});
+    const page=await locateSettingsPage(spec);
+    const blockData=makeSettingsCode(serialized,spec.caption);
+    let id;
+    if(page){
+      const block=await findSettingsBlock(page.id,spec.caption);
+      if(!block)throw Error('설정 전용 블록을 찾지 못했어요. 기존 노션 문서는 덮어쓰지 않았습니다.');
+      const existing=plain(block.code.rich_text);
+      if(existing===serialized)return {pageId:page.id,unchanged:true};
+      if(!confirm('노션의 기존 '+spec.label+' 목록을 현재 기기 목록으로 덮어쓸까요?'))return {cancelled:true};
+      await request('/blocks/'+block.id,{method:'PATCH',body:{code:blockData.code}});
+      id=page.id;
+    }else{
+      const schema=await ensureSchema();const prop=Object.entries(schema.properties).find(([,v])=>v.type==='title');
+      if(!prop)throw Error('노션 데이터베이스에서 제목 속성을 찾지 못했어요.');
+      const created=await request('/pages',{method:'POST',body:{parent:{type:'data_source_id',data_source_id:config.sourceId},properties:{[prop[0]]:{title:[{type:'text',text:{content:spec.title}}]}},children:[blockData]}});
+      id=created.id;
+    }
+    const verified=await findSettingsBlock(id,spec.caption);
+    if(!verified||plain(verified.code.rich_text)!==serialized)throw Error('설정을 기록했지만 저장 결과 확인에 실패했어요. 노션에서 내용을 확인해 주세요.');
+    return {pageId:id};
+  }
+};
+const settingTypes={
+  terms:{label:'금지어',title:'⚙ Markdown Studio 금지어 설정',caption:'Markdown Studio Filter Terms RAW v1'},
+  quick:{label:'빠른 문자',title:'⚙ Markdown Studio 빠른 문자 설정',caption:'Markdown Studio Quick Characters RAW v1'}
+};
+async function locateSettingsPage(spec){
+  const schema=await ensureSchema();const title=Object.entries(schema.properties).find(([,p])=>p.type==='title');
+  if(!title)throw Error('데이터베이스에 제목 속성이 없어요.');
+  // Primary location: exact title filter, independent of the number of prompt pages.
+  const uri='/data_sources/'+config.sourceId+'/query';
+  const data=await request(uri,{method:'POST',body:{page_size:100,filter:{property:title[0],title:{equals:spec.title}}}});
+  const exact=(data.results||[]).find(x=>x.object==='page'&&getTitle(x)===spec.title);
+  if(exact)return exact;
+  // Compatibility with configuration pages produced by earlier Markdown Studio versions.
+  const older=await request(uri,{method:'POST',body:{page_size:100,filter:{property:title[0],title:{contains:'Markdown Studio'}}}});
+  const token=spec.label==='금지어'?/금지어/:/빠른\s*문자/;
+  return (older.results||[]).find(x=>x.object==='page'&&token.test(getTitle(x))&&/설정|목록/.test(getTitle(x)))||null;
+}
+async function findSettingsBlock(pageId,caption){
+  let cursor=null,count=0;
+  do{
+    const data=await request('/blocks/'+pageId+'/children?page_size=100'+(cursor?'&start_cursor='+encodeURIComponent(cursor):''));
+    const blocks=(data.results||[]).filter(b=>b.type==='code');
+    const found=blocks.find(b=>plain(b.code?.caption)===caption);
+    if(found)return found;
+    const legacy=blocks.find(b=>{
+      try{const raw=plain(b.code?.rich_text);const parsed=JSON.parse(raw);
+        const items=Array.isArray(parsed)?parsed:(parsed?.items||parsed?.terms||parsed?.words||parsed?.quickChars||parsed?.characters);
+        if(!Array.isArray(items))return false;
+        return caption.includes('Filter Terms')?items.every(x=>typeof x==='string'||(x&&typeof (x.term??x.word??x.text)==='string')):items.every(x=>x&&typeof x==='object'&&typeof x.text==='string');
+      }catch{return false}
+    });
+    if(legacy)return legacy;
+    cursor=data.has_more?data.next_cursor:null;
+    if(++count>25)throw Error('노션 설정 페이지의 블록이 너무 많아요.');
+  }while(cursor);
+  return null;
+}
+function makeSettingsCode(serialized,caption){
+  return {object:'block',type:'code',code:{language:'plain text',rich_text:chunkText(serialized).map(content=>({type:'text',text:{content}})),caption:[{type:'text',text:{content:caption}}]}};
+}
+
 })();
 </script>
+
 <script>
-/* UI-only settings toggle; existing actions and local/Notion data handlers remain unchanged. */
+/* Literal term preview highlighter and independent, per-device Notion settings synchronization. */
 (()=>{
- 'use strict';
- const button=document.getElementById('tools-settings-btn');
- const panel=document.getElementById('tools-settings-menu');
- const shell=document.getElementById('tools-settings-shell');
- const closeButton=document.getElementById('tools-settings-close');
- if(!button||!panel||!shell)return;
- function setOpen(open){
-  panel.hidden=!open;
-  button.setAttribute('aria-expanded',String(open));
-  button.classList.toggle('active',open);
+'use strict';
+const $=id=>document.getElementById(id);
+const KEY='markdown-studio:filter-terms:v1';
+const api=()=>window.MarkdownStudioSettingsAPI;
+const store=(key,value)=>{try{localStorage.setItem(key,value);return true}catch{return false}};
+const read=key=>{try{return localStorage.getItem(key)}catch{return null}};
+function parse(key,def){try{return JSON.parse(read(key)||'null')??def}catch{return def}}
+function normalizeTerms(value){
+  if(!Array.isArray(value))return [];
+  const seen=new Set();return value.map(x=>typeof x==='string'?x:(x&&typeof x==='object'?(x.term??x.word??x.text??''):''))
+    .filter(x=>typeof x==='string').map(s=>s.trim()).filter(s=>s&&!seen.has(s)&&(seen.add(s),true));
+}
+const legacyTermKeys=[KEY,'markdown-studio:forbidden-terms:v1','markdown-studio:banned-terms:v1','markdown-studio:blocked-terms:v1','markdown-studio:filter-words:v1'];
+const initialTerms=legacyTermKeys.map(k=>parse(k,[])).find(v=>Array.isArray(v)&&v.length)||[];
+let terms=normalizeTerms(initialTerms);
+function setTerms(next){
+  terms=normalizeTerms(next);if(!store(KEY,JSON.stringify(terms)))alert('브라우저 저장이 차단됐어요. 금지어 목록이 유지되지 않을 수 있어요.');
+  drawTerms();scan();
+}
+function matchesFor(text){
+  const hits=[];const haystack=text.toLocaleLowerCase('ko-KR');
+  for(const term of terms){const needle=term.toLocaleLowerCase('ko-KR');if(!needle)continue;let at=0;
+    while((at=haystack.indexOf(needle,at))!==-1){hits.push({start:at,end:at+needle.length});at+=1}
+  }
+  hits.sort((a,b)=>a.start-b.start||(b.end-b.start)-(a.end-a.start));
+  const chosen=[];let last=0;
+  for(const hit of hits){if(hit.start>=last){chosen.push(hit);last=hit.end}}
+  return chosen;
+}
+function scan(){
+ const preview=$('preview');if(!preview)return;
+ // The main Markdown renderer regenerates the PREVIEW. Re-highlighting never alters the Markdown input.
+ for(const marked of Array.from(preview.querySelectorAll('.ms-term-hit'))){marked.replaceWith(document.createTextNode(marked.textContent))}
+ preview.normalize();
+ let count=0;
+ if(terms.length){
+  const walker=document.createTreeWalker(preview,NodeFilter.SHOW_TEXT);
+  const nodes=[];let node;
+  while((node=walker.nextNode())){
+    if(!node.nodeValue||node.parentElement?.closest('script,style,textarea'))continue;
+    nodes.push(node);
+  }
+  for(const textNode of nodes){
+    const text=textNode.nodeValue;const hits=matchesFor(text);if(!hits.length)continue;
+    const frag=document.createDocumentFragment();let at=0;
+    for(const h of hits){
+      if(h.start>at)frag.append(document.createTextNode(text.slice(at,h.start)));
+      const mark=document.createElement('span');mark.className='ms-term-hit';mark.textContent=text.slice(h.start,h.end);
+      frag.append(mark);at=h.end;count++;
+    }
+    if(at<text.length)frag.append(document.createTextNode(text.slice(at)));
+    textNode.replaceWith(frag);
+  }
  }
- button.addEventListener('click',()=>setOpen(panel.hidden));
- closeButton.addEventListener('click',()=>{setOpen(false);button.focus()});
- document.addEventListener('pointerdown',event=>{if(!panel.hidden&&!shell.contains(event.target))setOpen(false)});
- document.addEventListener('keydown',event=>{
-  if(event.key==='Escape'&&!panel.hidden){event.preventDefault();setOpen(false);button.focus()}
- });
- // Close when opening a new dialog, selecting a file or completing an action.
- for(const id of ['download-btn','import-btn','show-presets','clear-btn','notion-connect-btn','save-preset','save-selection']){
-  document.getElementById(id)?.addEventListener('click',()=>setOpen(false));
+ $('term-match-count').textContent=count?`금지어 ${count.toLocaleString('ko-KR')}건 감지`:'즉시 반영';
+}
+function drawTerms(){
+  const host=$('terms-list');host.replaceChildren();$('terms-total').textContent=terms.length+'개';
+  if(!terms.length){const item=document.createElement('div');item.className='char-none';item.textContent='등록된 금지어가 없어요.';host.append(item);return}
+  terms.forEach((term,index)=>{
+    const row=document.createElement('div');row.className='terms-item';const name=document.createElement('span');name.className='terms-item-name';name.textContent=term;
+    const actions=document.createElement('div');actions.className='terms-item-actions';
+    const edit=document.createElement('button');edit.type='button';edit.className='btn small';edit.textContent='수정';edit.onclick=()=>{
+      const next=prompt('감지할 문구를 수정하세요.',term);if(next===null)return;
+      const trimmed=next.trim();if(!trimmed){alert('빈 문구는 등록할 수 없어요.');return}
+      if(terms.some((x,i)=>i!==index&&x===trimmed)){alert('이미 등록된 문구예요.');return}
+      const updated=terms.slice();updated[index]=trimmed;setTerms(updated)
+    };
+    const remove=document.createElement('button');remove.type='button';remove.className='btn small danger';remove.textContent='삭제';remove.onclick=()=>{setTerms(terms.filter((_,i)=>i!==index))};
+    actions.append(edit,remove);row.append(name,actions);host.append(row);
+  });
+}
+$('terms-form').addEventListener('submit',e=>{
+ e.preventDefault();const input=$('terms-entry'),term=input.value.trim();if(!term)return;
+ if(terms.includes(term)){alert('이미 등록된 문구예요.');return}
+ setTerms([...terms,term]);input.value='';input.focus();
+});
+function termsModal(open){$('terms-modal-backdrop').classList.toggle('show',open);if(open){drawTerms();$('terms-entry').focus()}}
+$('manage-terms').onclick=()=>termsModal(true);
+$('terms-close').onclick=$('terms-close-top').onclick=()=>termsModal(false);
+$('terms-modal-backdrop').addEventListener('click',e=>{if(e.target===$('terms-modal-backdrop'))termsModal(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')termsModal(false)});
+window.MarkdownStudioTerms={scan,get:()=>terms.slice(),set:setTerms};
+drawTerms();scan();
+
+const prefs={
+ terms:{get:()=>terms.slice(),apply:items=>setTerms(items),valid:items=>normalizeTerms(items),loadButton:'terms-notion-load',saveButton:'terms-notion-save',status:'terms-sync-status',label:'금지어'},
+ quick:{get:()=>window.MarkdownStudioQuickSync.get(),apply:items=>window.MarkdownStudioQuickSync.apply(items),valid:items=>{
+   if(!Array.isArray(items)||items.some(x=>!x||typeof x.text!=='string'||typeof x.id!=='string'))throw Error('저장된 빠른 문자 데이터가 유효하지 않습니다.');
+   return items.map(x=>({id:x.id,text:x.text,label:typeof x.label==='string'?x.label:''}));
+ },loadButton:'quick-notion-load',saveButton:'quick-notion-save',status:'quick-sync-status',label:'빠른 문자'}
+};
+let requestInFlight=false;
+function status(kind,message,error=false){const el=$(prefs[kind].status);el.textContent=message;el.classList.toggle('error',error)}
+function baselineKey(kind){return 'markdown-studio:notion-pref-baseline:v1:'+kind+':'+api().sourceId()}
+function normalize(kind,items){if(kind==='terms'){if(!Array.isArray(items))throw Error('금지어 목록이 유효하지 않아요.');return prefs[kind].valid(items)}return prefs[kind].valid(items)}
+async function load(kind,automatic=false){
+ if(requestInFlight)return;
+ const bridge=api();if(!bridge?.connected()){if(!automatic)alert('먼저 ⚙ 설정에서 노션을 연결해 주세요.');return}
+ const pref=prefs[kind];const current=pref.get();const baseline=read(baselineKey(kind));
+ if(automatic){
+   // Never overwrite an unsynced local list, even when the remote has changed.
+   if((baseline===null&&current.length)||(baseline!==null&&baseline!==JSON.stringify(current))){status(kind,'현재 기기에 노션에 저장하지 않은 목록이 있어 자동 불러오기를 건너뛰었어요.');return}
  }
+ requestInFlight=true;$(pref.loadButton).disabled=true;
+ status(kind,'노션에서 '+pref.label+' 목록을 확인 중...');
+ try{
+   const remote=await bridge.read(kind);
+   if(!remote){status(kind,'노션에 저장된 '+pref.label+' 목록이 없어요. 목록 저장을 먼저 눌러주세요.');return}
+   const next=normalize(kind,remote.items);
+   if(!automatic&&JSON.stringify(next)!==JSON.stringify(current)&&current.length&&!confirm('이 기기에 등록된 '+pref.label+' 목록을 노션 목록으로 대체할까요?')){status(kind,'불러오기를 취소했어요.');return}
+   pref.apply(next);
+   store(baselineKey(kind),JSON.stringify(next));
+   status(kind,'노션에서 '+pref.label+' '+next.length+'개를 불러왔어요.');
+ }catch(err){if(!automatic)alert('노션 불러오기 실패: '+err.message);status(kind,err.message,true)}
+ finally{requestInFlight=false;$(pref.loadButton).disabled=false}
+}
+async function save(kind){
+ if(requestInFlight)return;
+ const bridge=api();if(!bridge?.connected()){alert('먼저 ⚙ 설정에서 노션을 연결해 주세요.');return}
+ const pref=prefs[kind],items=pref.get();requestInFlight=true;$(pref.saveButton).disabled=true;
+ status(kind,'노션에 '+pref.label+' 목록을 저장 중...');
+ try{
+   const result=await bridge.write(kind,items);
+   if(result.cancelled){status(kind,'저장을 취소했어요.');return}
+   store(baselineKey(kind),JSON.stringify(items));
+   status(kind,'노션에 '+pref.label+' '+items.length+'개를 저장했어요.');
+ }catch(err){alert('노션 저장 실패: '+err.message);status(kind,err.message,true)}
+ finally{requestInFlight=false;$(pref.saveButton).disabled=false}
+}
+for(const kind of Object.keys(prefs)){
+ $(prefs[kind].loadButton).onclick=()=>load(kind);
+ $(prefs[kind].saveButton).onclick=()=>save(kind);
+}
+async function autoSync(){
+ // Network access is optional. Browsers with unsaved changes are never overwritten.
+ if(!api()?.connected())return;
+ for(const kind of ['terms','quick'])await load(kind,true);
+}
+document.addEventListener('markdown-studio:notion-ready',()=>{autoSync()});
+autoSync();
+
+const toggle=$('studio-settings-toggle'),menu=$('studio-settings-menu');
+function showMenu(open){menu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));toggle.classList.toggle('active',open)}
+toggle.addEventListener('click',e=>{e.stopPropagation();showMenu(menu.hidden)});
+document.addEventListener('pointerdown',e=>{if(!e.target.closest('.settings-holder'))showMenu(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')showMenu(false)});
+// Actions opening their own dialogs should close the overlay. Inline form controls remain available.
+for(const id of ['download-btn','import-btn','show-presets','notion-connect-btn','clear-btn'])$(id).addEventListener('click',()=>showMenu(false));
 })();
 </script>
 </body></html>
