@@ -146,6 +146,24 @@
 @media(max-width:850px){.topbar .header-right{margin-left:auto}.topbar .header-right>.btn{padding:7px 8px;font-size:11px}.compact-toolbar{padding:7px 10px}.compact-toolbar .notion-name{display:none}}
 @media(max-width:570px){.topbar{gap:8px}.topbar .header-right{width:100%;justify-content:flex-end;order:2}.topbar .header-right .save-state{margin-right:auto}.topbar .stats{order:3}.compact-toolbar{flex-wrap:wrap}.compact-toolbar .quick-char-buttons{flex:1 0 100%;min-height:33px}.compact-toolbar .notion-tools{width:100%;justify-content:flex-end}.compact-toolbar .notion-tools .btn{flex:1 1 auto;padding:7px 5px;font-size:12px}.terms-modal{padding:16px}.terms-form{flex-wrap:wrap}.terms-form input{min-width:160px}.terms-form button{flex:0 0 auto}}
 
+
+/* Keep the quick-character and Notion action row visible at every viewport size.
+   The header can wrap to multiple rows, so its sticky offset is measured live. */
+:root{--studio-topbar-height:70px;--studio-toolbar-height:54px}
+.compact-toolbar{position:sticky;top:var(--studio-topbar-height);z-index:19;box-shadow:0 6px 17px rgba(3,8,15,.22)}
+.preview-head-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;min-width:0}
+.preview-toggle{display:none}
+@media(max-width:850px){
+  .preview-toggle{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;min-width:53px;padding:5px 9px}
+  .preview-pane.is-collapsed{height:48px;min-height:48px;flex:0 0 48px}
+  .preview-pane.is-collapsed .preview-scroll{display:none}
+  .workspace.preview-collapsed{min-height:0}
+  .workspace.preview-collapsed .split>.pane:first-child{
+    height:max(300px,calc(100dvh - var(--studio-topbar-height) - var(--studio-toolbar-height) - 48px));
+    flex:0 0 auto
+  }
+}
+
 </style>
 </head>
 <body>
@@ -176,7 +194,7 @@
 <main class="workspace">
   <div class="split">
     <section class="pane" aria-label="마크다운 입력"><div class="pane-head"><div class="pane-title"><span class="tag">✎</span> EDITOR <span style="font-weight:400;color:#71899d">/ 마크다운 입력</span></div><span class="pane-meta">자동 임시저장</span></div><div class="editor-stack"><div id="editor-highlight-layer" class="editor-highlight-layer" aria-hidden="true"></div><textarea id="editor" autocomplete="off" spellcheck="false" placeholder="# 제목을 입력하세요&#10;&#10;오른쪽에 **실시간 미리보기**가 표시됩니다.&#10;&#10;작성한 내용은 브라우저에 자동으로 임시저장됩니다."></textarea></div></section>
-    <section class="pane" aria-label="마크다운 미리보기"><div class="pane-head"><div class="pane-title"><span class="tag">◈</span> PREVIEW <span style="font-weight:400;color:#71899d">/ 실시간 결과</span></div><span class="pane-meta" id="term-match-count" aria-live="polite">즉시 반영</span></div><div id="preview-wrap" class="preview-scroll"><div id="preview" class="md"></div><div id="empty-preview" class="empty"><div class="illustration">⌘</div><strong>여기에 문서가 나타납니다</strong><span>왼쪽에서 마크다운을 작성해 보세요.<br>오른쪽 상단의 '문법 예시'를 눌러 도움말을 열 수 있어요.</span></div></div></section>
+    <section class="pane preview-pane" id="preview-pane" aria-label="마크다운 미리보기"><div class="pane-head"><div class="pane-title"><span class="tag">◈</span> PREVIEW <span style="font-weight:400;color:#71899d">/ 실시간 결과</span></div><div class="preview-head-actions"><span class="pane-meta" id="term-match-count" aria-live="polite">즉시 반영</span><button type="button" class="btn small preview-toggle" id="preview-toggle" aria-controls="preview-wrap" aria-expanded="true">접기</button></div></div><div id="preview-wrap" class="preview-scroll"><div id="preview" class="md"></div><div id="empty-preview" class="empty"><div class="illustration">⌘</div><strong>여기에 문서가 나타납니다</strong><span>왼쪽에서 마크다운을 작성해 보세요.<br>오른쪽 상단의 '문법 예시'를 눌러 도움말을 열 수 있어요.</span></div></div></section>
   </div>
   <aside class="guide" id="guide" aria-label="마크다운 문법 예시"><div class="guide-head"><div class="guide-title">마크다운 문법 가이드</div><button id="close-guide" class="btn small ghost" aria-label="문법 예시 닫기">✕ 닫기</button></div><div class="guide-content"><p class="guide-note">항목을 눌러 펼치세요. 예시 코드를 클릭하면 편집기에 바로 넣을 수 있습니다.</p>
     <details open><summary>제목과 문단</summary><div class="examples"><div class="ex" data-snippet="# 큰 제목"><span class="what">제목 1</span><code># 큰 제목</code></div><div class="ex" data-snippet="## 중간 제목"><span class="what">제목 2</span><code>## 중간 제목</code></div><div class="ex" data-snippet="### 작은 제목"><span class="what">제목 3</span><code>### 작은 제목</code></div><div class="ex" data-snippet="문단 하나입니다.\n\n다른 문단입니다."><span class="what">문단 나누기 (빈 줄)</span><code>문단 하나입니다.\n\n다른 문단입니다.</code></div></div></details>
@@ -3458,7 +3476,7 @@ function highlightEditorSource(start,end){
   // Bring the editor back onscreen without shifting the whole page on desktop.
   if(window.innerWidth<=850){
     const rect=editor.getBoundingClientRect();
-    const sticky=$('save-status').closest('.topbar').getBoundingClientRect().height;
+    const sticky=$('save-status').closest('.topbar').getBoundingClientRect().height+document.querySelector('.compact-toolbar').getBoundingClientRect().height;
     if(rect.bottom<sticky+55 || rect.top>window.innerHeight-100){
       window.scrollBy({top:rect.top-sticky-55,behavior:'smooth'});
     }
@@ -4188,6 +4206,42 @@ document.addEventListener('pointerdown',e=>{if(!e.target.closest('.settings-hold
 document.addEventListener('keydown',e=>{if(e.key==='Escape')showMenu(false)});
 // Actions opening their own dialogs should close the overlay. Inline form controls remain available.
 for(const id of ['download-btn','import-btn','show-presets','notion-connect-btn','clear-btn'])$(id).addEventListener('click',()=>showMenu(false));
+})();
+</script>
+
+<script>
+/* Viewport-only UI: keep both header rows sticky and allow small screens to fold PREVIEW. */
+(()=>{
+ 'use strict';
+ const topbar=document.querySelector('.topbar');
+ const toolbar=document.querySelector('.compact-toolbar');
+ const toggle=document.getElementById('preview-toggle');
+ const pane=document.getElementById('preview-pane');
+ const wrap=document.getElementById('preview-wrap');
+ const workspace=document.querySelector('.workspace');
+ const compact=window.matchMedia('(max-width:850px)');
+ let collapsed=false;
+ function updateChromeHeights(){
+   document.documentElement.style.setProperty('--studio-topbar-height',topbar.offsetHeight+'px');
+   document.documentElement.style.setProperty('--studio-toolbar-height',toolbar.offsetHeight+'px');
+ }
+ function updatePreview(){
+   const effective=collapsed&&compact.matches;
+   pane.classList.toggle('is-collapsed',effective);
+   workspace.classList.toggle('preview-collapsed',effective);
+   wrap.setAttribute('aria-hidden',String(effective));
+   toggle.setAttribute('aria-expanded',String(!effective));
+   toggle.textContent=effective?'펼치기':'접기';
+ }
+ toggle.addEventListener('click',()=>{collapsed=!collapsed;updatePreview()});
+ if(compact.addEventListener)compact.addEventListener('change',updatePreview);
+ else compact.addListener(updatePreview);
+ window.addEventListener('resize',updateChromeHeights,{passive:true});
+ if(typeof ResizeObserver!=='undefined'){
+   const observer=new ResizeObserver(updateChromeHeights);
+   observer.observe(topbar);observer.observe(toolbar);
+ }
+ updateChromeHeights();updatePreview();
 })();
 </script>
 </body></html>
